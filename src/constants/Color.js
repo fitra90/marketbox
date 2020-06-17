@@ -1,0 +1,17 @@
+module.exports = {
+  RED: '#E21E28',
+  DARK_BROWN: '#57423E',
+  LIGHT_BROWN: '#BEA6A1',
+  DARK_GREEN: '#358500',
+  LIGHT_GREEN: '#71BA00',
+  PALE: '#F3EED9',
+};
+
+// #E21E28 RED
+// #57423E DARK BROWN
+// #BEA6A1 LIGHT BROWN
+// #358500 DARK GREEN
+// #71BA00 LIGHT GREEN
+// #F3EED9 PALE
+
+//SOURCE: https://mycolor.space/?hex=%23E21E28&sub=1
