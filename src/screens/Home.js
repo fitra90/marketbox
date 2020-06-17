@@ -5,26 +5,22 @@ import {
   Image,
   ScrollView,
   Dimensions,
-  StatusBar,
   StyleSheet,
 } from 'react-native';
 import {
   Container,
   Header,
-  Left,
-  Body,
-  Right,
+  Content,
+  Item,
+  Input,
   Button,
   Icon,
-  Title,
 } from 'native-base';
-
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import Colors from '../constants/Color';
+// import Icon from 'react-native-vector-icons/Ionicons';
 // import styles from '../styles/Global';
 import Swiper from 'react-native-swiper';
 import Color from '../constants/Color';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 let {height, width} = Dimensions.get('window');
 const SliderActiveDot = (
@@ -58,43 +54,61 @@ const SliderDots = (
 );
 function HomeScreen({navigation}) {
   return (
-    <ScrollView>
-      <View style={{flex: 1}}>
-        <View style={{width: width, alignItems: 'center'}}>
-          <Swiper
-            autoplay={true}
-            style={styles.wrapper}
-            dot ={SliderDots}
-            activeDot={SliderActiveDot}
-            autoplayTimeout={3}>
-            <Image
-              style={styles.slides}
-              source={require('../assets/banner-header-belanja-pertama-1-1024x623.png')}
-            />
-            <Image
-              style={styles.slides}
-              source={require('../assets/promo.jpg')}
-            />
-            <Image
-              style={styles.slides}
-              source={{
-                uri:
-                  'https://3.bp.blogspot.com/-kE11Z3EzUOE/W9VjVKe3dtI/AAAAAAAAAKo/yAej-CbeJuwMZA_c6jgmC6CCkDyvmNkwQCK4BGAYYCw/s1600/BANNER5.png',
-              }}
-            />
-            <Image
-              style={styles.slides}
-              source={require('../assets/nHBfsgAAQQAAAA8AJhvfUQADSGw.png')}
-            />
-          </Swiper>
+    <Container>
+      <Header
+        style={{backgroundColor: 'white'}}
+        searchBar
+        rounded
+        androidStatusBarColor={Color.LIGHT_GREEN}>
+        <Item>
+          <Image
+            style={{width: 40, height: 40}}
+            source={require('../assets/icon.png')}
+          />
+          <Input placeholder="Search" style={{textAlign: 'right'}} />
+          <TouchableOpacity></TouchableOpacity><Icon name="search" size={30} />
+          <Icon name="notifications-outline" size={30} />
+        </Item>
+      </Header>
+      <ScrollView>
+        <View style={{flex: 1}}>
+          <View style={{width: width, alignItems: 'center'}}>
+            <Swiper
+              autoplay={true}
+              style={styles.wrapper}
+              dot={SliderDots}
+              activeDot={SliderActiveDot}
+              autoplayTimeout={3}>
+              <Image
+                style={styles.slides}
+                source={require('../assets/banner-header-belanja-pertama-1-1024x623.png')}
+              />
+              <Image
+                style={styles.slides}
+                source={require('../assets/promo.jpg')}
+              />
+              <Image
+                style={styles.slides}
+                source={{
+                  uri:
+                    'https://3.bp.blogspot.com/-kE11Z3EzUOE/W9VjVKe3dtI/AAAAAAAAAKo/yAej-CbeJuwMZA_c6jgmC6CCkDyvmNkwQCK4BGAYYCw/s1600/BANNER5.png',
+                }}
+              />
+              <Image
+                style={styles.slides}
+                source={require('../assets/nHBfsgAAQQAAAA8AJhvfUQADSGw.png')}
+              />
+            </Swiper>
+          </View>
+          <Content></Content>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </Container>
   );
 }
 
 const styles = StyleSheet.create({
-  wrapper: {height:width/2},
+  wrapper: {height: width / 2},
   slides: {
     height: width / 2,
     width: width - 30,

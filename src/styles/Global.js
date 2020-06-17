@@ -3,7 +3,6 @@ import Colors from "../constants/Color";
 export default StyleSheet.create({
   header: {
     backgroundColor: Colors.PRIMARY,
-
   },
 
 
