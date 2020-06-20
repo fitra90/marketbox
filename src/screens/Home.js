@@ -5,6 +5,7 @@ import {
   Image,
   ScrollView,
   Dimensions,
+  ImageBackground,
   StyleSheet,
 } from 'react-native';
 import {
@@ -20,7 +21,7 @@ import {
 // import styles from '../styles/Global';
 import Swiper from 'react-native-swiper';
 import Color from '../constants/Color';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 let {height, width} = Dimensions.get('window');
 const SliderActiveDot = (
@@ -65,8 +66,9 @@ function HomeScreen({navigation}) {
             style={{width: 40, height: 40}}
             source={require('../assets/icon.png')}
           />
-          <Input placeholder="Search" style={{textAlign: 'right'}} />
-          <TouchableOpacity></TouchableOpacity><Icon name="search" size={30} />
+          <Input placeholder="Pencarian" style={{textAlign: 'right'}} />
+          <TouchableOpacity></TouchableOpacity>
+          <Icon name="search" size={30} />
           <Icon name="notifications-outline" size={30} />
         </Item>
       </Header>
@@ -100,7 +102,66 @@ function HomeScreen({navigation}) {
               />
             </Swiper>
           </View>
-          <Content></Content>
+          <Content>
+            <View
+              style={{
+                flexDirection: 'row',
+                marginLeft: 15,
+                marginTop: 20,
+              }}>
+              <Image
+                style={{width: 30, height: 40, marginRight: 10}}
+                source={require('../assets/basket.jpg')}
+              />
+              <Text style={{fontSize: 18, fontWeight: 'bold', marginTop: 8}}>
+                Kategori
+              </Text>
+            </View>
+            <View style={{flexDirection: 'row', marginLeft: 15, marginTop: 20, alignContent:"center"}}>
+              <Image
+              style={{marginLeft:20}}
+                source={require('../assets/category.png')}
+              />
+            </View>
+            <View style={{flexDirection: 'row', marginLeft: 15, marginTop: 20}}>
+              <Image
+                style={{width: 20, height: 20, marginTop: 2, marginRight: 5}}
+                source={require('../assets/pointer.png')}
+              />
+              <Text style={{fontSize: 18, fontWeight: 'bold'}}>
+                Toko Terdekat
+              </Text>
+            </View>
+            <Swiper
+              autoplay={false}
+              style={styles.wrapper}
+              dot={<View></View>}
+              showsButtons={true}
+              activeDot={<View></View>}
+              autoplayTimeout={3}>
+              <View style={{flex: 1, flexDirection: 'column'}}>
+                <ImageBackground
+                  source={require('../assets/alfamart-toko.jpg')}
+                  style={styles.slides}>
+                  <Text style={{}}>Inside</Text>
+                </ImageBackground>
+              </View>
+              <View style={{flex: 1, flexDirection: 'column'}}>
+                <ImageBackground
+                  source={require('../assets/pintar.jpeg')}
+                  style={styles.slides}>
+                  <Text style={{}}>Inside</Text>
+                </ImageBackground>
+              </View>
+              <View style={{flex: 1, flexDirection: 'column'}}>
+                <ImageBackground
+                  source={require('../assets/tak-lekang.jpg')}
+                  style={styles.slides}>
+                  <Text style={{}}>Inside</Text>
+                </ImageBackground>
+              </View>
+            </Swiper>
+          </Content>
         </View>
       </ScrollView>
     </Container>
