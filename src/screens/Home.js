@@ -299,7 +299,7 @@ function HomeScreen({navigation}) {
               </Grid>
             </View>
 
-            <View
+            {/* <View
               style={{
                 flexDirection: 'row',
                 marginLeft: 15,
@@ -328,7 +328,7 @@ function HomeScreen({navigation}) {
                 shadowOpacity: 0.3,
                 shadowRadius: 2,
               }}>
-              </View>
+              </View> */}
             <View
               style={{
                 flex: 1,

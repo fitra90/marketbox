@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Button, Text, StatusBar, StyleSheet, Image} from 'react-native';
+import {View, Button, Text, StatusBar, StyleSheet, Image, TouchableNativeFeedbackBase} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -12,6 +12,11 @@ import History from './src/screens/order/History';
 import Profile from './src/screens/account/Profile';
 import Splash from './src/screens/Splash';
 import Login from './src/screens/account/Login';
+import {
+  TouchableOpacity,
+  TouchableNativeFeedback,
+  TouchableHighlight,
+} from 'react-native-gesture-handler';
 
 function DetailsScreen() {
   return (
@@ -56,7 +61,11 @@ function HomeStack() {
         }
 
         // You can return any component that you like here!
-        return <Icon type="MaterialIcons" name={iconName} style={color} />;
+        return (
+          <TouchableOpacity>
+            <Icon type="MaterialIcons" name={iconName} style={color} />
+          </TouchableOpacity>
+        );
       },
     })}
     tabBarOptions={{

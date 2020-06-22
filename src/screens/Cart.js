@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -6,24 +6,33 @@ import {
   ScrollView,
   StatusBar,
   StyleSheet,
+  ListItem,
 } from 'react-native';
 import Color from '../constants/Color';
 import styles from '../styles/Global';
 import {
   Container,
   Header,
+  Footer,
   Right,
+  CheckBox,
   Body,
   Card,
+  Item,
   CardItem,
   Content,
   Thumbnail,
   Title,
   Left,
   Button,
+  Form,
+  Input,
   Icon,
 } from 'native-base';
-import {TouchableOpacity, TouchableNativeFeedback} from 'react-native-gesture-handler';
+import {
+  TouchableOpacity,
+  TouchableNativeFeedback,
+} from 'react-native-gesture-handler';
 
 function Cart({navigation}) {
   return (
@@ -36,12 +45,12 @@ function Cart({navigation}) {
             Keranjang
           </Title>
         </Body>
-        <Right>
-          <TouchableNativeFeedback>
-            <Button hasText transparent>
-              <Text style={{color:Color.DARK_GREEN}}>BAYAR</Text>
+        <Right style={{marginLeft: -20}}>
+          <TouchableOpacity>
+            <Button transparent hasText>
+              <Icon name="chatbubbles" style={{color: 'black'}} />
             </Button>
-          </TouchableNativeFeedback>
+          </TouchableOpacity>
         </Right>
       </Header>
       <Content>
@@ -49,46 +58,232 @@ function Cart({navigation}) {
           <Card>
             <CardItem>
               <Left>
-                <Thumbnail source={require('../assets/alfamart.jpeg')} />
+                <Thumbnail
+                  source={require('../assets/alfamart.jpeg')}
+                  style={{width: 40, height: 40}}
+                />
                 <Body>
                   <Text>Toko Alfamart</Text>
                   <Text note style={{color: 'grey', fontStyle: 'italic'}}>
-                    Star Seller
+                    Pedagang Resmi
                   </Text>
                 </Body>
               </Left>
             </CardItem>
-            <CardItem cardBody>
-              <Image
-                source={require('../assets/minyak.jpg')}
-                style={{
-                  height: 200,
-                  width: null,
-                  flex: 1,
-                  resizeMode: 'contain',
-                }}
-              />
+            <CardItem style={{height: 150}}>
+              <Left>
+                <CheckBox checked={true} color="green" />
+                <Image
+                  source={require('../assets/minyak.jpg')}
+                  style={{
+                    height: 200,
+                    width: 120,
+                    marginLeft: 30,
+                    resizeMode: 'contain',
+                  }}
+                />
+              </Left>
+              <Body style={{justifyContent: 'center'}}>
+                <Text style={{fontSize: 16, fontWeight: '500'}}>
+                  Minyak Goreng 2L
+                </Text>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    fontWeight: 'bold',
+                    color: Color.DARK_BROWN,
+                    marginTop: 5,
+                  }}>
+                  Rp. 24.000
+                </Text>
+                <View style={{flexDirection: 'row', marginTop: 15, width: 100}}>
+                  <Button
+                    style={{
+                      paddingHorizontal: 10,
+                      height: 25,
+                      backgroundColor: Color.PALE,
+                    }}>
+                    <Text style={{fontWeight: 'bold'}}>+</Text>
+                  </Button>
+                  <Input
+                    placeholder="0"
+                    style={{
+                      margin: 3,
+                      paddingBottom: 25,
+                      paddingTop: -10,
+                      borderBottomColor: 'black',
+                      textAlign: 'center',
+                    }}
+                  />
+                  <Button
+                    style={{
+                      paddingHorizontal: 10,
+                      height: 25,
+                      backgroundColor: Color.PALE,
+                    }}>
+                    <Text style={{fontWeight: 'bold', fontSize: 16}}>-</Text>
+                  </Button>
+                </View>
+              </Body>
             </CardItem>
+            <CardItem style={{height: 150}}>
+              <Left>
+                <CheckBox checked={true} color="green" />
+                <Image
+                  source={require('../assets/beras.png')}
+                  style={{
+                    height: 200,
+                    width: 120,
+                    marginLeft: 30,
+                    resizeMode: 'contain',
+                  }}
+                />
+              </Left>
+              <Body style={{justifyContent: 'center'}}>
+                <Text style={{fontSize: 16, fontWeight: '500'}}>
+                  Beras 5 Kg
+                </Text>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    fontWeight: 'bold',
+                    color: Color.DARK_BROWN,
+                    marginTop: 5,
+                  }}>
+                  Rp. 60.000
+                </Text>
+                <View style={{flexDirection: 'row', marginTop: 15, width: 100}}>
+                  <Button
+                    style={{
+                      paddingHorizontal: 10,
+                      height: 25,
+                      backgroundColor: Color.PALE,
+                    }}>
+                    <Text style={{fontWeight: 'bold'}}>+</Text>
+                  </Button>
+                  <Input
+                    placeholder="0"
+                    style={{
+                      margin: 3,
+                      paddingBottom: 25,
+                      paddingTop: -10,
+                      borderBottomColor: 'black',
+                      textAlign: 'center',
+                    }}
+                  />
+                  <Button
+                    style={{
+                      paddingHorizontal: 10,
+                      height: 25,
+                      backgroundColor: Color.PALE,
+                    }}>
+                    <Text style={{fontWeight: 'bold', fontSize: 16}}>-</Text>
+                  </Button>
+                </View>
+              </Body>
+            </CardItem>
+          </Card>
+          <Card>
             <CardItem>
               <Left>
-                <Button transparent>
-                  <Icon active name="thumbs-up" />
-                  <Text>12 Likes</Text>
-                </Button>
+                <Thumbnail
+                  source={require('../assets/okoc.jpg')}
+                  style={{width: 40, height: 40}}
+                />
+                <Body>
+                  <Text>Toko OK OCE</Text>
+                  <Text note style={{color: 'grey', fontStyle: 'italic'}}>
+                    Pedagang Resmi
+                  </Text>
+                </Body>
               </Left>
-              <Body>
-                <Button transparent>
-                  <Icon active name="chatbubbles" />
-                  <Text>4 Comments</Text>
-                </Button>
+            </CardItem>
+            <CardItem style={{height: 150}}>
+              <Left>
+                <CheckBox checked={true} color="green" />
+                <Image
+                  source={require('../assets/indomie.jpg')}
+                  style={{
+                    height: 200,
+                    width: 120,
+                    marginLeft: 30,
+                    resizeMode: 'contain',
+                  }}
+                />
+              </Left>
+              <Body style={{justifyContent: 'center'}}>
+                <Text style={{fontSize: 16, fontWeight: '500'}}>
+                  Indomie 1 Karton
+                </Text>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    fontWeight: 'bold',
+                    color: Color.DARK_BROWN,
+                    marginTop: 5,
+                  }}>
+                  Rp. 124.000
+                </Text>
+                <View style={{flexDirection: 'row', marginTop: 15, width: 100}}>
+                  <Button
+                    style={{
+                      paddingHorizontal: 10,
+                      height: 25,
+                      backgroundColor: Color.PALE,
+                    }}>
+                    <Text style={{fontWeight: 'bold'}}>+</Text>
+                  </Button>
+                  <Input
+                    placeholder="0"
+                    style={{
+                      margin: 3,
+                      paddingBottom: 25,
+                      paddingTop: -10,
+                      borderBottomColor: 'black',
+                      textAlign: 'center',
+                    }}
+                  />
+                  <Button
+                    style={{
+                      paddingHorizontal: 10,
+                      height: 25,
+                      backgroundColor: Color.PALE,
+                    }}>
+                    <Text style={{fontWeight: 'bold', fontSize: 16}}>-</Text>
+                  </Button>
+                </View>
               </Body>
-              <Right>
-                <Text>11h ago</Text>
-              </Right>
             </CardItem>
           </Card>
         </ScrollView>
       </Content>
+      <Footer
+        style={{
+          backgroundColor: Color.PALE,
+          alignContent: 'center',
+          paddingTop: 10,
+          height: 70,
+        }}>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            paddingHorizontal: 20,
+            justifyContent: 'space-between',
+          }}>
+          <View>
+            <Text>Total: </Text>
+            <Text style={{fontSize: 20, fontWeight: 'bold'}}>Rp. 208.000 </Text>
+          </View>
+          <View style={{}}>
+            <Button success style={{paddingHorizontal: 20}}>
+              <Text style={{fontWeight: '200', color: 'white', fontSize: 16}}>
+                Bayar
+              </Text>
+            </Button>
+          </View>
+        </View>
+      </Footer>
     </Container>
   );
 }
