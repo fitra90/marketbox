@@ -20,8 +20,9 @@ import {
 // import Icon from 'react-native-vector-icons/Ionicons';
 // import styles from '../styles/Global';
 import Swiper from 'react-native-swiper';
-import Color from '../constants/Color';
+import Color, {DARK_GREEN} from '../constants/Color';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {Col, Row, Grid} from 'react-native-easy-grid';
 
 let {height, width} = Dimensions.get('window');
 const SliderActiveDot = (
@@ -63,7 +64,7 @@ function HomeScreen({navigation}) {
         androidStatusBarColor={Color.LIGHT_GREEN}>
         <Item>
           <Image
-            style={{width: 40, height: 40}}
+            style={{width: 40, height: 40, marginTop: 5}}
             source={require('../assets/icon.png')}
           />
           <Input placeholder="Pencarian" style={{textAlign: 'right'}} />
@@ -110,57 +111,240 @@ function HomeScreen({navigation}) {
                 marginTop: 20,
               }}>
               <Image
-                style={{width: 30, height: 40, marginRight: 10}}
-                source={require('../assets/basket.jpg')}
-              />
-              <Text style={{fontSize: 18, fontWeight: 'bold', marginTop: 8}}>
-                Kategori
-              </Text>
-            </View>
-            <View style={{flexDirection: 'row', marginLeft: 15, marginTop: 20, alignContent:"center"}}>
-              <Image
-              style={{marginLeft:20}}
-                source={require('../assets/category.png')}
-              />
-            </View>
-            <View style={{flexDirection: 'row', marginLeft: 15, marginTop: 20}}>
-              <Image
-                style={{width: 20, height: 20, marginTop: 2, marginRight: 5}}
+                style={{width: 25, height: 25, marginTop: 2, marginRight: 5}}
                 source={require('../assets/pointer.png')}
               />
-              <Text style={{fontSize: 18, fontWeight: 'bold'}}>
-                Toko Terdekat
+              <Text style={{fontSize: 18, fontWeight: 'bold', marginTop: 1}}>
+                Agen Terdekat
               </Text>
             </View>
-            <Swiper
-              autoplay={false}
-              style={styles.wrapper}
-              dot={<View></View>}
-              showsButtons={true}
-              activeDot={<View></View>}
-              autoplayTimeout={3}>
-              <View style={{flex: 1, flexDirection: 'column'}}>
-                <ImageBackground
-                  source={require('../assets/alfamart-toko.jpg')}
-                  style={styles.slides}>
-                  <Text style={{}}>Inside</Text>
-                </ImageBackground>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                marginHorizontal: 7,
+                marginTop: 20,
+                border: 1,
+                borderColor: Color.DARK_GREEN,
+                alignContent: 'center',
+              }}>
+              <Grid>
+                <Col
+                  style={{
+                    marginHorizontal: 10,
+                  }}>
+                  <ImageBackground
+                    imageStyle={{borderRadius: 10}}
+                    style={{
+                      flex: 1,
+                      borderRadius: 10,
+                      backgroundColor: '#00CE9F',
+                      height: 150,
+                      width: 180,
+                      resizeMode: 'cover',
+                    }}
+                    source={require('../assets/tak-lekang.jpg')}>
+                    <View
+                      style={{
+                        width: 180,
+                        borderRadius: 10,
+                        height: 150,
+                        position: 'absolute',
+                        backgroundColor: 'black',
+                        opacity: 0.5,
+                      }}></View>
+                    <Text
+                      style={{
+                        fontSize: 20,
+                        color: 'white',
+                        bottom: 0,
+                        padding: 10,
+                        position: 'absolute',
+                      }}>
+                      Pasar Gajah
+                    </Text>
+                  </ImageBackground>
+                </Col>
+                <Col
+                  style={{
+                    marginHorizontal: 10,
+                  }}>
+                  <ImageBackground
+                    imageStyle={{borderRadius: 10}}
+                    style={{
+                      flex: 1,
+                      borderRadius: 10,
+                      backgroundColor: '#00CE9F',
+                      height: 150,
+                      width: 180,
+                      resizeMode: 'cover',
+                    }}
+                    source={require('../assets/pusat-grosir-surabaya.jpg')}>
+                    <View
+                      style={{
+                        width: 180,
+                        height: 150,
+                        borderRadius: 10,
+                        positio: 'absolute',
+                        backgroundColor: 'black',
+                        opacity: 0.5,
+                      }}></View>
+                    <Text
+                      style={{
+                        fontSize: 20,
+                        color: 'white',
+                        bottom: 0,
+                        padding: 10,
+                        position: 'absolute',
+                      }}>
+                      Pusat Grosir Surabaya
+                    </Text>
+                  </ImageBackground>
+                </Col>
+              </Grid>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                marginHorizontal: 7,
+                marginTop: 19,
+                alignContent: 'center',
+              }}>
+              <Grid>
+                <Col
+                  style={{
+                    marginHorizontal: 10,
+                  }}>
+                  <ImageBackground
+                    imageStyle={{borderRadius: 10}}
+                    style={{
+                      flex: 1,
+                      borderRadius: 10,
+                      backgroundColor: '#00CE9F',
+                      height: 150,
+                      width: 180,
+                      resizeMode: 'cover',
+                    }}
+                    source={require('../assets/klewer.jpg')}>
+                    <View
+                      style={{
+                        width: 180,
+                        height: 150,
+                        positio: 'absolute',
+                        borderRadius: 10,
+                        backgroundColor: Color.RED,
+                        opacity: 0.5,
+                      }}></View>
+                    <Image
+                      style={{
+                        width: 120,
+                        height: 100,
+                        marginTop: 2,
+                        marginRight: 5,
+                        position: 'absolute',
+                        alignSelf: 'center',
+                        flex: 1,
+                      }}
+                      source={require('../assets/close.png')}
+                    />
+                    <Text
+                      style={{
+                        fontSize: 20,
+                        color: 'white',
+                        bottom: 0,
+                        padding: 10,
+                        position: 'absolute',
+                      }}>
+                      Pasar Klewer
+                    </Text>
+                  </ImageBackground>
+                </Col>
+                <Col
+                  style={{
+                    marginHorizontal: 10,
+                  }}>
+                  <ImageBackground
+                    imageStyle={{borderRadius: 10}}
+                    style={{
+                      flex: 1,
+                      borderRadius: 10,
+                      backgroundColor: '#00CE9F',
+                      height: 150,
+                      width: 180,
+                      resizeMode: 'cover',
+                    }}
+                    source={require('../assets/tanahabang.jpg')}>
+                    <View
+                      style={{
+                        width: 180,
+                        height: 150,
+                        borderRadius: 10,
+                        position: 'absolute',
+                        backgroundColor: 'black',
+                        opacity: 0.5,
+                      }}></View>
+                    <Text
+                      style={{
+                        fontSize: 20,
+                        color: 'white',
+                        bottom: 0,
+                        padding: 10,
+                        position: 'absolute',
+                      }}>
+                      Pasar Tanah Abang
+                    </Text>
+                  </ImageBackground>
+                </Col>
+              </Grid>
+            </View>
+
+            <View
+              style={{
+                flexDirection: 'row',
+                marginLeft: 15,
+                marginTop: 20,
+                marginBottom: 10,
+              }}>
+              <Image
+                style={{width: 40, height: 40, marginTop: 2, marginRight: 5}}
+                source={require('../assets/toys.png')}
+              />
+              <Text
+                style={{fontSize: 18, fontWeight: 'bold', marginVertical: 10}}>
+                Kategori Produk
+              </Text>
+            </View>
+
+            <View
+              style={{
+                width: 'auto',
+                height: 120,
+                borderRadius: 10,
+                elevation: 2,
+                marginHorizontal:15,
+                shadowOffset: {width: 2, height: 1},
+                shadowColor: 'silver',
+                shadowOpacity: 0.3,
+                shadowRadius: 2,
+              }}>
               </View>
-              <View style={{flex: 1, flexDirection: 'column'}}>
-                <ImageBackground
-                  source={require('../assets/pintar.jpeg')}
-                  style={styles.slides}>
-                  <Text style={{}}>Inside</Text>
-                </ImageBackground>
-              </View>
-              <View style={{flex: 1, flexDirection: 'column'}}>
-                <ImageBackground
-                  source={require('../assets/tak-lekang.jpg')}
-                  style={styles.slides}>
-                  <Text style={{}}>Inside</Text>
-                </ImageBackground>
-              </View>
-            </Swiper>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: 'row',
+                marginTop: 20,
+                marginBottom: 10,
+                alignSelf: 'center',
+                justifyContent: 'space-around',
+              }}>
+              <Text style={{}}>&copy; 2020 </Text>
+              <Text> </Text>
+              <Text style={{color: Color.DARK_GREEN}}>
+                {' '}
+                https://marketbox.id
+              </Text>
+            </View>
           </Content>
         </View>
       </ScrollView>
@@ -169,7 +353,8 @@ function HomeScreen({navigation}) {
 }
 
 const styles = StyleSheet.create({
-  wrapper: {height: width / 2},
+  wrapper2: {height: 100},
+  wrapper: {height: width / 2 + 30, backgroundColor: Color.PALE},
   slides: {
     height: width / 2,
     width: width - 30,

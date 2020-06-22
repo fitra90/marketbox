@@ -3,6 +3,7 @@ import {
   View,
   Text,
   ActivityIndicator,
+  StatusBar,
   Image,
 } from 'react-native';
 import Color from '../constants/Color';
@@ -22,6 +23,7 @@ function Splash({navigation}) {
 
   return (
     <Container>
+      <StatusBar hidden />
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <Image
           style={{width: 122, height: 100}}
