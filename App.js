@@ -1,9 +1,8 @@
 import * as React from 'react';
-import {View, Button, Text, StatusBar, StyleSheet, Image, TouchableNativeFeedbackBase} from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
-import Colors from './src/constants/Color';
 import styles from './src/styles/Global';
 import {Icon} from 'native-base';
 import Home from './src/screens/Home';
@@ -12,10 +11,10 @@ import History from './src/screens/order/History';
 import Profile from './src/screens/account/Profile';
 import Splash from './src/screens/Splash';
 import Login from './src/screens/account/Login';
+import Pembayaran from './src/screens/order/Pembayaran';
+import Confirmation from './src/screens/order/Confirmation';
 import {
   TouchableOpacity,
-  TouchableNativeFeedback,
-  TouchableHighlight,
 } from 'react-native-gesture-handler';
 
 function DetailsScreen() {
@@ -124,6 +123,11 @@ function App() {
           name="Home"
           options={{headerShown: false}}
           component={HomeStack}
+        />
+        <Stack.Screen
+          name="Pembayaran"
+          options={{headerShown: false}}
+          component={Pembayaran}
         />
       </Stack.Navigator>
     </NavigationContainer>

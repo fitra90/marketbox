@@ -18,14 +18,12 @@ import {
   CheckBox,
   Body,
   Card,
-  Item,
   CardItem,
   Content,
   Thumbnail,
   Title,
   Left,
   Button,
-  Form,
   Input,
   Icon,
 } from 'native-base';
@@ -37,6 +35,7 @@ import {
 function Cart({navigation}) {
   return (
     <Container>
+      <StatusBar hidden={false} style={{backgroundColor: Color.LIGHT_GREEN}} />
       <Header
         style={{backgroundColor: 'white'}}
         androidStatusBarColor={Color.LIGHT_GREEN}>
@@ -70,7 +69,7 @@ function Cart({navigation}) {
                 </Body>
               </Left>
             </CardItem>
-            <CardItem style={{height: 150}}>
+            <CardItem style={{height: 130, marginBottom: 10}}>
               <Left>
                 <CheckBox checked={true} color="green" />
                 <Image
@@ -103,7 +102,7 @@ function Cart({navigation}) {
                       height: 25,
                       backgroundColor: Color.PALE,
                     }}>
-                    <Text style={{fontWeight: 'bold'}}>+</Text>
+                    <Text style={{fontWeight: 'bold'}}>-</Text>
                   </Button>
                   <Input
                     placeholder="0"
@@ -121,12 +120,12 @@ function Cart({navigation}) {
                       height: 25,
                       backgroundColor: Color.PALE,
                     }}>
-                    <Text style={{fontWeight: 'bold', fontSize: 16}}>-</Text>
+                    <Text style={{fontWeight: 'bold', fontSize: 16}}>+</Text>
                   </Button>
                 </View>
               </Body>
             </CardItem>
-            <CardItem style={{height: 150}}>
+            <CardItem style={{height: 130, marginBottom: 10}}>
               <Left>
                 <CheckBox checked={true} color="green" />
                 <Image
@@ -159,7 +158,7 @@ function Cart({navigation}) {
                       height: 25,
                       backgroundColor: Color.PALE,
                     }}>
-                    <Text style={{fontWeight: 'bold'}}>+</Text>
+                    <Text style={{fontWeight: 'bold'}}>-</Text>
                   </Button>
                   <Input
                     placeholder="0"
@@ -177,7 +176,7 @@ function Cart({navigation}) {
                       height: 25,
                       backgroundColor: Color.PALE,
                     }}>
-                    <Text style={{fontWeight: 'bold', fontSize: 16}}>-</Text>
+                    <Text style={{fontWeight: 'bold', fontSize: 16}}>+</Text>
                   </Button>
                 </View>
               </Body>
@@ -198,7 +197,7 @@ function Cart({navigation}) {
                 </Body>
               </Left>
             </CardItem>
-            <CardItem style={{height: 150}}>
+            <CardItem style={{height: 130, marginBottom: 10}}>
               <Left>
                 <CheckBox checked={true} color="green" />
                 <Image
@@ -231,7 +230,7 @@ function Cart({navigation}) {
                       height: 25,
                       backgroundColor: Color.PALE,
                     }}>
-                    <Text style={{fontWeight: 'bold'}}>+</Text>
+                    <Text style={{fontWeight: 'bold'}}>-</Text>
                   </Button>
                   <Input
                     placeholder="0"
@@ -249,7 +248,7 @@ function Cart({navigation}) {
                       height: 25,
                       backgroundColor: Color.PALE,
                     }}>
-                    <Text style={{fontWeight: 'bold', fontSize: 16}}>-</Text>
+                    <Text style={{fontWeight: 'bold', fontSize: 16}}>+</Text>
                   </Button>
                 </View>
               </Body>

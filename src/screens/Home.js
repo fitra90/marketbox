@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {
   View,
   Text,
+  StatusBar,
   Image,
   ScrollView,
   Dimensions,
@@ -57,6 +58,7 @@ const SliderDots = (
 function HomeScreen({navigation}) {
   return (
     <Container>
+      <StatusBar hidden={false} style={{backgroundColor: Color.LIGHT_GREEN}} />
       <Header
         style={{backgroundColor: 'white'}}
         searchBar
@@ -129,42 +131,44 @@ function HomeScreen({navigation}) {
                 alignContent: 'center',
               }}>
               <Grid>
-                <Col
-                  style={{
-                    marginHorizontal: 10,
-                  }}>
-                  <ImageBackground
-                    imageStyle={{borderRadius: 10}}
+                <TouchableOpacity onPress={() => navigation.navigate('Pembayaran')}>
+                  <Col
                     style={{
-                      flex: 1,
-                      borderRadius: 10,
-                      backgroundColor: '#00CE9F',
-                      height: 150,
-                      width: 180,
-                      resizeMode: 'cover',
-                    }}
-                    source={require('../assets/tak-lekang.jpg')}>
-                    <View
+                      marginHorizontal: 10,
+                    }}>
+                    <ImageBackground
+                      imageStyle={{borderRadius: 10}}
                       style={{
-                        width: 180,
+                        flex: 1,
                         borderRadius: 10,
+                        backgroundColor: '#00CE9F',
                         height: 150,
-                        position: 'absolute',
-                        backgroundColor: 'black',
-                        opacity: 0.5,
-                      }}></View>
-                    <Text
-                      style={{
-                        fontSize: 20,
-                        color: 'white',
-                        bottom: 0,
-                        padding: 10,
-                        position: 'absolute',
-                      }}>
-                      Pasar Gajah
-                    </Text>
-                  </ImageBackground>
-                </Col>
+                        width: 180,
+                        resizeMode: 'cover',
+                      }}
+                      source={require('../assets/tak-lekang.jpg')}>
+                      <View
+                        style={{
+                          width: 180,
+                          borderRadius: 10,
+                          height: 150,
+                          position: 'absolute',
+                          backgroundColor: 'black',
+                          opacity: 0.5,
+                        }}></View>
+                      <Text
+                        style={{
+                          fontSize: 20,
+                          color: 'white',
+                          bottom: 0,
+                          padding: 10,
+                          position: 'absolute',
+                        }}>
+                        Pasar Gajah
+                      </Text>
+                    </ImageBackground>
+                  </Col>
+                </TouchableOpacity>
                 <Col
                   style={{
                     marginHorizontal: 10,
