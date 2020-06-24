@@ -131,7 +131,8 @@ function HomeScreen({navigation}) {
                 alignContent: 'center',
               }}>
               <Grid>
-                <TouchableOpacity onPress={() => navigation.navigate('Pembayaran')}>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('Pembayaran')}>
                   <Col
                     style={{
                       marginHorizontal: 10,
@@ -169,42 +170,45 @@ function HomeScreen({navigation}) {
                     </ImageBackground>
                   </Col>
                 </TouchableOpacity>
-                <Col
-                  style={{
-                    marginHorizontal: 10,
-                  }}>
-                  <ImageBackground
-                    imageStyle={{borderRadius: 10}}
+                <TouchableOpacity
+                  onPress={() => navigation.navigate('Pengiriman')}>
+                  <Col
                     style={{
-                      flex: 1,
-                      borderRadius: 10,
-                      backgroundColor: '#00CE9F',
-                      height: 150,
-                      width: 180,
-                      resizeMode: 'cover',
-                    }}
-                    source={require('../assets/pusat-grosir-surabaya.jpg')}>
-                    <View
+                      marginHorizontal: 10,
+                    }}>
+                    <ImageBackground
+                      imageStyle={{borderRadius: 10}}
                       style={{
-                        width: 180,
-                        height: 150,
+                        flex: 1,
                         borderRadius: 10,
-                        positio: 'absolute',
-                        backgroundColor: 'black',
-                        opacity: 0.5,
-                      }}></View>
-                    <Text
-                      style={{
-                        fontSize: 20,
-                        color: 'white',
-                        bottom: 0,
-                        padding: 10,
-                        position: 'absolute',
-                      }}>
-                      Pusat Grosir Surabaya
-                    </Text>
-                  </ImageBackground>
-                </Col>
+                        backgroundColor: '#00CE9F',
+                        height: 150,
+                        width: 180,
+                        resizeMode: 'cover',
+                      }}
+                      source={require('../assets/pusat-grosir-surabaya.jpg')}>
+                      <View
+                        style={{
+                          width: 180,
+                          height: 150,
+                          borderRadius: 10,
+                          positio: 'absolute',
+                          backgroundColor: 'black',
+                          opacity: 0.5,
+                        }}></View>
+                      <Text
+                        style={{
+                          fontSize: 20,
+                          color: 'white',
+                          bottom: 0,
+                          padding: 10,
+                          position: 'absolute',
+                        }}>
+                        Pusat Grosir Surabaya
+                      </Text>
+                    </ImageBackground>
+                  </Col>
+                </TouchableOpacity>
               </Grid>
             </View>
             <View

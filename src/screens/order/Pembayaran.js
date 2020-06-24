@@ -32,6 +32,211 @@ import {
 } from 'react-native-gesture-handler';
 
 const widthWindow = Dimensions.get('window').width;
+
+function CashOnDelivery() {
+  return (
+    <Card>
+      <CardItem header bordered style={{justifyContent: 'center'}}>
+        <Text
+          style={{
+            fontSize: 18,
+            color: Color.DARK_BROWN,
+            fontStyle: 'italic',
+          }}>
+          Metode Cash On Delivery
+        </Text>
+      </CardItem>
+
+      <CardItem>
+        <Body>
+          <Image
+            source={require('../../assets/cod.png')}
+            style={{
+              height: 150,
+              alignSelf: 'center',
+              width: 220,
+              marginBottom: 30,
+              resizeMode: 'contain',
+            }}
+          />
+          <Text
+            style={{
+              alignSelf: 'center',
+              fontSize: 16,
+              textAlign: 'center',
+              marginBottom: 10,
+            }}>
+            Total Transaksi:
+          </Text>
+          <Text
+            style={{
+              alignSelf: 'center',
+              fontSize: 36,
+              color: Color.DARK_GREEN,
+              fontWeight: 'bold',
+            }}>
+            Rp. 208.000
+          </Text>
+          <Text
+            style={{
+              alignSelf: 'center',
+              fontSize: 16,
+              textAlign: 'center',
+              marginTop: 30,
+            }}>
+            Harap membayar dengan uang pas kepada petugas pengantaran:
+          </Text>
+        </Body>
+      </CardItem>
+      <CardItem>
+        <Body></Body>
+      </CardItem>
+      <CardItem
+        footer
+        bordered
+        style={{justifyContent: 'center', flexDirection: 'column'}}>
+        <Text style={{fontStyle: 'italic'}}>Terimakasih telah berbelanja!</Text>
+      </CardItem>
+    </Card>
+  );
+}
+
+function TransferBank() {
+  return (
+    <Card>
+      <CardItem header bordered style={{justifyContent: 'center'}}>
+        <Text
+          style={{
+            fontSize: 18,
+            color: Color.DARK_BROWN,
+            fontStyle: 'italic',
+          }}>
+          Metode Transfer Bank
+        </Text>
+      </CardItem>
+
+      <CardItem>
+        <Body>
+          <Text style={{alignSelf: 'center'}}>BANK BCA</Text>
+          <Text
+            style={{
+              alignSelf: 'center',
+              fontSize: 20,
+            }}>
+            A.n : PT MARKETBOX
+          </Text>
+
+          <Text style={{alignSelf: 'center', marginTop: 10}}>
+            Nomor Rekening:
+          </Text>
+          <Text
+            style={{
+              alignSelf: 'center',
+              fontSize: 32,
+              fontWeight: 'bold',
+            }}>
+            31023902932
+          </Text>
+          <Image
+            source={require('../../assets/bca.png')}
+            style={{
+              height: 150,
+              alignSelf: 'center',
+              width: 220,
+              resizeMode: 'contain',
+            }}
+          />
+          <Text style={{alignSelf: 'center', fontSize: 16}}>
+            Total Transaksi:
+          </Text>
+          <Text
+            style={{
+              alignSelf: 'center',
+              fontSize: 36,
+              color: Color.DARK_GREEN,
+              fontWeight: 'bold',
+            }}>
+            Rp. 208.099
+          </Text>
+        </Body>
+      </CardItem>
+      <CardItem>
+        <Body></Body>
+      </CardItem>
+      <CardItem
+        footer
+        bordered
+        style={{justifyContent: 'center', flexDirection: 'column'}}>
+        <Text style={{fontStyle: 'italic'}}>Terimakasih telah berbelanja!</Text>
+      </CardItem>
+    </Card>
+  );
+}
+
+function FooterTransaksi(prop) {
+  if (prop.metodePembayaran == 'cod') {
+    return (
+      <Footer
+        style={{
+          backgroundColor: Color.RED,
+          flex: 0,
+        }}>
+        <TouchableNativeFeedback
+          onPress={() => {
+            navigation.navigate('Home');
+          }}>
+          <Button
+            style={{
+              width: widthWindow,
+              backgroundColor: Color.DARK_GREEN,
+              height: '100%',
+              justifyContent: 'center',
+            }}>
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: 'bold',
+                color: 'white',
+              }}>
+              Beranda
+            </Text>
+          </Button>
+        </TouchableNativeFeedback>
+      </Footer>
+    );
+  } else {
+    return (
+      <Footer
+        style={{
+          backgroundColor: Color.RED,
+          flex: 0,
+        }}>
+        <TouchableNativeFeedback
+          onPress={() => {
+            Linking.openURL('whatsapp://send?text=hello&phone=xxxxxxxxxxxxx');
+          }}>
+          <Button
+            style={{
+              width: widthWindow,
+              backgroundColor: Color.RED,
+              height: '100%',
+              justifyContent: 'center',
+            }}>
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: 'bold',
+                color: 'white',
+              }}>
+              Konfirmasi Pembayaran
+            </Text>
+          </Button>
+        </TouchableNativeFeedback>
+      </Footer>
+    );
+  }
+}
+
 function Pembayaran({navigation}) {
   return (
     <Container>
@@ -67,83 +272,11 @@ function Pembayaran({navigation}) {
       </Header>
       <Content>
         <ScrollView>
-          <Card>
-            <CardItem header bordered style={{justifyContent: 'center'}}>
-              <Text
-                style={{
-                  fontSize: 18,
-                  color: Color.DARK_BROWN,
-                  fontStyle: 'italic',
-                }}>
-                Metode Transfer Rekening
-              </Text>
-            </CardItem>
-
-            <CardItem>
-              <Body>
-                <Text style={{alignSelf: 'center'}}>BANK BCA</Text>
-                <Text
-                  style={{
-                    alignSelf: 'center',
-                    fontSize: 20,
-                    fontWeight: 'bold',
-                  }}>
-                  A.n : PT MARKETBOX
-                </Text>
-                <Image
-                  source={require('../../assets/bca.png')}
-                  style={{
-                    height: 150,
-                    alignSelf: 'center',
-                    width: 220,
-                    resizeMode: 'contain',
-                  }}
-                />
-                <Text style={{alignSelf: 'center'}}>Nomor Rekening:</Text>
-                <Text
-                  style={{
-                    alignSelf: 'center',
-                    fontSize: 32,
-                    fontWeight: 'bold',
-                  }}>
-                  31023902932
-                </Text>
-              </Body>
-            </CardItem>
-            <CardItem
-              footer
-              bordered
-              style={{justifyContent: 'center', flexDirection: 'column'}}>
-              <Text style={{fontStyle: 'italic'}}>
-                Terimakasih telah berbelanja!
-              </Text>
-            </CardItem>
-          </Card>
+          <CashOnDelivery />
+          {/* <TransferBank /> */}
         </ScrollView>
       </Content>
-      <Footer style={{backgroundColor: Color.RED, flex: 0}}>
-        <TouchableNativeFeedback
-          onPress={() => {
-            Linking.openURL('whatsapp://send?text=hello&phone=xxxxxxxxxxxxx');
-          }}>
-          <Button
-            style={{
-              width: widthWindow,
-              backgroundColor: Color.RED,
-              height: '100%',
-              justifyContent: 'center',
-            }}>
-            <Text
-              style={{
-                fontSize: 20,
-                fontWeight: 'bold',
-                color: 'white',
-              }}>
-              Konfirmasi Pembayaran
-            </Text>
-          </Button>
-        </TouchableNativeFeedback>
-      </Footer>
+      <FooterTransaksi metodePembayaran="cod" />
     </Container>
   );
 }

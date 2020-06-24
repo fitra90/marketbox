@@ -12,7 +12,7 @@ import Profile from './src/screens/account/Profile';
 import Splash from './src/screens/Splash';
 import Login from './src/screens/account/Login';
 import Pembayaran from './src/screens/order/Pembayaran';
-import Confirmation from './src/screens/order/Confirmation';
+import Pengiriman from './src/screens/order/Pengiriman';
 import {
   TouchableOpacity,
 } from 'react-native-gesture-handler';
@@ -128,6 +128,11 @@ function App() {
           name="Pembayaran"
           options={{headerShown: false}}
           component={Pembayaran}
+        />
+        <Stack.Screen
+          name="Pengiriman"
+          options={{headerShown: false}}
+          component={Pengiriman}
         />
       </Stack.Navigator>
     </NavigationContainer>
