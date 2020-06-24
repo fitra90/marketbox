@@ -84,7 +84,7 @@ function CashOnDelivery() {
               textAlign: 'center',
               marginTop: 30,
             }}>
-            Harap membayar dengan uang pas kepada petugas pengantaran:
+            Harap membayar dengan uang pas kepada petugas pengantaran
           </Text>
         </Body>
       </CardItem>
