@@ -13,6 +13,7 @@ import Splash from './src/screens/Splash';
 import Login from './src/screens/account/Login';
 import Pembayaran from './src/screens/order/Pembayaran';
 import Pengiriman from './src/screens/order/Pengiriman';
+import Pool from './src/screens/Pool';
 import {
   TouchableOpacity,
 } from 'react-native-gesture-handler';
@@ -133,6 +134,11 @@ function App() {
           name="Pengiriman"
           options={{headerShown: false}}
           component={Pengiriman}
+        />
+        <Stack.Screen
+          name="Pool"
+          options={{headerShown: false}}
+          component={Pool}
         />
       </Stack.Navigator>
     </NavigationContainer>

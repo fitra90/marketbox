@@ -183,7 +183,7 @@ function FooterTransaksi(prop) {
         }}>
         <TouchableNativeFeedback
           onPress={() => {
-            navigation.navigate('Home');
+            prop.navigation.navigate('Home');
           }}>
           <Button
             style={{
@@ -276,7 +276,7 @@ function Pembayaran({navigation}) {
           {/* <TransferBank /> */}
         </ScrollView>
       </Content>
-      <FooterTransaksi metodePembayaran="cod" />
+      <FooterTransaksi metodePembayaran="cod" navigation={navigation} />
     </Container>
   );
 }
