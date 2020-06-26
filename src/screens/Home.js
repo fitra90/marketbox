@@ -132,7 +132,7 @@ function HomeScreen({navigation}) {
               }}>
               <Grid>
                 <TouchableOpacity
-                  onPress={() => navigation.navigate('Pembayaran')}>
+                  onPress={() => navigation.navigate('Payment')}>
                   <Col
                     style={{
                       marginHorizontal: 10,
@@ -171,7 +171,7 @@ function HomeScreen({navigation}) {
                   </Col>
                 </TouchableOpacity>
                 <TouchableOpacity
-                  onPress={() => navigation.navigate('Pengiriman')}>
+                  onPress={() => navigation.navigate('Delivery')}>
                   <Col
                     style={{
                       marginHorizontal: 10,

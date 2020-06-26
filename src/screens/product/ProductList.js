@@ -203,7 +203,7 @@ function Pool({navigation}) {
                     borderTopLeftRadius: 10,
                   }}
                   activeTextStyle={{color: '#fff', fontWeight: 'bold'}}>
-                  <Tab1 navigation={navigation} />
+                  <Tab1 />
                 </Tab>
                 <Tab
                   heading="Sembako"
@@ -241,7 +241,7 @@ function Pool({navigation}) {
   );
 }
 
-function Tab1(props) {
+function Tab1() {
   return (
     <View style={{marginTop: 10}}>
       <Grid>
@@ -335,50 +335,47 @@ function Tab1(props) {
 
       <Grid>
         <Col>
-         <TouchableOpacity
-              onPress={() => props.navigation.navigate('ProductDetail')}>
           <Card>
-              <CardItem>
-                <Body>
-                  <Image
-                    source={require('../assets/telur.jpg')}
-                    style={{
-                      height: 150,
-                      alignSelf: 'center',
-                      width: 150,
-                      resizeMode: 'contain',
-                    }}
-                  />
-                </Body>
-              </CardItem>
-              <CardItem>
-                <Text style={{fontSize: 16, alignSelf: 'center'}}>
-                  Indomie 1 Karton
-                </Text>
-                <Body></Body>
-              </CardItem>
-              <CardItem
-                footer
-                bordered
-                style={{
-                  justifyContent: 'center',
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                }}>
-                <Text
+            <CardItem>
+              <Body>
+                <Image
+                  source={require('../assets/telur.jpg')}
                   style={{
+                    height: 150,
                     alignSelf: 'center',
-                    fontSize: 18,
-                    color: Color.DARK_GREEN,
-                  }}>
-                  Rp. 124.000
-                </Text>
-                <Button transparent>
-                  <Text style={{color: Color.DARK_BROWN}}>Detail</Text>
-                </Button>
-              </CardItem>
-            </Card>
-          </TouchableOpacity>
+                    width: 150,
+                    resizeMode: 'contain',
+                  }}
+                />
+              </Body>
+            </CardItem>
+            <CardItem>
+              <Text style={{fontSize: 16, alignSelf: 'center'}}>
+                Indomie 1 Karton
+              </Text>
+              <Body></Body>
+            </CardItem>
+            <CardItem
+              footer
+              bordered
+              style={{
+                justifyContent: 'center',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+              }}>
+              <Text
+                style={{
+                  alignSelf: 'center',
+                  fontSize: 18,
+                  color: Color.DARK_GREEN,
+                }}>
+                Rp. 124.000
+              </Text>
+              <Button transparent>
+                <Text style={{color: Color.DARK_BROWN}}>Detail</Text>
+              </Button>
+            </CardItem>
+          </Card>
         </Col>
         <Col>
           <Card>

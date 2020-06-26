@@ -31,7 +31,7 @@ import {
 } from 'react-native-gesture-handler';
 
 const widthWindow = Dimensions.get('window').width;
-function Pengiriman({navigation}) {
+function Delivery({navigation}) {
   return (
     <Container>
       <StatusBar hidden={false} style={{backgroundColor: Color.LIGHT_GREEN}} />
@@ -54,7 +54,7 @@ function Pengiriman({navigation}) {
           </TouchableNativeFeedback>
         </Left>
         <Body>
-          <Title style={{color: 'black', fontSize: 22}}>Pengiriman</Title>
+          <Title style={{color: 'black', fontSize: 22}}>Delivery</Title>
         </Body>
         <Right>
           <TouchableOpacity>
@@ -72,7 +72,7 @@ function Pengiriman({navigation}) {
                 style={{
                   fontSize: 17,
                 }}>
-                1. Alamat Pengiriman
+                1. Alamat Delivery
               </Text>
             </CardItem>
             <CardItem>
@@ -126,7 +126,7 @@ function Pengiriman({navigation}) {
             <CardItem>
               <Left>
                 <Icon active name="md-checkmark-circle-outline" />
-                <Text style={{marginLeft: 10}}>Biaya Pengiriman</Text>
+                <Text style={{marginLeft: 10}}>Biaya Delivery</Text>
               </Left>
               <Right>
                 <Text>Rp. 10.000</Text>
@@ -179,7 +179,7 @@ function Pengiriman({navigation}) {
       <Footer style={{backgroundColor: Color.RED, flex: 0}}>
         <TouchableNativeFeedback
           onPress={() => {
-            navigation.navigate('Pembayaran');
+            navigation.navigate('Payment');
           }}>
           <Button
             style={{
@@ -203,4 +203,4 @@ function Pengiriman({navigation}) {
   );
 }
 
-export default Pengiriman;
+export default Delivery;

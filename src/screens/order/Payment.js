@@ -174,7 +174,7 @@ function TransferBank() {
 }
 
 function FooterTransaksi(prop) {
-  if (prop.metodePembayaran == 'cod') {
+  if (prop.metodePayment == 'cod') {
     return (
       <Footer
         style={{
@@ -237,7 +237,7 @@ function FooterTransaksi(prop) {
   }
 }
 
-function Pembayaran({navigation}) {
+function Payment({navigation}) {
   return (
     <Container>
       <StatusBar hidden={false} style={{backgroundColor: Color.LIGHT_GREEN}} />
@@ -260,7 +260,7 @@ function Pembayaran({navigation}) {
           </TouchableNativeFeedback>
         </Left>
         <Body>
-          <Title style={{color: 'black', fontSize: 22}}>Pembayaran</Title>
+          <Title style={{color: 'black', fontSize: 22}}>Payment</Title>
         </Body>
         <Right>
           <TouchableOpacity>
@@ -276,9 +276,9 @@ function Pembayaran({navigation}) {
           {/* <TransferBank /> */}
         </ScrollView>
       </Content>
-      <FooterTransaksi metodePembayaran="cod" navigation={navigation} />
+      <FooterTransaksi metodePayment="cod" navigation={navigation} />
     </Container>
   );
 }
 
-export default Pembayaran;
+export default Payment;

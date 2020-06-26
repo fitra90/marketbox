@@ -11,9 +11,10 @@ import History from './src/screens/order/History';
 import Profile from './src/screens/account/Profile';
 import Splash from './src/screens/Splash';
 import Login from './src/screens/account/Login';
-import Pembayaran from './src/screens/order/Pembayaran';
-import Pengiriman from './src/screens/order/Pengiriman';
+import Payment from './src/screens/order/Payment';
+import Delivery from './src/screens/delivery/Delivery';
 import Pool from './src/screens/Pool';
+import ProductDetail from './src/screens/product/ProductDetail';
 import {
   TouchableOpacity,
 } from 'react-native-gesture-handler';
@@ -126,19 +127,24 @@ function App() {
           component={HomeStack}
         />
         <Stack.Screen
-          name="Pembayaran"
+          name="Payment"
           options={{headerShown: false}}
-          component={Pembayaran}
+          component={Payment}
         />
         <Stack.Screen
-          name="Pengiriman"
+          name="Delivery"
           options={{headerShown: false}}
-          component={Pengiriman}
+          component={Delivery}
         />
         <Stack.Screen
           name="Pool"
           options={{headerShown: false}}
           component={Pool}
+        />
+        <Stack.Screen
+          name="ProductDetail"
+          options={{headerShown: false}}
+          component={ProductDetail}
         />
       </Stack.Navigator>
     </NavigationContainer>
