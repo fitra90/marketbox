@@ -105,7 +105,7 @@ function Cart({navigation}) {
                     <Text style={{fontWeight: 'bold'}}>-</Text>
                   </Button>
                   <Input
-                    placeholder="0"
+                    placeholder="1"
                     style={{
                       margin: 3,
                       paddingBottom: 25,
@@ -161,7 +161,7 @@ function Cart({navigation}) {
                     <Text style={{fontWeight: 'bold'}}>-</Text>
                   </Button>
                   <Input
-                    placeholder="0"
+                    placeholder="1"
                     style={{
                       margin: 3,
                       paddingBottom: 25,
@@ -233,7 +233,7 @@ function Cart({navigation}) {
                     <Text style={{fontWeight: 'bold'}}>-</Text>
                   </Button>
                   <Input
-                    placeholder="0"
+                    placeholder="1"
                     style={{
                       margin: 3,
                       paddingBottom: 25,
@@ -275,7 +275,7 @@ function Cart({navigation}) {
             <Text style={{fontSize: 20, fontWeight: 'bold'}}>Rp. 208.000 </Text>
           </View>
           <View style={{}}>
-            <Button success style={{paddingHorizontal: 20}}>
+            <Button success style={{paddingHorizontal: 20}} onPress={()=>navigation.navigate('Delivery')}>
               <Text style={{fontWeight: '200', color: 'white', fontSize: 16}}>
                 Bayar
               </Text>

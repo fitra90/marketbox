@@ -54,7 +54,7 @@ function Delivery({navigation}) {
           </TouchableNativeFeedback>
         </Left>
         <Body>
-          <Title style={{color: 'black', fontSize: 22}}>Delivery</Title>
+          <Title style={{color: 'black', fontSize: 22}}>Pengiriman</Title>
         </Body>
         <Right>
           <TouchableOpacity>
@@ -116,13 +116,6 @@ function Delivery({navigation}) {
                 <Text>1 x Rp. 24.000</Text>
               </Right>
             </CardItem>
-
-            <View
-              style={{
-                borderBottomColor: 'silver',
-                borderBottomWidth: 1,
-              }}
-            />
             <CardItem>
               <Left>
                 <Icon active name="md-checkmark-circle-outline" />
@@ -142,7 +135,7 @@ function Delivery({navigation}) {
               </Right>
             </CardItem>
           </Card>
-          <Card style={{height: 200}}>
+          <Card style={{height: 150, }}>
             <CardItem header bordered>
               <Text
                 style={{
@@ -151,7 +144,7 @@ function Delivery({navigation}) {
                 3. Metode Pembayaran
               </Text>
             </CardItem>
-            <CardItem bordered style={{marginTop:-15}}>
+            <CardItem style={{marginTop: -15}}>
               <Container>
                 <Content>
                   <ListItem>
@@ -174,6 +167,39 @@ function Delivery({navigation}) {
               </Container>
             </CardItem>
           </Card>
+          <View style={{marginVertical:15}}></View>
+          <Card style={{height: 150}}>
+            <CardItem>
+              <Text
+                style={{
+                  fontSize: 17,
+                }}>
+                4. Waktu Pengiriman
+              </Text>
+            </CardItem>
+            <CardItem style={{marginTop: -10}}>
+              <Container>
+                <Content>
+                  <ListItem>
+                    <Left>
+                      <Text>Pagi</Text>
+                    </Left>
+                    <Right>
+                      <Radio selectedColor={Color.DARK_GREEN} selected={true} />
+                    </Right>
+                  </ListItem>
+                  <ListItem>
+                    <Left>
+                      <Text>Sore</Text>
+                    </Left>
+                    <Right>
+                      <Radio selected={false} />
+                    </Right>
+                  </ListItem>
+                </Content>
+              </Container>
+            </CardItem>
+          </Card>
         </ScrollView>
       </Content>
       <Footer style={{backgroundColor: Color.RED, flex: 0}}>
@@ -182,6 +208,7 @@ function Delivery({navigation}) {
             navigation.navigate('Payment');
           }}>
           <Button
+            onPress={() => navigation.navigate('Payment')}
             style={{
               width: widthWindow,
               backgroundColor: Color.RED,

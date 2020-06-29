@@ -13,9 +13,9 @@ import {
   Container,
   Header,
   Content,
-  Item,
-  Input,
-  Button,
+  Body,
+  Right,
+  Left,
   Icon,
 } from 'native-base';
 // import Icon from 'react-native-vector-icons/Ionicons';
@@ -64,16 +64,20 @@ function HomeScreen({navigation}) {
         searchBar
         rounded
         androidStatusBarColor={Color.LIGHT_GREEN}>
-        <Item>
+        <Left>
           <Image
+            style={{width: 180, height: 40, marginTop: 5}}
+            source={require('../assets/icons.png')}
+          />
+          {/* <Image
             style={{width: 40, height: 40, marginTop: 5}}
             source={require('../assets/icon.png')}
-          />
-          <Input placeholder="Pencarian" style={{textAlign: 'right'}} />
-          <TouchableOpacity></TouchableOpacity>
-          <Icon name="search" size={30} />
+          /> */}
+        </Left>
+        <Body></Body>
+        <Right>
           <Icon name="notifications-outline" size={30} />
-        </Item>
+        </Right>
       </Header>
       <ScrollView>
         <View style={{flex: 1}}>
@@ -116,114 +120,20 @@ function HomeScreen({navigation}) {
                 style={{width: 25, height: 25, marginTop: 2, marginRight: 5}}
                 source={require('../assets/pointer.png')}
               />
-              <Text style={{fontSize: 18, fontWeight: 'bold', marginTop: 1}}>
+              <Text style={{fontSize: 18, fontWeight: 'bold'}}>
                 Agen Terdekat
               </Text>
             </View>
-            <View
+
+            <Grid
               style={{
-                flexDirection: 'row',
+                marginHorizontal: 18,
+                flex: 1,
+                marginTop: 15,
                 justifyContent: 'space-between',
-                marginHorizontal: 7,
-                marginTop: 20,
-                border: 1,
-                borderColor: Color.DARK_GREEN,
-                alignContent: 'center',
               }}>
-              <Grid>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('Payment')}>
-                  <Col
-                    style={{
-                      marginHorizontal: 10,
-                    }}>
-                    <ImageBackground
-                      imageStyle={{borderRadius: 10}}
-                      style={{
-                        flex: 1,
-                        borderRadius: 10,
-                        backgroundColor: '#00CE9F',
-                        height: 150,
-                        width: 180,
-                        resizeMode: 'cover',
-                      }}
-                      source={require('../assets/tak-lekang.jpg')}>
-                      <View
-                        style={{
-                          width: 180,
-                          borderRadius: 10,
-                          height: 150,
-                          position: 'absolute',
-                          backgroundColor: 'black',
-                          opacity: 0.5,
-                        }}></View>
-                      <Text
-                        style={{
-                          fontSize: 20,
-                          color: 'white',
-                          bottom: 0,
-                          padding: 10,
-                          position: 'absolute',
-                        }}>
-                        Pasar Gajah
-                      </Text>
-                    </ImageBackground>
-                  </Col>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('Delivery')}>
-                  <Col
-                    style={{
-                      marginHorizontal: 10,
-                    }}>
-                    <ImageBackground
-                      imageStyle={{borderRadius: 10}}
-                      style={{
-                        flex: 1,
-                        borderRadius: 10,
-                        backgroundColor: '#00CE9F',
-                        height: 150,
-                        width: 180,
-                        resizeMode: 'cover',
-                      }}
-                      source={require('../assets/pusat-grosir-surabaya.jpg')}>
-                      <View
-                        style={{
-                          width: 180,
-                          height: 150,
-                          borderRadius: 10,
-                          positio: 'absolute',
-                          backgroundColor: 'black',
-                          opacity: 0.5,
-                        }}></View>
-                      <Text
-                        style={{
-                          fontSize: 20,
-                          color: 'white',
-                          bottom: 0,
-                          padding: 10,
-                          position: 'absolute',
-                        }}>
-                        Pusat Grosir Surabaya
-                      </Text>
-                    </ImageBackground>
-                  </Col>
-                </TouchableOpacity>
-              </Grid>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                marginHorizontal: 7,
-                marginTop: 19,
-                alignContent: 'center',
-              }}>
-              <Grid>
-                <Col
-                  style={{
-                    marginHorizontal: 10,
-                  }}>
+              <TouchableOpacity onPress={() => navigation.navigate('Pool')}>
+                <Col>
                   <ImageBackground
                     imageStyle={{borderRadius: 10}}
                     style={{
@@ -231,31 +141,28 @@ function HomeScreen({navigation}) {
                       borderRadius: 10,
                       backgroundColor: '#00CE9F',
                       height: 150,
-                      width: 180,
+                      width: width / 2.3,
                       resizeMode: 'cover',
                     }}
-                    source={require('../assets/klewer.jpg')}>
+                    source={require('../assets/taniamart.jpeg')}>
                     <View
                       style={{
-                        width: 180,
+                        // width: 180,
                         height: 150,
-                        positio: 'absolute',
                         borderRadius: 10,
-                        backgroundColor: Color.RED,
+                        positio: 'absolute',
+                        backgroundColor: 'black',
                         opacity: 0.5,
                       }}></View>
-                    <Image
+                    <View
                       style={{
-                        width: 120,
-                        height: 100,
-                        marginTop: 2,
-                        marginRight: 5,
+                        // width: 180,
+                        borderRadius: 10,
+                        height: 150,
                         position: 'absolute',
-                        alignSelf: 'center',
-                        flex: 1,
-                      }}
-                      source={require('../assets/close.png')}
-                    />
+                        backgroundColor: 'black',
+                        opacity: 0.5,
+                      }}></View>
                     <Text
                       style={{
                         fontSize: 20,
@@ -264,82 +171,135 @@ function HomeScreen({navigation}) {
                         padding: 10,
                         position: 'absolute',
                       }}>
-                      Pasar Klewer
+                      Ta-nia
                     </Text>
                   </ImageBackground>
                 </Col>
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('Pool')}>
-                  <Col
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => {}}>
+                <Col style={{height: 150}}>
+                  <ImageBackground
+                    imageStyle={{borderRadius: 10}}
                     style={{
-                      marginHorizontal: 10,
-                    }}>
-                    <ImageBackground
-                      imageStyle={{borderRadius: 10}}
+                      flex: 1,
+                      borderRadius: 10,
+                      backgroundColor: '#00CE9F',
+                      width: width / 2.3,
+                      resizeMode: 'cover',
+                    }}
+                    source={require('../assets/pusat-grosir-surabaya.jpg')}>
+                    <View
                       style={{
-                        flex: 1,
-                        borderRadius: 10,
-                        backgroundColor: '#00CE9F',
+                        // width: 180,
                         height: 150,
-                        width: 180,
-                        resizeMode: 'cover',
-                      }}
-                      source={require('../assets/tanahabang.jpg')}>
-                      <View
-                        style={{
-                          width: 180,
-                          height: 150,
-                          borderRadius: 10,
-                          position: 'absolute',
-                          backgroundColor: 'black',
-                          opacity: 0.5,
-                        }}></View>
-                      <Text
-                        style={{
-                          fontSize: 20,
-                          color: 'white',
-                          bottom: 0,
-                          padding: 10,
-                          position: 'absolute',
-                        }}>
-                        Pasar Tanah Abang
-                      </Text>
-                    </ImageBackground>
-                  </Col>
-                </TouchableOpacity>
-              </Grid>
-            </View>
-
-            {/* <View
+                        borderRadius: 10,
+                        positio: 'absolute',
+                        backgroundColor: 'black',
+                        opacity: 0.5,
+                      }}></View>
+                    <Text
+                      style={{
+                        fontSize: 20,
+                        color: 'white',
+                        bottom: 0,
+                        padding: 10,
+                        position: 'absolute',
+                      }}>
+                      Agen Bontang 1
+                    </Text>
+                  </ImageBackground>
+                </Col>
+              </TouchableOpacity>
+            </Grid>
+            <Grid
               style={{
-                flexDirection: 'row',
-                marginLeft: 15,
-                marginTop: 20,
-                marginBottom: 10,
+                marginHorizontal: 18,
+                flex: 1,
+                marginTop: 15,
+                justifyContent: 'space-between',
               }}>
-              <Image
-                style={{width: 40, height: 40, marginTop: 2, marginRight: 5}}
-                source={require('../assets/toys.png')}
-              />
-              <Text
-                style={{fontSize: 18, fontWeight: 'bold', marginVertical: 10}}>
-                Kategori Produk
-              </Text>
-            </View>
+              <Col>
+                <ImageBackground
+                  imageStyle={{borderRadius: 10}}
+                  style={{
+                    flex: 1,
+                    borderRadius: 10,
+                    backgroundColor: '#00CE9F',
+                    height: 150,
+                    width: width / 2.3,
+                    resizeMode: 'cover',
+                  }}
+                  source={require('../assets/klewer.jpg')}>
+                  <View
+                    style={{
+                      // width: 180,
+                      height: 150,
+                      borderRadius: 10,
+                      positio: 'absolute',
+                      backgroundColor: Color.RED,
+                      opacity: 0.5,
+                    }}></View>
+                  <Image
+                    style={{
+                      width: 120,
+                      height: 100,
+                      marginTop: 2,
+                      marginRight: 5,
+                      position: 'absolute',
+                      alignSelf: 'center',
+                      flex: 1,
+                    }}
+                    source={require('../assets/close.png')}
+                  />
 
-            <View
-              style={{
-                width: 'auto',
-                height: 120,
-                borderRadius: 10,
-                elevation: 2,
-                marginHorizontal:15,
-                shadowOffset: {width: 2, height: 1},
-                shadowColor: 'silver',
-                shadowOpacity: 0.3,
-                shadowRadius: 2,
-              }}>
-              </View> */}
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      color: 'white',
+                      bottom: 0,
+                      padding: 10,
+                      position: 'absolute',
+                    }}>
+                    Agen Bontang 2
+                  </Text>
+                </ImageBackground>
+              </Col>
+              <TouchableOpacity onPress={() => {}}>
+                <Col style={{height: 150}}>
+                  <ImageBackground
+                    imageStyle={{borderRadius: 10}}
+                    style={{
+                      flex: 1,
+                      borderRadius: 10,
+                      backgroundColor: '#00CE9F',
+                      width: width / 2.3,
+                      resizeMode: 'cover',
+                    }}
+                    source={require('../assets/tanahabang.jpg')}>
+                    <View
+                      style={{
+                        // width: 180,
+                        height: 150,
+                        borderRadius: 10,
+                        positio: 'absolute',
+                        backgroundColor: 'black',
+                        opacity: 0.5,
+                      }}></View>
+                    <Text
+                      style={{
+                        fontSize: 20,
+                        color: 'white',
+                        bottom: 0,
+                        padding: 10,
+                        position: 'absolute',
+                      }}>
+                      Agen Bontang 3
+                    </Text>
+                  </ImageBackground>
+                </Col>
+              </TouchableOpacity>
+            </Grid>
+
             <View
               style={{
                 flex: 1,

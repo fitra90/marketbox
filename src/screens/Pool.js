@@ -20,6 +20,8 @@ import {
   Content,
   Col,
   Title,
+  Right,
+  Input,
   Left,
   Tabs,
   Tab,
@@ -42,7 +44,7 @@ function Pool({navigation}) {
         style={{backgroundColor: 'white'}}
         androidStatusBarColor={Color.LIGHT_GREEN}>
         <Left>
-          <TouchableNativeFeedback onPress={() => navigation.navigate('Home')}>
+          <TouchableNativeFeedback onPress={() => navigation.goBack()}>
             <View style={{padding: 10}}>
               <Image
                 source={require('../assets/back.png')}
@@ -56,10 +58,16 @@ function Pool({navigation}) {
           </TouchableNativeFeedback>
         </Left>
         <Body>
-          <Title style={{color: 'black', fontSize: 22, marginLeft: -55}}>
-            Pasar Tanah Abang
+          <Title style={{color: 'black', fontSize: 22, marginLeft: -10}}>
+            Ta-Nia
           </Title>
         </Body>
+        <Right>
+          <Input placeholder="Pencarian" style={{textAlign: 'right', marginRight:10}} />
+          <TouchableOpacity>
+            <Icon name="search" size={30} style={{marginBottom: 10}} />
+          </TouchableOpacity>
+        </Right>
       </Header>
       <Content>
         <Card transparent>
@@ -67,8 +75,7 @@ function Pool({navigation}) {
             <Body>
               <ScrollView horizontal={true}>
                 <Grid>
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate('Pembayaran')}>
+                  <TouchableOpacity onPress={() => {}}>
                     <Col
                       style={{
                         marginHorizontal: 5,
@@ -83,7 +90,7 @@ function Pool({navigation}) {
                           width: 140,
                           resizeMode: 'cover',
                         }}
-                        source={require('../assets/alfamart-toko.jpg')}>
+                        source={require('../assets/taniamart.jpeg')}>
                         <View
                           style={{
                             width: 140,
@@ -101,13 +108,12 @@ function Pool({navigation}) {
                             padding: 10,
                             position: 'absolute',
                           }}>
-                          Toko Alfamart
+                          Ta-Nia Mart
                         </Text>
                       </ImageBackground>
                     </Col>
                   </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate('Pengiriman')}>
+                  <TouchableOpacity onPress={() => {}}>
                     <Col
                       style={{
                         marginHorizontal: 5,
@@ -140,13 +146,12 @@ function Pool({navigation}) {
                             padding: 10,
                             position: 'absolute',
                           }}>
-                          Warung Pintar
+                          Pasar Gajah
                         </Text>
                       </ImageBackground>
                     </Col>
                   </TouchableOpacity>
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate('Pengiriman')}>
+                  <TouchableOpacity onPress={() => {}}>
                     <Col
                       style={{
                         marginHorizontal: 5,
@@ -161,7 +166,7 @@ function Pool({navigation}) {
                           width: 140,
                           resizeMode: 'cover',
                         }}
-                        source={require('../assets/ococ.jpg')}>
+                        source={require('../assets/frozen.jpg')}>
                         <View
                           style={{
                             width: 140,
@@ -179,7 +184,45 @@ function Pool({navigation}) {
                             padding: 10,
                             position: 'absolute',
                           }}>
-                          Toko OK OCE
+                          Frozen Food
+                        </Text>
+                      </ImageBackground>
+                    </Col>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => {}}>
+                    <Col
+                      style={{
+                        marginHorizontal: 5,
+                      }}>
+                      <ImageBackground
+                        imageStyle={{borderRadius: 10}}
+                        style={{
+                          flex: 1,
+                          borderRadius: 10,
+                          backgroundColor: '#00CE9F',
+                          height: 110,
+                          width: 140,
+                          resizeMode: 'cover',
+                        }}
+                        source={require('../assets/buah.jpg')}>
+                        <View
+                          style={{
+                            width: 140,
+                            height: 110,
+                            borderRadius: 10,
+                            positio: 'absolute',
+                            backgroundColor: 'black',
+                            opacity: 0.5,
+                          }}></View>
+                        <Text
+                          style={{
+                            fontSize: 16,
+                            color: 'white',
+                            bottom: 0,
+                            padding: 10,
+                            position: 'absolute',
+                          }}>
+                          Watermelon Buah
                         </Text>
                       </ImageBackground>
                     </Col>
@@ -214,7 +257,7 @@ function Pool({navigation}) {
                   <Tab2 />
                 </Tab>
                 <Tab
-                  heading="Sayuran"
+                  heading="Frozen Food"
                   tabStyle={{backgroundColor: Color.PALE}}
                   textStyle={{color: 'black'}}
                   activeTabStyle={{backgroundColor: Color.RED}}
@@ -222,14 +265,19 @@ function Pool({navigation}) {
                   <Tab3 />
                 </Tab>
                 <Tab
-                  heading="Daging"
+                  heading="Buah"
                   tabStyle={{backgroundColor: Color.PALE}}
                   textStyle={{color: 'black'}}
                   activeTabStyle={{backgroundColor: Color.RED}}
                   activeTextStyle={{color: '#fff', fontWeight: 'bold'}}>
                   <Tab4 />
                 </Tab>
-                <Tab heading="Tab5">
+                <Tab
+                  heading="Minuman"
+                  tabStyle={{backgroundColor: Color.PALE}}
+                  textStyle={{color: 'black'}}
+                  activeTabStyle={{backgroundColor: Color.RED}}
+                  activeTextStyle={{color: '#fff', fontWeight: 'bold'}}>
                   <Tab5 />
                 </Tab>
               </Tabs>
@@ -245,103 +293,14 @@ function Tab1(props) {
   return (
     <View style={{marginTop: 10}}>
       <Grid>
-        <Col>
-          <Card>
-            <CardItem>
-              <Body>
-                <Image
-                  source={require('../assets/indomie.jpg')}
-                  style={{
-                    height: 150,
-                    alignSelf: 'center',
-                    width: 220,
-                    resizeMode: 'contain',
-                  }}
-                />
-              </Body>
-            </CardItem>
-            <CardItem>
-              <Text style={{fontSize: 16, alignSelf: 'center'}}>
-                Indomie 1 Karton
-              </Text>
-              <Body></Body>
-            </CardItem>
-            <CardItem
-              footer
-              bordered
-              style={{
-                justifyContent: 'center',
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-              }}>
-              <Text
-                style={{
-                  alignSelf: 'center',
-                  fontSize: 18,
-                  color: Color.DARK_GREEN,
-                }}>
-                Rp. 124.000
-              </Text>
-              <Button transparent>
-                <Text style={{color: Color.DARK_BROWN}}>Detail</Text>
-              </Button>
-            </CardItem>
-          </Card>
-        </Col>
-        <Col>
-          <Card>
-            <CardItem>
-              <Body>
-                <Image
-                  source={require('../assets/minyak.jpg')}
-                  style={{
-                    height: 150,
-                    alignSelf: 'center',
-                    width: 220,
-                    resizeMode: 'contain',
-                  }}
-                />
-              </Body>
-            </CardItem>
-            <CardItem>
-              <Text style={{fontSize: 16, alignSelf: 'center'}}>
-                Minyak Goreng 2 L
-              </Text>
-              <Body></Body>
-            </CardItem>
-            <CardItem
-              footer
-              bordered
-              style={{
-                justifyContent: 'center',
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-              }}>
-              <Text
-                style={{
-                  alignSelf: 'center',
-                  fontSize: 18,
-                  color: Color.DARK_GREEN,
-                }}>
-                Rp. 24.000
-              </Text>
-              <Button transparent>
-                <Text style={{color: Color.DARK_BROWN}}>Detail</Text>
-              </Button>
-            </CardItem>
-          </Card>
-        </Col>
-      </Grid>
-
-      <Grid>
-        <Col>
-         <TouchableOpacity
-              onPress={() => props.navigation.navigate('ProductDetail')}>
-          <Card>
+        <Col style={{marginHorizontal: 5}}>
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate('ProductDetail')}>
+            <Card>
               <CardItem>
                 <Body>
                   <Image
-                    source={require('../assets/telur.jpg')}
+                    source={require('../assets/indomie.jpg')}
                     style={{
                       height: 150,
                       alignSelf: 'center',
@@ -380,48 +339,427 @@ function Tab1(props) {
             </Card>
           </TouchableOpacity>
         </Col>
-        <Col>
-          <Card>
-            <CardItem>
-              <Body>
-                <Image
-                  source={require('../assets/beras.png')}
-                  style={{
-                    height: 150,
-                    alignSelf: 'center',
-                    width: 220,
-                    resizeMode: 'contain',
-                  }}
-                />
-              </Body>
-            </CardItem>
-            <CardItem>
-              <Text style={{fontSize: 16, alignSelf: 'center'}}>
-                Minyak Goreng 2 L
-              </Text>
-              <Body></Body>
-            </CardItem>
-            <CardItem
-              footer
-              bordered
-              style={{
-                justifyContent: 'center',
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-              }}>
-              <Text
+        <Col style={{marginHorizontal: 5}}>
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate('ProductDetail')}>
+            <Card>
+              <CardItem>
+                <Body>
+                  <Image
+                    source={require('../assets/bimoli.jpg')}
+                    style={{
+                      height: 150,
+                      alignSelf: 'center',
+                      width: 150,
+                      resizeMode: 'contain',
+                    }}
+                  />
+                </Body>
+              </CardItem>
+              <CardItem>
+                <Text style={{fontSize: 14, alignSelf: 'center'}}>
+                  Minyak Goreng Bimoli 1 Liter
+                </Text>
+                <Body></Body>
+              </CardItem>
+              <CardItem
+                footer
+                bordered
                 style={{
-                  alignSelf: 'center',
-                  fontSize: 18,
-                  color: Color.DARK_GREEN,
+                  justifyContent: 'center',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
                 }}>
-                Rp. 24.000
-              </Text>
-              <Button transparent>
-                <Text style={{color: Color.DARK_BROWN}}>Detail</Text>
-              </Button>
-            </CardItem>
-          </Card>
+                <Text
+                  style={{
+                    alignSelf: 'center',
+                    fontSize: 18,
+                    color: Color.DARK_GREEN,
+                  }}>
+                  Rp. 24.000
+                </Text>
+                <Button transparent>
+                  <Text style={{color: Color.DARK_BROWN}}>Detail</Text>
+                </Button>
+              </CardItem>
+            </Card>
+          </TouchableOpacity>
+        </Col>
+      </Grid>
+      <Grid>
+        <Col style={{marginHorizontal: 5}}>
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate('ProductDetail')}>
+            <Card>
+              <CardItem>
+                <Body>
+                  <Image
+                    source={require('../assets/aqua1.jpg')}
+                    style={{
+                      height: 150,
+                      alignSelf: 'center',
+                      width: 150,
+                      resizeMode: 'contain',
+                    }}
+                  />
+                </Body>
+              </CardItem>
+              <CardItem>
+                <Text style={{fontSize: 16, alignSelf: 'center'}}>
+                  Aqua 1 Liter
+                </Text>
+                <Body></Body>
+              </CardItem>
+              <CardItem
+                footer
+                bordered
+                style={{
+                  justifyContent: 'center',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                }}>
+                <Text
+                  style={{
+                    alignSelf: 'center',
+                    fontSize: 18,
+                    color: Color.DARK_GREEN,
+                  }}>
+                  Rp. 6.000
+                </Text>
+                <Button transparent>
+                  <Text style={{color: Color.DARK_BROWN}}>Detail</Text>
+                </Button>
+              </CardItem>
+            </Card>
+          </TouchableOpacity>
+        </Col>
+        <Col style={{marginHorizontal: 5}}>
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate('ProductDetail')}>
+            <Card>
+              <CardItem>
+                <Body>
+                  <Image
+                    source={require('../assets/shampo.jpg')}
+                    style={{
+                      height: 150,
+                      alignSelf: 'center',
+                      width: 150,
+                      resizeMode: 'contain',
+                    }}
+                  />
+                </Body>
+              </CardItem>
+              <CardItem>
+                <Text style={{fontSize: 14, alignSelf: 'center'}}>
+                  Shampo Clear 70 ml
+                </Text>
+                <Body></Body>
+              </CardItem>
+              <CardItem
+                footer
+                bordered
+                style={{
+                  justifyContent: 'center',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                }}>
+                <Text
+                  style={{
+                    alignSelf: 'center',
+                    fontSize: 18,
+                    color: Color.DARK_GREEN,
+                  }}>
+                  Rp. 11.000
+                </Text>
+                <Button transparent>
+                  <Text style={{color: Color.DARK_BROWN}}>Detail</Text>
+                </Button>
+              </CardItem>
+            </Card>
+          </TouchableOpacity>
+        </Col>
+      </Grid>
+      <Grid>
+        <Col style={{marginHorizontal: 5}}>
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate('ProductDetail')}>
+            <Card>
+              <CardItem>
+                <Body>
+                  <Image
+                    source={require('../assets/sania.jpg')}
+                    style={{
+                      height: 150,
+                      alignSelf: 'center',
+                      width: 150,
+                      resizeMode: 'contain',
+                    }}
+                  />
+                </Body>
+              </CardItem>
+              <CardItem>
+                <Text style={{fontSize: 16, alignSelf: 'center'}}>
+                  Minyak Goreng Sania 1 Liter
+                </Text>
+                <Body></Body>
+              </CardItem>
+              <CardItem
+                footer
+                bordered
+                style={{
+                  justifyContent: 'center',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                }}>
+                <Text
+                  style={{
+                    alignSelf: 'center',
+                    fontSize: 18,
+                    color: Color.DARK_GREEN,
+                  }}>
+                  Rp. 26.000
+                </Text>
+                <Button transparent>
+                  <Text style={{color: Color.DARK_BROWN}}>Detail</Text>
+                </Button>
+              </CardItem>
+            </Card>
+          </TouchableOpacity>
+        </Col>
+        <Col style={{marginHorizontal: 5}}>
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate('ProductDetail')}>
+            <Card>
+              <CardItem>
+                <Body>
+                  <Image
+                    source={require('../assets/aqua600.jpeg')}
+                    style={{
+                      height: 150,
+                      alignSelf: 'center',
+                      width: 150,
+                      resizeMode: 'contain',
+                    }}
+                  />
+                </Body>
+              </CardItem>
+              <CardItem>
+                <Text style={{fontSize: 14, alignSelf: 'center'}}>
+                  AQUA 600 ml
+                </Text>
+                <Body></Body>
+              </CardItem>
+              <CardItem
+                footer
+                bordered
+                style={{
+                  justifyContent: 'center',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                }}>
+                <Text
+                  style={{
+                    alignSelf: 'center',
+                    fontSize: 18,
+                    color: Color.DARK_GREEN,
+                  }}>
+                  Rp. 3.500
+                </Text>
+                <Button transparent>
+                  <Text style={{color: Color.DARK_BROWN}}>Detail</Text>
+                </Button>
+              </CardItem>
+            </Card>
+          </TouchableOpacity>
+        </Col>
+      </Grid>
+      <Grid>
+        <Col style={{marginHorizontal: 5}}>
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate('ProductDetail')}>
+            <Card>
+              <CardItem>
+                <Body>
+                  <Image
+                    source={require('../assets/miesedap.jpg')}
+                    style={{
+                      height: 150,
+                      alignSelf: 'center',
+                      width: 150,
+                      resizeMode: 'contain',
+                    }}
+                  />
+                </Body>
+              </CardItem>
+              <CardItem>
+                <Text style={{fontSize: 16, alignSelf: 'center'}}>
+                  Mie Sedap Rasa Kari Special
+                </Text>
+                <Body></Body>
+              </CardItem>
+              <CardItem
+                footer
+                bordered
+                style={{
+                  justifyContent: 'center',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                }}>
+                <Text
+                  style={{
+                    alignSelf: 'center',
+                    fontSize: 18,
+                    color: Color.DARK_GREEN,
+                  }}>
+                  Rp. 2.500
+                </Text>
+                <Button transparent>
+                  <Text style={{color: Color.DARK_BROWN}}>Detail</Text>
+                </Button>
+              </CardItem>
+            </Card>
+          </TouchableOpacity>
+        </Col>
+        <Col style={{marginHorizontal: 5}}>
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate('ProductDetail')}>
+            <Card>
+              <CardItem>
+                <Body>
+                  <Image
+                    source={require('../assets/dove.jpg')}
+                    style={{
+                      height: 150,
+                      alignSelf: 'center',
+                      width: 150,
+                      resizeMode: 'contain',
+                    }}
+                  />
+                </Body>
+              </CardItem>
+              <CardItem>
+                <Text style={{fontSize: 14, alignSelf: 'center'}}>
+                  Dove Nourishing Oil Care Shampoo 160 ml
+                </Text>
+                <Body></Body>
+              </CardItem>
+              <CardItem
+                footer
+                bordered
+                style={{
+                  justifyContent: 'center',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                }}>
+                <Text
+                  style={{
+                    alignSelf: 'center',
+                    fontSize: 18,
+                    color: Color.DARK_GREEN,
+                  }}>
+                  Rp. 3.500
+                </Text>
+                <Button transparent>
+                  <Text style={{color: Color.DARK_BROWN}}>Detail</Text>
+                </Button>
+              </CardItem>
+            </Card>
+          </TouchableOpacity>
+        </Col>
+      </Grid>
+      <Grid>
+        <Col style={{marginHorizontal: 5}}>
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate('ProductDetail')}>
+            <Card>
+              <CardItem>
+                <Body>
+                  <Image
+                    source={require('../assets/lemineral.jpg')}
+                    style={{
+                      height: 150,
+                      alignSelf: 'center',
+                      width: 150,
+                      resizeMode: 'contain',
+                    }}
+                  />
+                </Body>
+              </CardItem>
+              <CardItem>
+                <Text style={{fontSize: 16, alignSelf: 'center'}}>
+                  Le Minerale 1.5 Liter
+                </Text>
+                <Body></Body>
+              </CardItem>
+              <CardItem
+                footer
+                bordered
+                style={{
+                  justifyContent: 'center',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                }}>
+                <Text
+                  style={{
+                    alignSelf: 'center',
+                    fontSize: 18,
+                    color: Color.DARK_GREEN,
+                  }}>
+                  Rp. 5.500
+                </Text>
+                <Button transparent>
+                  <Text style={{color: Color.DARK_BROWN}}>Detail</Text>
+                </Button>
+              </CardItem>
+            </Card>
+          </TouchableOpacity>
+        </Col>
+        <Col style={{marginHorizontal: 5}}>
+          <TouchableOpacity
+            onPress={() => props.navigation.navigate('ProductDetail')}>
+            <Card>
+              <CardItem>
+                <Body>
+                  <Image
+                    source={require('../assets/beras.png')}
+                    style={{
+                      height: 150,
+                      alignSelf: 'center',
+                      width: 150,
+                      resizeMode: 'contain',
+                    }}
+                  />
+                </Body>
+              </CardItem>
+              <CardItem>
+                <Text style={{fontSize: 14, alignSelf: 'center'}}>
+                  Beras Pulen 5 Kg
+                </Text>
+                <Body></Body>
+              </CardItem>
+              <CardItem
+                footer
+                bordered
+                style={{
+                  justifyContent: 'center',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                }}>
+                <Text
+                  style={{
+                    alignSelf: 'center',
+                    fontSize: 18,
+                    color: Color.DARK_GREEN,
+                  }}>
+                  Rp. 60.000
+                </Text>
+                <Button transparent>
+                  <Text style={{color: Color.DARK_BROWN}}>Detail</Text>
+                </Button>
+              </CardItem>
+            </Card>
+          </TouchableOpacity>
         </Col>
       </Grid>
     </View>
@@ -431,7 +769,7 @@ function Tab1(props) {
 function Tab2() {
   return (
     <View style={{marginTop: 10}}>
-      <Text>Tab2</Text>
+      <Text>Barang Kosong</Text>
     </View>
   );
 }
@@ -439,7 +777,7 @@ function Tab2() {
 function Tab3() {
   return (
     <View style={{marginTop: 10}}>
-      <Text>Tab3</Text>
+      <Text>Barang Kosong</Text>
     </View>
   );
 }
@@ -447,7 +785,7 @@ function Tab3() {
 function Tab4() {
   return (
     <View style={{marginTop: 10}}>
-      <Text>Tab4</Text>
+      <Text>Barang Kosong</Text>
     </View>
   );
 }
@@ -455,7 +793,7 @@ function Tab4() {
 function Tab5() {
   return (
     <View style={{marginTop: 10}}>
-      <Text>Tab5</Text>
+      <Text>Barang Kosong</Text>
     </View>
   );
 }

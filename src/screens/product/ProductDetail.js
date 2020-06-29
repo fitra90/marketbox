@@ -100,7 +100,7 @@ function ProductData() {
   );
 }
 
-function ActionButton(prop) {
+function ActionButton(props) {
   return (
     <Footer>
       <View
@@ -110,7 +110,7 @@ function ActionButton(prop) {
           alignContent: 'space-between',
         }}>
         <Button
-          onPress={() => {}}
+          onPress={() => {props.navigation.navigate('Cart')}}
           style={{
             width: (widthWindow * 1) / 4,
             backgroundColor: Color.PALE,
@@ -124,7 +124,7 @@ function ActionButton(prop) {
           />
         </Button>
         <Button
-          onPress={() => {}}
+          onPress={() => {props.navigation.navigate('Delivery')}}
           style={{
             width: (widthWindow * 3) / 4,
             backgroundColor: Color.RED,
@@ -154,110 +154,120 @@ function RelatedProduct(props) {
           <ScrollView horizontal={true} style={{marginTop: 10}}>
             <Grid>
               <Col>
-                <Card>
-                  <CardItem>
-                    <Body>
-                      <Image
-                        source={require('../../assets/indomie.jpg')}
+                <TouchableOpacity
+                  onPress={() =>
+                    props.navigation.navigate('ProductDetail')
+                  }>
+                  <Card>
+                    <CardItem>
+                      <Body>
+                        <Image
+                          source={require('../../assets/indomie.jpg')}
+                          style={{
+                            height: 130,
+                            alignSelf: 'center',
+                            width: 155,
+                            marginBottom: 10,
+                            resizeMode: 'contain',
+                          }}
+                        />
+                      </Body>
+                    </CardItem>
+                    <CardItem bordered style={{marginTop: -10}}>
+                      <Body
                         style={{
-                          height: 130,
-                          alignSelf: 'center',
-                          width: 155,
-                          marginBottom: 10,
-                          resizeMode: 'contain',
-                        }}
-                      />
-                    </Body>
-                  </CardItem>
-                  <CardItem bordered style={{marginTop: -10}}>
-                    <Body
-                      style={{
-                        flex: 1,
-                        flexDirection: 'row',
-                        alignContent: 'space-between',
-                      }}>
-                      <View style={{}}>
-                        <Text
-                          style={{
-                            fontSize: 16,
-                          }}>
-                          Indomeie 1 Karton
-                        </Text>
-                        <Text
-                          style={{
-                            fontSize: 18,
-                            color: Color.DARK_GREEN,
-                          }}>
-                          Rp. 110.000
-                        </Text>
-                      </View>
-                      <View style={{flex: 1}}>
-                        {/* <Text style={{alignSelf:'flex-end'}}>Promo</Text> */}
-                        <Text
-                          style={{
-                            alignSelf: 'flex-end',
-                            marginTop: 20,
-                            color: 'grey',
-                          }}>
-                          LIHAT
-                        </Text>
-                      </View>
-                    </Body>
-                  </CardItem>
-                </Card>
+                          flex: 1,
+                          flexDirection: 'row',
+                          alignContent: 'space-between',
+                        }}>
+                        <View style={{}}>
+                          <Text
+                            style={{
+                              fontSize: 16,
+                            }}>
+                            Indomeie 1 Karton
+                          </Text>
+                          <Text
+                            style={{
+                              fontSize: 18,
+                              color: Color.DARK_GREEN,
+                            }}>
+                            Rp. 110.000
+                          </Text>
+                        </View>
+                        <View style={{flex: 1}}>
+                          {/* <Text style={{alignSelf:'flex-end'}}>Promo</Text> */}
+                          <Text
+                            style={{
+                              alignSelf: 'flex-end',
+                              marginTop: 20,
+                              color: 'grey',
+                            }}>
+                            LIHAT
+                          </Text>
+                        </View>
+                      </Body>
+                    </CardItem>
+                  </Card>
+                </TouchableOpacity>
               </Col>
               <Col>
-                <Card>
-                  <CardItem>
-                    <Body>
-                      <Image
-                        source={require('../../assets/minyak.jpg')}
+                <TouchableOpacity
+                  onPress={() =>
+                    props.navigation.navigate('ProductDetail')
+                  }>
+                  <Card>
+                    <CardItem>
+                      <Body>
+                        <Image
+                          source={require('../../assets/minyak.jpg')}
+                          style={{
+                            height: 130,
+                            alignSelf: 'center',
+                            width: 155,
+                            marginBottom: 10,
+                            resizeMode: 'contain',
+                          }}
+                        />
+                      </Body>
+                    </CardItem>
+                    <CardItem bordered style={{marginTop: -10}}>
+                      <Body
                         style={{
-                          height: 130,
-                          alignSelf: 'center',
-                          width: 155,
-                          marginBottom: 10,
-                          resizeMode: 'contain',
-                        }}
-                      />
-                    </Body>
-                  </CardItem>
-                  <CardItem bordered style={{marginTop: -10}}>
-                    <Body
-                      style={{
-                        flex: 1,
-                        flexDirection: 'row',
-                        alignContent: 'space-between',
-                      }}>
-                      <View style={{}}>
-                        <Text
-                          style={{
-                            fontSize: 16,
-                          }}>
-                          Minyak Goreng 1 L
-                        </Text>
-                        <Text
-                          style={{
-                            fontSize: 18,
-                            color: Color.DARK_GREEN,
-                          }}>
-                          Rp. 24.000
-                        </Text>
-                      </View>
-                      <View style={{flex: 1}}>
-                        {/* <Text style={{alignSelf:'flex-end'}}>Promo</Text> */}
-                        <Text
-                          style={{
-                            alignSelf: 'flex-end',
-                            marginTop: 20,
-                            color: 'grey',
-                          }}>
-                          LIHAT
-                        </Text>
-                      </View>
-                    </Body>
-                  </CardItem>
-                </Card>
+                          flex: 1,
+                          flexDirection: 'row',
+                          alignContent: 'space-between',
+                        }}>
+                        <View style={{}}>
+                          <Text
+                            style={{
+                              fontSize: 16,
+                            }}>
+                            Minyak Goreng 1 L
+                          </Text>
+                          <Text
+                            style={{
+                              fontSize: 18,
+                              color: Color.DARK_GREEN,
+                            }}>
+                            Rp. 24.000
+                          </Text>
+                        </View>
+                        <View style={{flex: 1}}>
+                          {/* <Text style={{alignSelf:'flex-end'}}>Promo</Text> */}
+                          <Text
+                            style={{
+                              alignSelf: 'flex-end',
+                              marginTop: 20,
+                              color: 'grey',
+                            }}>
+                            LIHAT
+                          </Text>
+                        </View>
+                      </Body>
+                    </CardItem>
+                  </Card>
+                </TouchableOpacity>
               </Col>
             </Grid>
           </ScrollView>
@@ -276,7 +286,7 @@ function ProductDetail({navigation}) {
         style={{backgroundColor: 'white'}}
         androidStatusBarColor={Color.LIGHT_GREEN}>
         <Left>
-          <TouchableNativeFeedback onPress={() => navigation.navigate('Home')}>
+          <TouchableNativeFeedback onPress={() => navigation.goBack()}>
             <View style={{padding: 10}}>
               <Image
                 source={require('../../assets/back.png')}
@@ -293,17 +303,20 @@ function ProductDetail({navigation}) {
           <Title style={{color: 'black', fontSize: 22}}>Detail Produk</Title>
         </Body>
         <Right>
-          <Icon
-            type="MaterialIcons"
-            name="shopping-cart"
-            style={{marginRight: 5}}
-          />
+          <TouchableOpacity
+            onPress={() =>navigation.navigate('Cart')}>
+            <Icon
+              type="MaterialIcons"
+              name="shopping-cart"
+              style={{marginRight: 5}}
+            />
+          </TouchableOpacity>
         </Right>
       </Header>
       <Content>
         <ScrollView>
           <ProductData />
-          <RelatedProduct />
+          <RelatedProduct navigation={navigation} />
         </ScrollView>
       </Content>
       <ActionButton metodeProductDetail="cod" navigation={navigation} />

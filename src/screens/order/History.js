@@ -117,6 +117,7 @@ function History({navigation}) {
                     style={{flexDirection: 'row', marginTop: 15, width: 100}}>
                     <Button
                       large
+                      onPress={()=>navigation.navigate('ProductDetail')}
                       style={{
                         padding: 10,
                         marginLeft: 15,
@@ -173,6 +174,7 @@ function History({navigation}) {
                     style={{flexDirection: 'row', marginTop: 15, width: 100}}>
                     <Button
                       large
+                      onPress={() => navigation.navigate('ProductDetail')}
                       style={{
                         padding: 10,
                         marginLeft: 15,
@@ -254,6 +256,7 @@ function History({navigation}) {
                     style={{flexDirection: 'row', marginTop: 15, width: 100}}>
                     <Button
                       large
+                      onPress={()=>navigation.navigate('ProductDetail')}
                       style={{
                         padding: 10,
                         marginLeft: 15,

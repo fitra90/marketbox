@@ -9,6 +9,7 @@ import {
   Dimensions,
 } from 'react-native';
 import Color from '../../constants/Color';
+import {StackActions} from '@react-navigation/native';
 import {
   Container,
   Header,
@@ -173,35 +174,31 @@ function TransferBank() {
   );
 }
 
-function FooterTransaksi(prop) {
-  if (prop.metodePayment == 'cod') {
+function FooterTransaksi(props) {
+  if (props.metodePayment == 'cod') {
     return (
       <Footer
         style={{
           backgroundColor: Color.RED,
           flex: 0,
         }}>
-        <TouchableNativeFeedback
-          onPress={() => {
-            prop.navigation.navigate('Home');
+        <Button
+          onPress={() => props.navigation.navigate('Home')}
+          style={{
+            width: widthWindow,
+            backgroundColor: Color.DARK_GREEN,
+            height: '100%',
+            justifyContent: 'center',
           }}>
-          <Button
+          <Text
             style={{
-              width: widthWindow,
-              backgroundColor: Color.DARK_GREEN,
-              height: '100%',
-              justifyContent: 'center',
+              fontSize: 20,
+              fontWeight: 'bold',
+              color: 'white',
             }}>
-            <Text
-              style={{
-                fontSize: 20,
-                fontWeight: 'bold',
-                color: 'white',
-              }}>
-              Beranda
-            </Text>
-          </Button>
-        </TouchableNativeFeedback>
+            Beranda
+          </Text>
+        </Button>
       </Footer>
     );
   } else {
@@ -246,7 +243,7 @@ function Payment({navigation}) {
         style={{backgroundColor: 'white'}}
         androidStatusBarColor={Color.LIGHT_GREEN}>
         <Left>
-          <TouchableNativeFeedback onPress={() => navigation.navigate('Home')}>
+          <TouchableNativeFeedback onPress={() => navigation.goBack()}>
             <View style={{padding: 10}}>
               <Image
                 source={require('../../assets/back.png')}
@@ -272,8 +269,8 @@ function Payment({navigation}) {
       </Header>
       <Content>
         <ScrollView>
-          <CashOnDelivery />
-          {/* <TransferBank /> */}
+          {/* <CashOnDelivery /> */}
+          <TransferBank />
         </ScrollView>
       </Content>
       <FooterTransaksi metodePayment="cod" navigation={navigation} />
