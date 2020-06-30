@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "627442846611-ekt5iub28meav9t1t63kq80f166nubmd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.marketbox",
+            "certificate_hash": "2ae32697fdbaaaad792dd0346aa8b71f6b6084f3"
+          }
+        },
+        {
           "client_id": "627442846611-1u7cmio3tbq4n0bgk6dqajgq9dhb3d96.apps.googleusercontent.com",
           "client_type": 3
         }
