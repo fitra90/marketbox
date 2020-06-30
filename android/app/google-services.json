@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "627442846611",
+    "firebase_url": "https://marketbox-3f0b4.firebaseio.com",
+    "project_id": "marketbox-3f0b4",
+    "storage_bucket": "marketbox-3f0b4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627442846611:android:a5a176aad956484e3b7666",
+        "android_client_info": {
+          "package_name": "com.marketbox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627442846611-1u7cmio3tbq4n0bgk6dqajgq9dhb3d96.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9h8uUxCfxzmzO7HwOfuRcHAJkPoZLdco"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "627442846611-1u7cmio3tbq4n0bgk6dqajgq9dhb3d96.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

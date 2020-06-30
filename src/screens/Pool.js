@@ -304,7 +304,7 @@ function Tab1(props) {
                     style={{
                       height: 150,
                       alignSelf: 'center',
-                      width: 150,
+                      width: 130,
                       resizeMode: 'contain',
                     }}
                   />
@@ -350,7 +350,7 @@ function Tab1(props) {
                     style={{
                       height: 150,
                       alignSelf: 'center',
-                      width: 150,
+                      width: 130,
                       resizeMode: 'contain',
                     }}
                   />
@@ -398,7 +398,7 @@ function Tab1(props) {
                     style={{
                       height: 150,
                       alignSelf: 'center',
-                      width: 150,
+                      width: 130,
                       resizeMode: 'contain',
                     }}
                   />
@@ -444,7 +444,7 @@ function Tab1(props) {
                     style={{
                       height: 150,
                       alignSelf: 'center',
-                      width: 150,
+                      width: 130,
                       resizeMode: 'contain',
                     }}
                   />
@@ -492,7 +492,7 @@ function Tab1(props) {
                     style={{
                       height: 150,
                       alignSelf: 'center',
-                      width: 150,
+                      width: 130,
                       resizeMode: 'contain',
                     }}
                   />
@@ -538,7 +538,7 @@ function Tab1(props) {
                     style={{
                       height: 150,
                       alignSelf: 'center',
-                      width: 150,
+                      width: 130,
                       resizeMode: 'contain',
                     }}
                   />
@@ -586,7 +586,7 @@ function Tab1(props) {
                     style={{
                       height: 150,
                       alignSelf: 'center',
-                      width: 150,
+                      width: 130,
                       resizeMode: 'contain',
                     }}
                   />
@@ -632,7 +632,7 @@ function Tab1(props) {
                     style={{
                       height: 150,
                       alignSelf: 'center',
-                      width: 150,
+                      width: 130,
                       resizeMode: 'contain',
                     }}
                   />
@@ -680,7 +680,7 @@ function Tab1(props) {
                     style={{
                       height: 150,
                       alignSelf: 'center',
-                      width: 150,
+                      width: 130,
                       resizeMode: 'contain',
                     }}
                   />
@@ -726,7 +726,7 @@ function Tab1(props) {
                     style={{
                       height: 150,
                       alignSelf: 'center',
-                      width: 150,
+                      width: 130,
                       resizeMode: 'contain',
                     }}
                   />

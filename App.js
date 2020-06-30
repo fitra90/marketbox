@@ -4,6 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 import styles from './src/styles/Global';
+import Color from './src/constants/Color';
 import {Icon} from 'native-base';
 import Home from './src/screens/Home';
 import Cart from './src/screens/Cart';
@@ -49,16 +50,16 @@ function HomeStack() {
 
         if (route.name === 'Home') {
           iconName = 'home';
-          color = focused ? {color: 'black'} : {color: 'silver'};
+          color = focused ? {color: Color.RED} : {color: 'silver'};
         } else if (route.name === 'Cart') {
           iconName = 'shopping-cart';
-          color = focused ? {color: 'black'} : {color: 'silver'};
+          color = focused ? {color: Color.RED} : {color: 'silver'};
         } else if (route.name === 'Riwayat') {
           iconName = 'history';
-          color = focused ? {color: 'black'} : {color: 'silver'};
+          color = focused ? {color: Color.RED} : {color: 'silver'};
         } else if (route.name === 'Profile') {
           iconName = 'account-circle';
-          color = focused ? {color: 'black'} : {color: 'silver'};
+          color = focused ? {color: Color.RED} : {color: 'silver'};
         }
 
         // You can return any component that you like here!
@@ -70,7 +71,7 @@ function HomeStack() {
       },
     })}
     tabBarOptions={{
-      activeTintColor: 'black',
+      activeTintColor: Color.RED,
       inactiveTintColor: 'silver',
     }}>
     <Tab.Screen
@@ -113,41 +114,41 @@ function HomeStack() {
 }
 function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Splash"
-          options={{headerShown: false}}
-          component={Splash}
-        />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen
-          name="Home"
-          options={{headerShown: false}}
-          component={HomeStack}
-        />
-        <Stack.Screen
-          name="Payment"
-          options={{headerShown: false}}
-          component={Payment}
-        />
-        <Stack.Screen
-          name="Delivery"
-          options={{headerShown: false}}
-          component={Delivery}
-        />
-        <Stack.Screen
-          name="Pool"
-          options={{headerShown: false}}
-          component={Pool}
-        />
-        <Stack.Screen
-          name="ProductDetail"
-          options={{headerShown: false}}
-          component={ProductDetail}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Splash"
+            options={{headerShown: false}}
+            component={Splash}
+          />
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen
+            name="Home"
+            options={{headerShown: false}}
+            component={HomeStack}
+          />
+          <Stack.Screen
+            name="Payment"
+            options={{headerShown: false}}
+            component={Payment}
+          />
+          <Stack.Screen
+            name="Delivery"
+            options={{headerShown: false}}
+            component={Delivery}
+          />
+          <Stack.Screen
+            name="Pool"
+            options={{headerShown: false}}
+            component={Pool}
+          />
+          <Stack.Screen
+            name="ProductDetail"
+            options={{headerShown: false}}
+            component={ProductDetail}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
   );
 }
 
