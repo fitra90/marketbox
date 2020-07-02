@@ -9,22 +9,31 @@ import {
   ImageBackground,
   StyleSheet,
 } from 'react-native';
-import {
-  Container,
-  Header,
-  Content,
-  Body,
-  Right,
-  Left,
-  Icon,
-} from 'native-base';
-// import Icon from 'react-native-vector-icons/Ionicons';
-// import styles from '../styles/Global';
+import {Container, Header, Content, Body, Right, Left, Icon} from 'native-base';
 import Swiper from 'react-native-swiper';
 import Color, {DARK_GREEN} from '../constants/Color';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Col, Row, Grid} from 'react-native-easy-grid';
+import axios from 'axios';
 
+const api = axios.create({
+  baseURL : 'http://192.168.43.19/marketbox-api'
+})
+
+api.get('/pools').then(res=>{
+  console.log(res.data)
+})
+// get pool by zipcode:
+async function getPool() {
+  const zipcode = 75325;
+
+  try {
+    const response = await axios.get('/pool?ID=12345');
+    console.log(response);
+  } catch (error) {
+    console.error(error);
+  }
+}
 let {height, width} = Dimensions.get('window');
 const SliderActiveDot = (
   <View
