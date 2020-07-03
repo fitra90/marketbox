@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -8,32 +8,15 @@ import {
   Dimensions,
   ImageBackground,
   StyleSheet,
+  Alert,
 } from 'react-native';
 import {Container, Header, Content, Body, Right, Left, Icon} from 'native-base';
 import Swiper from 'react-native-swiper';
 import Color, {DARK_GREEN} from '../constants/Color';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Col, Row, Grid} from 'react-native-easy-grid';
-import axios from 'axios';
+import api from '../constants/Api';
 
-const api = axios.create({
-  baseURL : 'http://192.168.43.19/marketbox-api'
-})
-
-api.get('/pools').then(res=>{
-  console.log(res.data)
-})
-// get pool by zipcode:
-async function getPool() {
-  const zipcode = 75325;
-
-  try {
-    const response = await axios.get('/pool?ID=12345');
-    console.log(response);
-  } catch (error) {
-    console.error(error);
-  }
-}
 let {height, width} = Dimensions.get('window');
 const SliderActiveDot = (
   <View
@@ -65,6 +48,39 @@ const SliderDots = (
   />
 );
 function HomeScreen({navigation}) {
+  const [promo, setPromo] = useState();
+  const [agen, setAgen] = useState();
+  api
+    .get('/pools', {
+      params: {
+        columnName: 'postal_code',
+        data: 123456,
+      },
+    })
+    .then((res) => {
+      console.log(res.data);
+    })
+    .catch(function (error) {
+      Alert.alert(
+        'Kesalahan Jaringan',
+        'Gagal mendapatkan data Agen!',
+        [{text: 'OK', onPress: () => {}}],
+        {cancelable: false},
+      );
+    });
+
+  // get pool by zipcode:
+  async function getPool() {
+    const zipcode = 75325;
+
+    try {
+      const response = await axios.get('/pool?ID=12345');
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <Container>
       <StatusBar hidden={false} style={{backgroundColor: Color.LIGHT_GREEN}} />
@@ -78,10 +94,6 @@ function HomeScreen({navigation}) {
             style={{width: 180, height: 40, marginTop: 5}}
             source={require('../assets/icons.png')}
           />
-          {/* <Image
-            style={{width: 40, height: 40, marginTop: 5}}
-            source={require('../assets/icon.png')}
-          /> */}
         </Left>
         <Body></Body>
         <Right>
@@ -145,43 +157,10 @@ function HomeScreen({navigation}) {
                 <Col>
                   <ImageBackground
                     imageStyle={{borderRadius: 10}}
-                    style={{
-                      flex: 1,
-                      borderRadius: 10,
-                      backgroundColor: '#00CE9F',
-                      height: 150,
-                      width: width / 2.3,
-                      resizeMode: 'cover',
-                    }}
+                    style={styles.cardBackground}
                     source={require('../assets/taniamart.jpeg')}>
-                    <View
-                      style={{
-                        // width: 180,
-                        height: 150,
-                        borderRadius: 10,
-                        positio: 'absolute',
-                        backgroundColor: 'black',
-                        opacity: 0.5,
-                      }}></View>
-                    <View
-                      style={{
-                        // width: 180,
-                        borderRadius: 10,
-                        height: 150,
-                        position: 'absolute',
-                        backgroundColor: 'black',
-                        opacity: 0.5,
-                      }}></View>
-                    <Text
-                      style={{
-                        fontSize: 20,
-                        color: 'white',
-                        bottom: 0,
-                        padding: 10,
-                        position: 'absolute',
-                      }}>
-                      Ta-nia
-                    </Text>
+                    <View style={styles.cardOverlay}></View>
+                    <Text style={styles.cardTitle}>Ta-nia</Text>
                   </ImageBackground>
                 </Col>
               </TouchableOpacity>
@@ -189,33 +168,10 @@ function HomeScreen({navigation}) {
                 <Col style={{height: 150}}>
                   <ImageBackground
                     imageStyle={{borderRadius: 10}}
-                    style={{
-                      flex: 1,
-                      borderRadius: 10,
-                      backgroundColor: '#00CE9F',
-                      width: width / 2.3,
-                      resizeMode: 'cover',
-                    }}
+                    style={styles.cardBackground}
                     source={require('../assets/pusat-grosir-surabaya.jpg')}>
-                    <View
-                      style={{
-                        // width: 180,
-                        height: 150,
-                        borderRadius: 10,
-                        positio: 'absolute',
-                        backgroundColor: 'black',
-                        opacity: 0.5,
-                      }}></View>
-                    <Text
-                      style={{
-                        fontSize: 20,
-                        color: 'white',
-                        bottom: 0,
-                        padding: 10,
-                        position: 'absolute',
-                      }}>
-                      Agen Bontang 1
-                    </Text>
+                    <View style={styles.cardOverlay}></View>
+                    <Text style={styles.cardTitle}>Agen Bontang 1</Text>
                   </ImageBackground>
                 </Col>
               </TouchableOpacity>
@@ -239,71 +195,23 @@ function HomeScreen({navigation}) {
                     resizeMode: 'cover',
                   }}
                   source={require('../assets/klewer.jpg')}>
-                  <View
-                    style={{
-                      // width: 180,
-                      height: 150,
-                      borderRadius: 10,
-                      positio: 'absolute',
-                      backgroundColor: Color.RED,
-                      opacity: 0.5,
-                    }}></View>
+                  <View style={styles.cardOverlayRed}></View>
                   <Image
-                    style={{
-                      width: 120,
-                      height: 100,
-                      marginTop: 2,
-                      marginRight: 5,
-                      position: 'absolute',
-                      alignSelf: 'center',
-                      flex: 1,
-                    }}
+                    style={styles.cardClose}
                     source={require('../assets/close.png')}
                   />
 
-                  <Text
-                    style={{
-                      fontSize: 20,
-                      color: 'white',
-                      bottom: 0,
-                      padding: 10,
-                      position: 'absolute',
-                    }}>
-                    Agen Bontang 2
-                  </Text>
+                  <Text style={styles.cardTitle}>Agen Bontang 2</Text>
                 </ImageBackground>
               </Col>
               <TouchableOpacity onPress={() => {}}>
                 <Col style={{height: 150}}>
                   <ImageBackground
                     imageStyle={{borderRadius: 10}}
-                    style={{
-                      flex: 1,
-                      borderRadius: 10,
-                      backgroundColor: '#00CE9F',
-                      width: width / 2.3,
-                      resizeMode: 'cover',
-                    }}
+                    style={styles.cardBackground}
                     source={require('../assets/tanahabang.jpg')}>
-                    <View
-                      style={{
-                        // width: 180,
-                        height: 150,
-                        borderRadius: 10,
-                        positio: 'absolute',
-                        backgroundColor: 'black',
-                        opacity: 0.5,
-                      }}></View>
-                    <Text
-                      style={{
-                        fontSize: 20,
-                        color: 'white',
-                        bottom: 0,
-                        padding: 10,
-                        position: 'absolute',
-                      }}>
-                      Agen Bontang 3
-                    </Text>
+                    <View style={styles.cardOverlay}></View>
+                    <Text style={styles.cardTitle}>Agen Bontang 3</Text>
                   </ImageBackground>
                 </Col>
               </TouchableOpacity>
@@ -340,6 +248,41 @@ const styles = StyleSheet.create({
     width: width - 30,
     borderRadius: 10,
     margin: 15,
+  },
+  cardTitle: {
+    fontSize: 20,
+    color: 'white',
+    bottom: 0,
+    padding: 10,
+    position: 'absolute',
+  },
+  cardOverlay: {
+    height: 150,
+    borderRadius: 10,
+    backgroundColor: 'black',
+    opacity: 0.5,
+  },
+  cardOverlayRed: {
+    height: 150,
+    borderRadius: 10,
+    backgroundColor: Color.RED,
+    opacity: 0.5,
+  },
+  cardClose: {
+    width: 120,
+    height: 100,
+    marginTop: 2,
+    marginRight: 5,
+    position: 'absolute',
+    alignSelf: 'center',
+    flex: 1,
+  },
+  cardBackground: {
+    flex: 1,
+    borderRadius: 10,
+    backgroundColor: '#00CE9F',
+    width: width / 2.3,
+    resizeMode: 'cover',
   },
 });
 
