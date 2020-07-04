@@ -10,77 +10,81 @@ import {
   StyleSheet,
   Alert,
 } from 'react-native';
-import {Container, Header, Content, Body, Right, Left, Icon} from 'native-base';
+import {
+  Container,
+  Header,
+  Card,
+  CardItem,
+  Content,
+  Body,
+  Right,
+  Left,
+  Icon,
+  Button,
+} from 'native-base';
 import Swiper from 'react-native-swiper';
-import Color, {DARK_GREEN} from '../constants/Color';
+import Color from '../constants/Color';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Col, Row, Grid} from 'react-native-easy-grid';
 import api from '../constants/Api';
 
 let {height, width} = Dimensions.get('window');
-const SliderActiveDot = (
-  <View
-    style={{
-      backgroundColor: Color.DARK_GREEN,
-      width: 8,
-      height: 8,
-      borderRadius: 4,
-      marginLeft: 3,
-      marginRight: 3,
-      marginTop: 3,
-      marginBottom: 3,
-    }}
-  />
-);
 
-const SliderDots = (
-  <View
-    style={{
-      backgroundColor: Color.PALE,
-      width: 8,
-      height: 8,
-      borderRadius: 4,
-      marginLeft: 3,
-      marginRight: 3,
-      marginTop: 3,
-      marginBottom: 3,
-    }}
-  />
-);
+const initData = {
+  status: 'ok',
+  totalRow: 0,
+  data: [],
+};
+
 function HomeScreen({navigation}) {
+  const SliderActiveDot = <View style={styles.activeDot} />;
+
+  const SliderDots = <View style={styles.sliderDots} />;
+
   const [promo, setPromo] = useState();
-  const [agen, setAgen] = useState();
-  api
-    .get('/pools', {
-      params: {
-        columnName: 'postal_code',
-        data: 123456,
-      },
-    })
-    .then((res) => {
-      console.log(res.data);
-    })
-    .catch(function (error) {
-      Alert.alert(
-        'Kesalahan Jaringan',
-        'Gagal mendapatkan data Agen!',
-        [{text: 'OK', onPress: () => {}}],
-        {cancelable: false},
-      );
-    });
+  const [agents, setAgents] = useState(initData);
 
-  // get pool by zipcode:
-  async function getPool() {
-    const zipcode = 75325;
+  useEffect(() => {
+    const fetchAgents = async () => {
+      const result = await api.get('/pools', {
+        params: {
+          column: 'postal_code',
+          data: 123456,
+        },
+      });
+      setAgents(result.data);
+    };
+    fetchAgents();
+  }, []);
+  console.log(agents);
 
-    try {
-      const response = await axios.get('/pool?ID=12345');
-      console.log(response);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
+  // useEffect(() => {
+  //   const fetchAgents = async () => {
+  //     try {
+  //       const response = await api.get('/pools', {
+  //         params: {
+  //           column: 'postal_code',
+  //           data: 123456,
+  //         },
+  //       });
+  //       setAgents((current) => {
+  //         return {
+  //           ...response,
+  //           data: [...current.data, ...response.data],
+  //           totalRow: response.totalRow,
+  //           status: response.status,
+  //         };
+  //       });
+  //       if (resuresponselt.status != 'ok') {
+  //         throw new Error('error');
+  //       }
+  //     } catch (error) {}
+  //   };
+  //   fetchAgents();
+  // });
+  // useEffect(() => {
+  //   console.log(agents);
+  // }, []);
   return (
     <Container>
       <StatusBar hidden={false} style={{backgroundColor: Color.LIGHT_GREEN}} />
@@ -141,19 +145,52 @@ function HomeScreen({navigation}) {
                 style={{width: 25, height: 25, marginTop: 2, marginRight: 5}}
                 source={require('../assets/pointer.png')}
               />
-              <Text style={{fontSize: 18, fontWeight: 'bold'}}>
+              <Text
+                style={{
+                  fontSize: 18,
+                  fontWeight: 'bold',
+                  fontFamily: 'ProductSans-Bold',
+                }}>
                 Agen Terdekat
               </Text>
             </View>
 
-            <Grid
-              style={{
-                marginHorizontal: 18,
-                flex: 1,
-                marginTop: 15,
-                justifyContent: 'space-between',
-              }}>
-              <TouchableOpacity onPress={() => navigation.navigate('Pool')}>
+            <Grid style={styles.gridStyle}>
+              {agents.data.map((agent) => (
+                // <Text key={agent.id}>{agent.name}</Text>
+                <TouchableOpacity
+                  onPress={(() => navigation.navigate('Pool'), agent.id)}>
+                  <Col>
+                    <ImageBackground
+                      imageStyle={{borderRadius: 10}}
+                      style={styles.cardBackground}
+                      source={require('../assets/taniamart.jpeg')}>
+                      <View style={styles.cardOverlay}></View>
+                      <Text style={styles.cardTitle}>{agent.name}</Text>
+                    </ImageBackground>
+                  </Col>
+                </TouchableOpacity>
+              ))}
+
+              {/*    <TouchableOpacity
+                  onPress={
+                    (() => navigation.navigate('Pool'),
+                    {
+                      poolId: Math.floor(Math.random() * 100),
+                    })
+                  }>
+                  <Col>
+                    <ImageBackground
+                      imageStyle={{borderRadius: 10}}
+                      style={styles.cardBackground}
+                      source={require('../assets/taniamart.jpeg')}>
+                      <View style={styles.cardOverlay}></View>
+                      <Text style={styles.cardTitle}>Ta-nia</Text>
+                    </ImageBackground>
+                  </Col>
+                </TouchableOpacity>;
+              })} */}
+              {/* <TouchableOpacity onPress={() => navigation.navigate('Pool')}>
                 <Col>
                   <ImageBackground
                     imageStyle={{borderRadius: 10}}
@@ -174,15 +211,9 @@ function HomeScreen({navigation}) {
                     <Text style={styles.cardTitle}>Agen Bontang 1</Text>
                   </ImageBackground>
                 </Col>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
             </Grid>
-            <Grid
-              style={{
-                marginHorizontal: 18,
-                flex: 1,
-                marginTop: 15,
-                justifyContent: 'space-between',
-              }}>
+            <Grid style={styles.gridStyle}>
               <Col>
                 <ImageBackground
                   imageStyle={{borderRadius: 10}}
@@ -216,7 +247,24 @@ function HomeScreen({navigation}) {
                 </Col>
               </TouchableOpacity>
             </Grid>
+            <Grid>
+              <Col style={{alignItems: 'center', justifyContent: 'center'}}>
+                <Card
+                  style={{
+                    flex: 1,
 
+                    width: width / 2,
+                  }}>
+                  <Text style={{margin: 10}}>Belum Ada Agen Terdekat.</Text>
+                  {/* <Button onClick={() => {}}>
+                    <Text>Daftar Menjadi Agen Marketbox.</Text>
+                  </Button>
+                  <Button onClick={() => {}}>
+                    <Text>Ajukan Pembukaan Agen.</Text>
+                  </Button> */}
+                </Card>
+              </Col>
+            </Grid>
             <View
               style={{
                 flex: 1,
@@ -248,6 +296,32 @@ const styles = StyleSheet.create({
     width: width - 30,
     borderRadius: 10,
     margin: 15,
+  },
+  activeDot: {
+    backgroundColor: Color.DARK_GREEN,
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    marginLeft: 3,
+    marginRight: 3,
+    marginTop: 3,
+    marginBottom: 3,
+  },
+  sliderDots: {
+    backgroundColor: Color.PALE,
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    marginLeft: 3,
+    marginRight: 3,
+    marginTop: 3,
+    marginBottom: 3,
+  },
+  gridStyle: {
+    marginHorizontal: 18,
+    flex: 1,
+    marginTop: 15,
+    justifyContent: 'space-between',
   },
   cardTitle: {
     fontSize: 20,

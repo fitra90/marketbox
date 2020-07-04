@@ -1,10 +1,11 @@
 module.exports = {
-  RED: '#E21E28',
+  RED: '#F93963',
   DARK_BROWN: '#57423E',
-  LIGHT_BROWN: '#BEA6A1',
+  LIGHT_BROWN: '#74CE76',
   DARK_GREEN: '#358500',
   LIGHT_GREEN: '#71BA00',
   PALE: '#F3EED9',
+  BLUE: '#3981F9'
 };
 
 // #E21E28 RED

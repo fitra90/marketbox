@@ -311,7 +311,12 @@ function Tab1(props) {
                 </Body>
               </CardItem>
               <CardItem>
-                <Text style={{fontSize: 16, alignSelf: 'center'}}>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    alignSelf: 'center',
+                    fontFamily: 'ProductSans-Bold',
+                  }}>
                   Indomie 1 Karton
                 </Text>
                 <Body></Body>
