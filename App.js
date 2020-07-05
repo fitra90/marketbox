@@ -16,9 +16,7 @@ import Payment from './src/screens/order/Payment';
 import Delivery from './src/screens/delivery/Delivery';
 import Pool from './src/screens/Pool';
 import ProductDetail from './src/screens/product/ProductDetail';
-import {
-  TouchableOpacity,
-} from 'react-native-gesture-handler';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 function DetailsScreen() {
   return (
@@ -41,114 +39,115 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 function HomeStack() {
-  return(
-  <Tab.Navigator
-    initialRouteName="Home"
-    screenOptions={({route}) => ({
-      tabBarIcon: ({focused, color}) => {
-        let iconName;
+  return (
+    <Tab.Navigator
+      initialRouteName="Home"
+      screenOptions={({route}) => ({
+        tabBarIcon: ({focused, color}) => {
+          let iconName;
 
-        if (route.name === 'Home') {
-          iconName = 'home';
-          color = focused ? {color: Color.RED} : {color: 'silver'};
-        } else if (route.name === 'Cart') {
-          iconName = 'shopping-cart';
-          color = focused ? {color: Color.RED} : {color: 'silver'};
-        } else if (route.name === 'Riwayat') {
-          iconName = 'history';
-          color = focused ? {color: Color.RED} : {color: 'silver'};
-        } else if (route.name === 'Profile') {
-          iconName = 'account-circle';
-          color = focused ? {color: Color.RED} : {color: 'silver'};
-        }
+          if (route.name === 'Home') {
+            iconName = 'home';
+            color = focused ? {color: Color.RED} : {color: 'silver'};
+          } else if (route.name === 'Cart') {
+            iconName = 'shopping-cart';
+            color = focused ? {color: Color.RED} : {color: 'silver'};
+          } else if (route.name === 'Riwayat') {
+            iconName = 'history';
+            color = focused ? {color: Color.RED} : {color: 'silver'};
+          } else if (route.name === 'Profile') {
+            iconName = 'account-circle';
+            color = focused ? {color: Color.RED} : {color: 'silver'};
+          }
 
-        // You can return any component that you like here!
-        return (
-          <TouchableOpacity>
-            <Icon type="MaterialIcons" name={iconName} style={color} />
-          </TouchableOpacity>
-        );
-      },
-    })}
-    tabBarOptions={{
-      activeTintColor: Color.RED,
-      inactiveTintColor: 'silver',
-    }}>
-    <Tab.Screen
-      name="Home"
-      component={Home}
-      options={{
-        title: 'Beranda',
-      }}
-    />
-    <Tab.Screen
-      name="Riwayat"
-      component={History}
-      options={{
-        title: 'Riwayat',
-        headerStyle: styles.header,
-        headerTintColor: '#fff',
-      }}
-    />
-    <Tab.Screen
-      name="Cart"
-      component={Cart}
-      options={{
-        title: 'Keranjang',
-        headerStyle: styles.header,
-        headerTintColor: '#fff',
-      }}
-    />
+          // You can return any component that you like here!
+          return (
+            <TouchableOpacity>
+              <Icon type="MaterialIcons" name={iconName} style={color} />
+            </TouchableOpacity>
+          );
+        },
+      })}
+      tabBarOptions={{
+        activeTintColor: Color.RED,
+        inactiveTintColor: 'silver',
+      }}>
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          title: 'Beranda',
+        }}
+      />
+      <Tab.Screen
+        name="Riwayat"
+        component={History}
+        options={{
+          title: 'Riwayat',
+          headerStyle: styles.header,
+          headerTintColor: '#fff',
+        }}
+      />
+      <Tab.Screen
+        name="Cart"
+        component={Cart}
+        options={{
+          title: 'Keranjang',
+          headerStyle: styles.header,
+          headerTintColor: '#fff',
+        }}
+      />
 
-    <Tab.Screen
-      name="Profile"
-      component={Profile}
-      options={{
-        title: 'Profil',
-        headerStyle: styles.header,
-        headerTintColor: '#fff',
-      }}
-    />
-  </Tab.Navigator>
-  )
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          title: 'Profil',
+          headerStyle: styles.header,
+          headerTintColor: '#fff',
+        }}
+      />
+    </Tab.Navigator>
+  );
 }
 function App() {
+  console.disableYellowBox = true;
   return (
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Splash"
-            options={{headerShown: false}}
-            component={Splash}
-          />
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen
-            name="Home"
-            options={{headerShown: false}}
-            component={HomeStack}
-          />
-          <Stack.Screen
-            name="Payment"
-            options={{headerShown: false}}
-            component={Payment}
-          />
-          <Stack.Screen
-            name="Delivery"
-            options={{headerShown: false}}
-            component={Delivery}
-          />
-          <Stack.Screen
-            name="Pool"
-            options={{headerShown: false}}
-            component={Pool}
-          />
-          <Stack.Screen
-            name="ProductDetail"
-            options={{headerShown: false}}
-            component={ProductDetail}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Splash"
+          options={{headerShown: false}}
+          component={Splash}
+        />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen
+          name="Home"
+          options={{headerShown: false}}
+          component={HomeStack}
+        />
+        <Stack.Screen
+          name="Payment"
+          options={{headerShown: false}}
+          component={Payment}
+        />
+        <Stack.Screen
+          name="Delivery"
+          options={{headerShown: false}}
+          component={Delivery}
+        />
+        <Stack.Screen
+          name="Pool"
+          options={{headerShown: false}}
+          component={Pool}
+        />
+        <Stack.Screen
+          name="ProductDetail"
+          options={{headerShown: false}}
+          component={ProductDetail}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 

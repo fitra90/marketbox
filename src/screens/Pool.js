@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -32,10 +32,54 @@ import {
   TouchableNativeFeedback,
   TouchableOpacity,
 } from 'react-native-gesture-handler';
+import api from '../constants/Api';
+import Variables from '../constants/Variables';
 
 const widthWindow = Dimensions.get('window').width;
+const initData = {
+  status: 'ok',
+  totalRow: 0,
+  data: [],
+};
 
-function Pool({navigation}) {
+function Pool({route, navigation}) {
+  const agentId = route.params[0];
+  console.log(agentId);
+  const [shops, setShops] = useState(initData);
+
+  useEffect(() => {
+    const fetchShops = async () => {
+      try {
+        const result = await api.get('/shops', {
+          params: {
+            pool: agentId,
+          },
+        });
+        setShops(result.data);
+        if (result.status != 'ok') {
+          throw new Error('error');
+        }
+      } catch (error) {
+        // console.log(error.response.status);
+        if (error.response.status) {
+          // setAShopNotFound(true);
+        }
+        Alert.alert(
+          'Terjadi kesalahan jaringan',
+          [
+            {
+              text: 'Gagal mendapatkan data toko',
+            },
+            {text: 'OK', onPress: () => console.log('OK Pressed')},
+          ],
+          {cancelable: false},
+        );
+      }
+    };
+    fetchShops();
+  }, []);
+  console.log(shops);
+
   return (
     <Container>
       <StatusBar hidden={false} style={{backgroundColor: Color.LIGHT_GREEN}} />
@@ -63,7 +107,10 @@ function Pool({navigation}) {
           </Title>
         </Body>
         <Right>
-          <Input placeholder="Pencarian" style={{textAlign: 'right', marginRight:10}} />
+          <Input
+            placeholder="Pencarian"
+            style={{textAlign: 'right', marginRight: 10}}
+          />
           <TouchableOpacity>
             <Icon name="search" size={30} style={{marginBottom: 10}} />
           </TouchableOpacity>
@@ -74,160 +121,48 @@ function Pool({navigation}) {
           <CardItem>
             <Body>
               <ScrollView horizontal={true}>
-                <Grid>
-                  <TouchableOpacity onPress={() => {}}>
-                    <Col
-                      style={{
-                        marginHorizontal: 5,
-                      }}>
-                      <ImageBackground
-                        imageStyle={{borderRadius: 10}}
+                {shops.data.map((shop, index) => (
+                  <Grid>
+                    <TouchableOpacity onPress={() => {}}>
+                      <Col
                         style={{
-                          flex: 1,
-                          borderRadius: 10,
-                          backgroundColor: '#00CE9F',
-                          height: 110,
-                          width: 140,
-                          resizeMode: 'cover',
-                        }}
-                        source={require('../assets/taniamart.jpeg')}>
-                        <View
+                          marginHorizontal: 5,
+                        }}>
+                        <ImageBackground
+                          imageStyle={{borderRadius: 10}}
                           style={{
-                            width: 140,
+                            flex: 1,
                             borderRadius: 10,
+                            backgroundColor: '#00CE9F',
                             height: 110,
-                            position: 'absolute',
-                            backgroundColor: 'black',
-                            opacity: 0.5,
-                          }}></View>
-                        <Text
-                          style={{
-                            fontSize: 16,
-                            color: 'white',
-                            bottom: 0,
-                            padding: 10,
-                            position: 'absolute',
-                          }}>
-                          Ta-Nia Mart
-                        </Text>
-                      </ImageBackground>
-                    </Col>
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={() => {}}>
-                    <Col
-                      style={{
-                        marginHorizontal: 5,
-                      }}>
-                      <ImageBackground
-                        imageStyle={{borderRadius: 10}}
-                        style={{
-                          flex: 1,
-                          borderRadius: 10,
-                          backgroundColor: '#00CE9F',
-                          height: 110,
-                          width: 140,
-                          resizeMode: 'cover',
-                        }}
-                        source={require('../assets/pintar.jpeg')}>
-                        <View
-                          style={{
                             width: 140,
-                            height: 110,
-                            borderRadius: 10,
-                            positio: 'absolute',
-                            backgroundColor: 'black',
-                            opacity: 0.5,
-                          }}></View>
-                        <Text
-                          style={{
-                            fontSize: 16,
-                            color: 'white',
-                            bottom: 0,
-                            padding: 10,
-                            position: 'absolute',
-                          }}>
-                          Pasar Gajah
-                        </Text>
-                      </ImageBackground>
-                    </Col>
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={() => {}}>
-                    <Col
-                      style={{
-                        marginHorizontal: 5,
-                      }}>
-                      <ImageBackground
-                        imageStyle={{borderRadius: 10}}
-                        style={{
-                          flex: 1,
-                          borderRadius: 10,
-                          backgroundColor: '#00CE9F',
-                          height: 110,
-                          width: 140,
-                          resizeMode: 'cover',
-                        }}
-                        source={require('../assets/frozen.jpg')}>
-                        <View
-                          style={{
-                            width: 140,
-                            height: 110,
-                            borderRadius: 10,
-                            positio: 'absolute',
-                            backgroundColor: 'black',
-                            opacity: 0.5,
-                          }}></View>
-                        <Text
-                          style={{
-                            fontSize: 16,
-                            color: 'white',
-                            bottom: 0,
-                            padding: 10,
-                            position: 'absolute',
-                          }}>
-                          Frozen Food
-                        </Text>
-                      </ImageBackground>
-                    </Col>
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={() => {}}>
-                    <Col
-                      style={{
-                        marginHorizontal: 5,
-                      }}>
-                      <ImageBackground
-                        imageStyle={{borderRadius: 10}}
-                        style={{
-                          flex: 1,
-                          borderRadius: 10,
-                          backgroundColor: '#00CE9F',
-                          height: 110,
-                          width: 140,
-                          resizeMode: 'cover',
-                        }}
-                        source={require('../assets/buah.jpg')}>
-                        <View
-                          style={{
-                            width: 140,
-                            height: 110,
-                            borderRadius: 10,
-                            positio: 'absolute',
-                            backgroundColor: 'black',
-                            opacity: 0.5,
-                          }}></View>
-                        <Text
-                          style={{
-                            fontSize: 16,
-                            color: 'white',
-                            bottom: 0,
-                            padding: 10,
-                            position: 'absolute',
-                          }}>
-                          Watermelon Buah
-                        </Text>
-                      </ImageBackground>
-                    </Col>
-                  </TouchableOpacity>
-                </Grid>
+                            resizeMode: 'cover',
+                          }}
+                          source={{uri: Variables.SHOP_URL + shop.picture}}>
+                          <View
+                            style={{
+                              width: 140,
+                              borderRadius: 10,
+                              height: 110,
+                              position: 'absolute',
+                              backgroundColor: 'black',
+                              opacity: 0.5,
+                            }}></View>
+                          <Text
+                            style={{
+                              fontSize: 16,
+                              color: 'white',
+                              bottom: 0,
+                              padding: 10,
+                              position: 'absolute',
+                            }}>
+                            {shop.name}
+                          </Text>
+                        </ImageBackground>
+                      </Col>
+                    </TouchableOpacity>
+                  </Grid>
+                ))}
               </ScrollView>
 
               <Tabs
@@ -317,7 +252,7 @@ function Tab1(props) {
                     alignSelf: 'center',
                     fontFamily: 'ProductSans-Bold',
                   }}>
-                  Indomie 1 Karton
+                  Indomie 1
                 </Text>
                 <Body></Body>
               </CardItem>

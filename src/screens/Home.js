@@ -24,9 +24,10 @@ import {
 } from 'native-base';
 import Swiper from 'react-native-swiper';
 import Color from '../constants/Color';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {TouchableOpacity, State} from 'react-native-gesture-handler';
 import {Col, Row, Grid} from 'react-native-easy-grid';
 import api from '../constants/Api';
+import Variables from '../constants/Variables';
 
 let {height, width} = Dimensions.get('window');
 
@@ -43,48 +44,44 @@ function HomeScreen({navigation}) {
 
   const [promo, setPromo] = useState();
   const [agents, setAgents] = useState(initData);
+  const [isErrorGettingPromo, setPromoNotFound] = useState(false);
+  const [isAgentNotFound, setAgentNotFound] = useState(false);
 
   useEffect(() => {
     const fetchAgents = async () => {
-      const result = await api.get('/pools', {
-        params: {
-          column: 'postal_code',
-          data: 123456,
-        },
-      });
-      setAgents(result.data);
+      try {
+        const result = await api.get('/pools', {
+          params: {
+            // column: 'postal_code',
+            column: 'all',
+            // data: 123456,
+          },
+        });
+        setAgents(result.data);
+        if (result.status != 'ok') {
+          throw new Error('error');
+        }
+      } catch (error) {
+        // console.log(error.response.status);
+        if (error.response.status) {
+          setAgentNotFound(true);
+        }
+        Alert.alert(
+          'Terjadi kesalahan jaringan',
+          [
+            {
+              text: 'Gagal mendapatkan data agen',
+            },
+            {text: 'OK', onPress: () => console.log('OK Pressed')},
+          ],
+          {cancelable: false},
+        );
+      }
     };
     fetchAgents();
   }, []);
   console.log(agents);
 
-  // useEffect(() => {
-  //   const fetchAgents = async () => {
-  //     try {
-  //       const response = await api.get('/pools', {
-  //         params: {
-  //           column: 'postal_code',
-  //           data: 123456,
-  //         },
-  //       });
-  //       setAgents((current) => {
-  //         return {
-  //           ...response,
-  //           data: [...current.data, ...response.data],
-  //           totalRow: response.totalRow,
-  //           status: response.status,
-  //         };
-  //       });
-  //       if (resuresponselt.status != 'ok') {
-  //         throw new Error('error');
-  //       }
-  //     } catch (error) {}
-  //   };
-  //   fetchAgents();
-  // });
-  // useEffect(() => {
-  //   console.log(agents);
-  // }, []);
   return (
     <Container>
       <StatusBar hidden={false} style={{backgroundColor: Color.LIGHT_GREEN}} />
@@ -154,116 +151,52 @@ function HomeScreen({navigation}) {
                 Agen Terdekat
               </Text>
             </View>
-
+            {agents.totalRow < 1 ? (
+              <Grid>
+                <Col style={styles.noAgentCol}>
+                  <TouchableOpacity onPress={() => {}}>
+                    <Card style={styles.noAgentCard}>
+                      <Text>Agen Tidak Ditemukan</Text>
+                    </Card>
+                  </TouchableOpacity>
+                </Col>
+              </Grid>
+            ) : (
+              <View></View>
+            )}
             <Grid style={styles.gridStyle}>
-              {agents.data.map((agent) => (
-                // <Text key={agent.id}>{agent.name}</Text>
+              {agents.data.map((agent, index) => (
                 <TouchableOpacity
-                  onPress={(() => navigation.navigate('Pool'), agent.id)}>
-                  <Col>
+                  key={agent.id}
+                  onPress={() => {
+                    navigation.navigate('Pool', [agent.id]);
+                  }}>
+                  <Col style={{marginTop: 20}}>
                     <ImageBackground
                       imageStyle={{borderRadius: 10}}
                       style={styles.cardBackground}
-                      source={require('../assets/taniamart.jpeg')}>
-                      <View style={styles.cardOverlay}></View>
+                      source={{
+                        uri: Variables.AGENT_URL + agent.picture,
+                      }}>
+                      <View
+                        style={
+                          agent.open < 1
+                            ? styles.cardOverlayRed
+                            : styles.cardOverlay
+                        }></View>
+                      {agent.open < 1 ? (
+                        <Image
+                          style={styles.cardClose}
+                          source={require('../assets/close.png')}
+                        />
+                      ) : (
+                        <View></View>
+                      )}
                       <Text style={styles.cardTitle}>{agent.name}</Text>
                     </ImageBackground>
                   </Col>
                 </TouchableOpacity>
               ))}
-
-              {/*    <TouchableOpacity
-                  onPress={
-                    (() => navigation.navigate('Pool'),
-                    {
-                      poolId: Math.floor(Math.random() * 100),
-                    })
-                  }>
-                  <Col>
-                    <ImageBackground
-                      imageStyle={{borderRadius: 10}}
-                      style={styles.cardBackground}
-                      source={require('../assets/taniamart.jpeg')}>
-                      <View style={styles.cardOverlay}></View>
-                      <Text style={styles.cardTitle}>Ta-nia</Text>
-                    </ImageBackground>
-                  </Col>
-                </TouchableOpacity>;
-              })} */}
-              {/* <TouchableOpacity onPress={() => navigation.navigate('Pool')}>
-                <Col>
-                  <ImageBackground
-                    imageStyle={{borderRadius: 10}}
-                    style={styles.cardBackground}
-                    source={require('../assets/taniamart.jpeg')}>
-                    <View style={styles.cardOverlay}></View>
-                    <Text style={styles.cardTitle}>Ta-nia</Text>
-                  </ImageBackground>
-                </Col>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => {}}>
-                <Col style={{height: 150}}>
-                  <ImageBackground
-                    imageStyle={{borderRadius: 10}}
-                    style={styles.cardBackground}
-                    source={require('../assets/pusat-grosir-surabaya.jpg')}>
-                    <View style={styles.cardOverlay}></View>
-                    <Text style={styles.cardTitle}>Agen Bontang 1</Text>
-                  </ImageBackground>
-                </Col>
-              </TouchableOpacity> */}
-            </Grid>
-            <Grid style={styles.gridStyle}>
-              <Col>
-                <ImageBackground
-                  imageStyle={{borderRadius: 10}}
-                  style={{
-                    flex: 1,
-                    borderRadius: 10,
-                    backgroundColor: '#00CE9F',
-                    height: 150,
-                    width: width / 2.3,
-                    resizeMode: 'cover',
-                  }}
-                  source={require('../assets/klewer.jpg')}>
-                  <View style={styles.cardOverlayRed}></View>
-                  <Image
-                    style={styles.cardClose}
-                    source={require('../assets/close.png')}
-                  />
-
-                  <Text style={styles.cardTitle}>Agen Bontang 2</Text>
-                </ImageBackground>
-              </Col>
-              <TouchableOpacity onPress={() => {}}>
-                <Col style={{height: 150}}>
-                  <ImageBackground
-                    imageStyle={{borderRadius: 10}}
-                    style={styles.cardBackground}
-                    source={require('../assets/tanahabang.jpg')}>
-                    <View style={styles.cardOverlay}></View>
-                    <Text style={styles.cardTitle}>Agen Bontang 3</Text>
-                  </ImageBackground>
-                </Col>
-              </TouchableOpacity>
-            </Grid>
-            <Grid>
-              <Col style={{alignItems: 'center', justifyContent: 'center'}}>
-                <Card
-                  style={{
-                    flex: 1,
-
-                    width: width / 2,
-                  }}>
-                  <Text style={{margin: 10}}>Belum Ada Agen Terdekat.</Text>
-                  {/* <Button onClick={() => {}}>
-                    <Text>Daftar Menjadi Agen Marketbox.</Text>
-                  </Button>
-                  <Button onClick={() => {}}>
-                    <Text>Ajukan Pembukaan Agen.</Text>
-                  </Button> */}
-                </Card>
-              </Col>
             </Grid>
             <View
               style={{
@@ -320,8 +253,9 @@ const styles = StyleSheet.create({
   gridStyle: {
     marginHorizontal: 18,
     flex: 1,
-    marginTop: 15,
     justifyContent: 'space-between',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
   },
   cardTitle: {
     fontSize: 20,
@@ -357,6 +291,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#00CE9F',
     width: width / 2.3,
     resizeMode: 'cover',
+  },
+  noAgentCol: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 15,
+  },
+  noAgentCard: {
+    flex: 1,
+    marginTop: 20,
+    alignItems: 'center',
+    padding: 10,
+    width: width / 2,
   },
 });
 
