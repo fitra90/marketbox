@@ -26,8 +26,9 @@ import Swiper from 'react-native-swiper';
 import Color from '../constants/Color';
 import {TouchableOpacity, State} from 'react-native-gesture-handler';
 import {Col, Row, Grid} from 'react-native-easy-grid';
-import api from '../constants/Api';
+import api, {geolocation} from '../constants/Api';
 import Variables from '../constants/Variables';
+import Geolocation from '@react-native-community/geolocation';
 
 let {height, width} = Dimensions.get('window');
 
@@ -38,58 +39,78 @@ const initData = {
 };
 
 function HomeScreen({navigation}) {
-  const SliderActiveDot = <View style={styles.activeDot} />;
-
-  const SliderDots = <View style={styles.sliderDots} />;
-
   const [promo, setPromo] = useState();
   const [agents, setAgents] = useState(initData);
   const [isErrorGettingPromo, setPromoNotFound] = useState(false);
   const [isAgentNotFound, setAgentNotFound] = useState(false);
+  const [latitude, setLatitude] = useState(0);
+  const [longitude, setLongitude] = useState(0);
+  const [postalCode, setPostalCode] = useState(0);
+
+  const SliderActiveDot = <View style={styles.activeDot} />;
+  const SliderDots = <View style={styles.sliderDots} />;
 
   useEffect(() => {
-    const fetchAgents = async () => {
-      try {
-        const result = await api.get('/pools', {
+    Geolocation.getCurrentPosition((info) => {
+      // console.log(info);
+      geolocation
+        .get('/json', {
           params: {
             // column: 'postal_code',
-            column: 'all',
-            // data: 123456,
+            key: Variables.GEOLOCATION_API_KEY,
+            q: encodeURIComponent(
+              info.coords.latitude + ',' + info.coords.longitude,
+            ),
+            pretty: 1,
+            no_annotations: 1,
           },
-        });
-        setAgents(result.data);
-        if (result.status != 'ok') {
-          throw new Error('error');
-        }
-      } catch (error) {
-        // console.log(error.response.status);
-        if (error.response.status) {
-          setAgentNotFound(true);
-        }
-        Alert.alert(
-          'Terjadi kesalahan jaringan',
-          [
-            {
-              text: 'Gagal mendapatkan data agen',
-            },
-            {text: 'OK', onPress: () => console.log('OK Pressed')},
-          ],
-          {cancelable: false},
-        );
-      }
-    };
-    fetchAgents();
+        })
+        .then((res) => {
+          // setAgents(res.data);
+          // console.log(res);
+          api
+            .get('/pools', {
+              params: {
+                // column: 'postal_code',
+                column: 'all',
+                // data: 123456,
+              },
+            })
+            .then((res) => {
+              setAgents(res.data);
+            })
+            .catch((err) => {
+              Alert.alert(
+                'Terjadi kesalahan jaringan',
+                [
+                  {
+                    text: 'Gagal mendapatkan data agen',
+                  },
+                  {
+                    text: 'OK',
+                    onPress: () => console.log('OK Pressed'),
+                  },
+                ],
+                {cancelable: false},
+              );
+            });
+        })
+        .catch((err) => {});
+    });
   }, []);
-  console.log(agents);
 
   return (
     <Container>
-      <StatusBar hidden={false} style={{backgroundColor: Color.LIGHT_GREEN}} />
+      <StatusBar
+        hidden={false}
+        barStyle="dark-content"
+        style={{backgroundColor: Color.LIGHT_GREEN}}
+      />
       <Header
         style={{backgroundColor: 'white'}}
         searchBar
         rounded
-        androidStatusBarColor={Color.LIGHT_GREEN}>
+        androidStatusBarColor={'#FFFFFF'}>
         <Left>
           <Image
             style={{width: 180, height: 40, marginTop: 5}}
@@ -118,13 +139,13 @@ function HomeScreen({navigation}) {
                 style={styles.slides}
                 source={require('../assets/promo.jpg')}
               />
-              <Image
+              {/* <Image
                 style={styles.slides}
                 source={{
                   uri:
                     'https://3.bp.blogspot.com/-kE11Z3EzUOE/W9VjVKe3dtI/AAAAAAAAAKo/yAej-CbeJuwMZA_c6jgmC6CCkDyvmNkwQCK4BGAYYCw/s1600/BANNER5.png',
                 }}
-              />
+              /> */}
               <Image
                 style={styles.slides}
                 source={require('../assets/nHBfsgAAQQAAAA8AJhvfUQADSGw.png')}
@@ -222,13 +243,9 @@ function HomeScreen({navigation}) {
 }
 
 const styles = StyleSheet.create({
-  wrapper2: {height: 100},
-  wrapper: {height: width / 2 + 30, backgroundColor: Color.PALE},
   slides: {
-    height: width / 2,
-    width: width - 30,
-    borderRadius: 10,
-    margin: 15,
+    height: width / 2 + 30,
+    width: width,
   },
   activeDot: {
     backgroundColor: Color.DARK_GREEN,
