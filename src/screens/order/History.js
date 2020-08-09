@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  View,
-  Text,
-  Image,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-} from 'react-native';
+import {View, Text, Image, ScrollView, StyleSheet} from 'react-native';
 import Color from '../../constants/Color';
 import {
   Container,
@@ -29,11 +22,10 @@ import {TouchableNativeFeedback} from 'react-native-gesture-handler';
 function History({navigation}) {
   return (
     <Container>
-      <StatusBar hidden={false} style={{backgroundColor: Color.LIGHT_GREEN}} />
-
       <Header
         style={{backgroundColor: 'white'}}
-        androidStatusBarColor={Color.LIGHT_GREEN}>
+        iosBarStyle="dark-content"
+        androidStatusBarColor="#FFFFFF">
         <Body>
           <Title style={{color: 'black', fontSize: 22, marginLeft: 10}}>
             Riwayat Belanja
@@ -117,7 +109,7 @@ function History({navigation}) {
                     style={{flexDirection: 'row', marginTop: 15, width: 100}}>
                     <Button
                       large
-                      onPress={()=>navigation.navigate('ProductDetail')}
+                      onPress={() => navigation.navigate('ProductDetail')}
                       style={{
                         padding: 10,
                         marginLeft: 15,
@@ -256,7 +248,7 @@ function History({navigation}) {
                     style={{flexDirection: 'row', marginTop: 15, width: 100}}>
                     <Button
                       large
-                      onPress={()=>navigation.navigate('ProductDetail')}
+                      onPress={() => navigation.navigate('ProductDetail')}
                       style={{
                         padding: 10,
                         marginLeft: 15,

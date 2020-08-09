@@ -14,6 +14,8 @@ import {
   Container,
   Header,
   Card,
+  Item,
+  Input,
   CardItem,
   Content,
   Body,
@@ -101,25 +103,54 @@ function HomeScreen({navigation}) {
 
   return (
     <Container>
-      <StatusBar
-        hidden={false}
-        barStyle="dark-content"
-        style={{backgroundColor: Color.LIGHT_GREEN}}
-      />
+      <StatusBar hidden={false} />
       <Header
-        style={{backgroundColor: 'white'}}
+        style={{backgroundColor: 'white', height: 70}}
+        iosBarStyle="dark-content"
         searchBar
         rounded
-        androidStatusBarColor={'#FFFFFF'}>
+        androidStatusBarColor="#FFFFFF">
         <Left>
           <Image
-            style={{width: 180, height: 40, marginTop: 5}}
+            style={{width: 40, height: 40, marginTop: 5}}
             source={require('../assets/icons.png')}
           />
         </Left>
-        <Body></Body>
+        <Body>
+          <Item style={{borderBottomColor: '#FFFFFF'}}>
+            <View
+              style={{
+                width: '165%',
+                borderColor: 'silver',
+                borderWidth: 1,
+                borderRadius: 25,
+                height: 40,
+                paddingLeft: 10,
+                flexDirection: 'row',
+              }}>
+              <Image
+                style={{width: 30, height: 30, marginTop: 5}}
+                source={require('../assets/icons/search.png')}
+              />
+              <Input
+                placeholder="Mau beli apa?"
+                underlineColorAndroid="transparent"
+                placeholderTextColor="silver"
+                style={{
+                  fontFamily: 'ProductSansRegular',
+                  paddingBottom: 20,
+                }}
+              />
+              {/* <Icon name="ios-people" /> */}
+            </View>
+          </Item>
+        </Body>
         <Right>
-          <Icon name="notifications-outline" size={30} />
+          {/* <Icon name="notifications-outline" size={30} /> */}
+          <Image
+            source={require('../assets/icons/Notification.png')}
+            style={{width: 30, height: 30, paddingTop: 10}}
+          />
         </Right>
       </Header>
       <ScrollView>

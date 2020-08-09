@@ -65,7 +65,8 @@ function Profile({navigation}) {
     <Container>
       <Header
         style={{backgroundColor: 'white'}}
-        androidStatusBarColor={Color.LIGHT_GREEN}>
+        iosBarStyle="dark-content"
+        androidStatusBarColor="#FFFFFF">
         <Body>
           <Title style={{color: 'black', fontSize: 22, marginLeft: 10}}>
             Profil

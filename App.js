@@ -18,23 +18,6 @@ import Pool from './src/screens/Pool';
 import ProductDetail from './src/screens/product/ProductDetail';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-function DetailsScreen() {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Details Screen</Text>
-    </View>
-  );
-}
-
-function ActionBarImage() {
-  return (
-    <Image
-      source={require('./src/assets/icon.png')}
-      style={{width: 30, height: 30}}
-    />
-  );
-}
-
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -43,40 +26,55 @@ function HomeStack() {
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={({route}) => ({
-        tabBarIcon: ({focused, color}) => {
-          let iconName;
-
+        tabBarIcon: ({focused, iconSource}) => {
           if (route.name === 'Home') {
-            iconName = 'home';
-            color = focused ? {color: Color.RED} : {color: 'silver'};
+            iconSource = focused
+              ? require('./src/assets/icons/nav/active/explore.png')
+              : require('./src/assets/icons/nav/inactive/explore.png');
           } else if (route.name === 'Cart') {
-            iconName = 'shopping-cart';
-            color = focused ? {color: Color.RED} : {color: 'silver'};
+            iconSource = focused
+              ? require('./src/assets/icons/nav/active/cart.png')
+              : require('./src/assets/icons/nav/inactive/cart.png');
           } else if (route.name === 'Riwayat') {
-            iconName = 'history';
-            color = focused ? {color: Color.RED} : {color: 'silver'};
+            iconSource = focused
+              ? require('./src/assets/icons/nav/active/doc.png')
+              : require('./src/assets/icons/nav/inactive/doc.png');
           } else if (route.name === 'Profile') {
-            iconName = 'account-circle';
-            color = focused ? {color: Color.RED} : {color: 'silver'};
+            iconSource = focused
+              ? require('./src/assets/icons/nav/active/profile.png')
+              : require('./src/assets/icons/nav/inactive/profile.png');
           }
 
           // You can return any component that you like here!
           return (
-            <TouchableOpacity>
-              <Icon type="MaterialIcons" name={iconName} style={color} />
+            <TouchableOpacity style={{marginBottom: 5}}>
+              <Image
+                source={iconSource}
+                style={{width: 30, height: 30, paddingTop: 10}}
+              />
             </TouchableOpacity>
           );
         },
       })}
       tabBarOptions={{
-        activeTintColor: Color.RED,
-        inactiveTintColor: 'silver',
+        activeTintColor: Color.DARK_GREEN,
+        inactiveTintColor: 'grey',
+        labelStyle: {
+          fontFamily: 'ProductSansRegular',
+          fontSize: 12,
+          marginTop: 8,
+        },
+        style: {
+          paddingBottom: 7,
+          height: 65,
+          paddingTop: 17,
+        },
       }}>
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
-          title: 'Beranda',
+          title: 'Explore',
         }}
       />
       <Tab.Screen
@@ -97,12 +95,11 @@ function HomeStack() {
           headerTintColor: '#fff',
         }}
       />
-
       <Tab.Screen
         name="Profile"
         component={Profile}
         options={{
-          title: 'Profil',
+          title: 'Profile',
           headerStyle: styles.header,
           headerTintColor: '#fff',
         }}

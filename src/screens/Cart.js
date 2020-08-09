@@ -35,10 +35,10 @@ import {
 function Cart({navigation}) {
   return (
     <Container>
-      <StatusBar hidden={false} style={{backgroundColor: Color.LIGHT_GREEN}} />
       <Header
         style={{backgroundColor: 'white'}}
-        androidStatusBarColor={Color.LIGHT_GREEN}>
+        iosBarStyle="dark-content"
+        androidStatusBarColor="#FFFFFF">
         <Body>
           <Title style={{color: 'black', fontSize: 22, marginLeft: 10}}>
             Keranjang
@@ -275,7 +275,10 @@ function Cart({navigation}) {
             <Text style={{fontSize: 20, fontWeight: 'bold'}}>Rp. 208.000 </Text>
           </View>
           <View style={{}}>
-            <Button success style={{paddingHorizontal: 20}} onPress={()=>navigation.navigate('Delivery')}>
+            <Button
+              success
+              style={{paddingHorizontal: 20}}
+              onPress={() => navigation.navigate('Delivery')}>
               <Text style={{fontWeight: '200', color: 'white', fontSize: 16}}>
                 Bayar
               </Text>
