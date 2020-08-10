@@ -155,12 +155,17 @@ function HomeScreen({navigation}) {
       </Header>
       <ScrollView>
         <View style={{flex: 1}}>
-          <View style={{width: width, alignItems: 'center'}}>
+          <View style={{width: width, justifyContent: 'space-between'}}>
             <Swiper
               autoplay={true}
-              style={styles.wrapper}
+              // style={styles.wrapper}
+              style={{height: height / 2.6, alignItems: 'flex-start'}}
               dot={SliderDots}
               activeDot={SliderActiveDot}
+              paginationStyle={{
+                left: 20,
+                right: null,
+              }}
               autoplayTimeout={3}>
               <Image
                 style={styles.slides}
@@ -182,28 +187,39 @@ function HomeScreen({navigation}) {
                 source={require('../assets/nHBfsgAAQQAAAA8AJhvfUQADSGw.png')}
               />
             </Swiper>
+            <Text
+              style={{
+                marginTop: -42,
+                right: 20,
+                alignSelf: 'flex-end',
+                color: Color.BLUE,
+                fontFamily: 'ProductSansBold',
+                fontSize: 15,
+              }}>
+              Lihat Semua Promo
+            </Text>
           </View>
           <Content>
             <View
               style={{
                 flexDirection: 'row',
                 marginLeft: 15,
-                marginTop: 20,
+                marginTop: 30,
               }}>
               <Image
-                style={{width: 25, height: 25, marginTop: 2, marginRight: 5}}
-                source={require('../assets/pointer.png')}
+                style={{width: 30, height: 30, marginRight: 5}}
+                source={require('../assets/icons/Location-10.png')}
               />
               <Text
                 style={{
-                  fontSize: 18,
-                  fontWeight: 'bold',
-                  fontFamily: 'ProductSans-Bold',
+                  fontSize: 19,
+                  marginTop: 3,
+                  fontFamily: 'ProductSansBold',
                 }}>
                 Agen Terdekat
               </Text>
             </View>
-            {agents.totalRow < 1 ? (
+            {agents.totalRow > 1 ? (
               <Grid>
                 <Col style={styles.noAgentCol}>
                   <TouchableOpacity onPress={() => {}}>
@@ -214,58 +230,110 @@ function HomeScreen({navigation}) {
                 </Col>
               </Grid>
             ) : (
-              <View></View>
+              <Grid style={styles.gridStyle}>
+                {agents.data.map((agent, index) => (
+                  <TouchableOpacity
+                    key={agent.id}
+                    onPress={() => {
+                      navigation.navigate('Pool', [agent.id]);
+                    }}>
+                    <Col style={{marginTop: 20}}>
+                      <ImageBackground
+                        imageStyle={{borderRadius: 10}}
+                        style={styles.cardBackground}
+                        source={{
+                          uri: Variables.AGENT_URL + agent.picture,
+                        }}>
+                        <View
+                          style={
+                            agent.open < 1
+                              ? styles.cardOverlayRed
+                              : styles.cardOverlay
+                          }></View>
+                        {agent.open < 1 ? (
+                          <Image
+                            style={styles.cardClose}
+                            source={require('../assets/close.png')}
+                          />
+                        ) : (
+                          <View></View>
+                        )}
+                        <Text style={styles.cardTitle}>{agent.name}</Text>
+                      </ImageBackground>
+                    </Col>
+                  </TouchableOpacity>
+                ))}
+              </Grid>
             )}
+
             <Grid style={styles.gridStyle}>
-              {agents.data.map((agent, index) => (
-                <TouchableOpacity
-                  key={agent.id}
-                  onPress={() => {
-                    navigation.navigate('Pool', [agent.id]);
-                  }}>
-                  <Col style={{marginTop: 20}}>
-                    <ImageBackground
-                      imageStyle={{borderRadius: 10}}
-                      style={styles.cardBackground}
-                      source={{
-                        uri: Variables.AGENT_URL + agent.picture,
-                      }}>
-                      <View
-                        style={
-                          agent.open < 1
-                            ? styles.cardOverlayRed
-                            : styles.cardOverlay
-                        }></View>
-                      {agent.open < 1 ? (
-                        <Image
-                          style={styles.cardClose}
-                          source={require('../assets/close.png')}
-                        />
-                      ) : (
-                        <View></View>
-                      )}
-                      <Text style={styles.cardTitle}>{agent.name}</Text>
-                    </ImageBackground>
-                  </Col>
-                </TouchableOpacity>
-              ))}
+              <TouchableOpacity onPress={() => {}}>
+                <Col style={{marginTop: 20}}>
+                  <ImageBackground
+                    imageStyle={{borderRadius: 10}}
+                    style={styles.cardBackground}
+                    source={require('../assets/tak-lekang.jpg')}>
+                    <View style={styles.cardOverlay}></View>
+                    <Text style={styles.cardTitle}>Pasar A</Text>
+                  </ImageBackground>
+                </Col>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => {}}>
+                <Col style={{marginTop: 20}}>
+                  <ImageBackground
+                    imageStyle={{borderRadius: 10}}
+                    style={styles.cardBackground}
+                    source={require('../assets/tak-lekang.jpg')}>
+                    <View style={styles.cardOverlay}></View>
+                    <Text style={styles.cardTitle}>Pasar A</Text>
+                  </ImageBackground>
+                </Col>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => {}}>
+                <Col style={{marginTop: 20}}>
+                  <ImageBackground
+                    imageStyle={{borderRadius: 10}}
+                    style={styles.cardBackground}
+                    source={require('../assets/tak-lekang.jpg')}>
+                    <View style={styles.cardOverlay}></View>
+                    <Text style={styles.cardTitle}>Pasar A</Text>
+                  </ImageBackground>
+                </Col>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => {}}>
+                <Col style={{marginTop: 20}}>
+                  <ImageBackground
+                    imageStyle={{borderRadius: 10}}
+                    style={styles.cardBackground}
+                    source={require('../assets/tak-lekang.jpg')}>
+                    <View style={styles.cardOverlay}></View>
+                    <Text style={styles.cardTitle}>Pasar A</Text>
+                  </ImageBackground>
+                </Col>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => {}}>
+                <Col style={{marginTop: 20}}>
+                  <ImageBackground
+                    imageStyle={{borderRadius: 10}}
+                    style={styles.cardBackground}
+                    source={require('../assets/tak-lekang.jpg')}>
+                    <View style={styles.cardOverlay}></View>
+                    <Text style={styles.cardTitle}>Pasar A</Text>
+                  </ImageBackground>
+                </Col>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => {}}>
+                <Col style={{marginTop: 20}}>
+                  <ImageBackground
+                    imageStyle={{borderRadius: 10}}
+                    style={styles.cardBackground}
+                    source={require('../assets/tak-lekang.jpg')}>
+                    <View style={styles.cardOverlay}></View>
+                    <Text style={styles.cardTitle}>Pasar A</Text>
+                  </ImageBackground>
+                </Col>
+              </TouchableOpacity>
             </Grid>
-            <View
-              style={{
-                flex: 1,
-                flexDirection: 'row',
-                marginTop: 20,
-                marginBottom: 10,
-                alignSelf: 'center',
-                justifyContent: 'space-around',
-              }}>
-              <Text style={{}}>&copy; 2020 </Text>
-              <Text> </Text>
-              <Text style={{color: Color.DARK_GREEN}}>
-                {' '}
-                https://marketbox.id
-              </Text>
-            </View>
           </Content>
         </View>
       </ScrollView>
@@ -275,7 +343,7 @@ function HomeScreen({navigation}) {
 
 const styles = StyleSheet.create({
   slides: {
-    height: width / 2 + 30,
+    height: width / 2,
     width: width,
   },
   activeDot: {
