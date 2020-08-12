@@ -269,13 +269,42 @@ function HomeScreen({navigation}) {
             <Grid style={styles.gridStyle}>
               <TouchableOpacity onPress={() => {}}>
                 <Col style={{marginTop: 20}}>
-                  <ImageBackground
-                    imageStyle={{borderRadius: 10}}
-                    style={styles.cardBackground}
-                    source={require('../assets/tak-lekang.jpg')}>
-                    <View style={styles.cardOverlay}></View>
-                    <Text style={styles.cardTitle}>Pasar A</Text>
-                  </ImageBackground>
+                  <View style={{}}>
+                    <Image
+                      style={{
+                        width: 180,
+                        height: 120,
+                        borderTopRightRadius: 10,
+                        borderTopLeftRadius: 10,
+                      }}
+                      source={require('../assets/tak-lekang.jpg')}
+                    />
+                  </View>
+                  <View
+                    style={{
+                      height: 120,
+                      borderColor: 'red',
+                      border: 1,
+                    }}>
+                    <Text style={styles.cardTitle}>Agen Ta-Nia</Text>
+                    <View style={{flexDirection: 'row'}}>
+                      <Image
+                        style={{width: 23, height: 23, marginRight: 5}}
+                        source={require('../assets/icons/Location.png')}
+                      />
+                      <Text
+                        style={{
+                          color: Color.BLUE,
+                          fontFamily: 'ProductSansRegular',
+                          fontSize: 16,
+                        }}>
+                        1.2 Km
+                      </Text>
+                    </View>
+                    <View>
+                      <Text>Jalan Kanan Kiri Oke 09 Bontang, Kota Bontang</Text>
+                    </View>
+                  </View>
                 </Col>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => {}}>
@@ -374,9 +403,8 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
   },
   cardTitle: {
-    fontSize: 20,
-    color: 'white',
-    bottom: 0,
+    fontSize: 18,
+    fontFamily: 'ProductSansBold',
     padding: 10,
     position: 'absolute',
   },
@@ -403,7 +431,6 @@ const styles = StyleSheet.create({
   },
   cardBackground: {
     flex: 1,
-    borderRadius: 10,
     backgroundColor: '#00CE9F',
     width: width / 2.3,
     resizeMode: 'cover',
