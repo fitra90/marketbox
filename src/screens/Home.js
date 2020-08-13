@@ -283,13 +283,25 @@ function HomeScreen({navigation}) {
                   <View
                     style={{
                       height: 120,
-                      borderColor: 'red',
-                      border: 1,
+                      width: 180,
+                      borderColor: Color.OUTLINE,
+                      borderTopColor: 'transparent',
+                      borderWidth: 1,
+                      marginTop: -1,
+                      borderBottomLeftRadius: 10,
+                      borderBottomRightRadius: 10,
+                      flexDirection: 'column',
+                      alignContent: 'space-between',
                     }}>
                     <Text style={styles.cardTitle}>Agen Ta-Nia</Text>
-                    <View style={{flexDirection: 'row'}}>
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        marginTop: 38,
+                        marginLeft: 5,
+                      }}>
                       <Image
-                        style={{width: 23, height: 23, marginRight: 5}}
+                        style={{width: 20, height: 20, marginRight: 3}}
                         source={require('../assets/icons/Location.png')}
                       />
                       <Text
@@ -297,12 +309,20 @@ function HomeScreen({navigation}) {
                           color: Color.BLUE,
                           fontFamily: 'ProductSansRegular',
                           fontSize: 16,
+                          marginTop: 2,
                         }}>
                         1.2 Km
                       </Text>
                     </View>
-                    <View>
-                      <Text>Jalan Kanan Kiri Oke 09 Bontang, Kota Bontang</Text>
+                    <View style={{paddingHorizontal: 10, marginTop: 6}}>
+                      <Text
+                        style={{
+                          fontFamily: 'ProductSansRegular',
+                          color: Color.TEXT_SECONDARY,
+                          fontSize: 13,
+                        }}>
+                        Jalan Kanan Kiri Oke 09 Bontang, Kota Bontang
+                      </Text>
                     </View>
                   </View>
                 </Col>
@@ -376,20 +396,20 @@ const styles = StyleSheet.create({
     width: width,
   },
   activeDot: {
-    backgroundColor: Color.DARK_GREEN,
+    backgroundColor: Color.PRIMARY,
     width: 8,
     height: 8,
-    borderRadius: 4,
+    borderRadius: 5,
     marginLeft: 3,
     marginRight: 3,
     marginTop: 3,
     marginBottom: 3,
   },
   sliderDots: {
-    backgroundColor: Color.PALE,
+    backgroundColor: Color.OUTLINE,
     width: 8,
     height: 8,
-    borderRadius: 4,
+    borderRadius: 5,
     marginLeft: 3,
     marginRight: 3,
     marginTop: 3,

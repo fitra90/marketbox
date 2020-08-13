@@ -57,8 +57,8 @@ function HomeStack() {
         },
       })}
       tabBarOptions={{
-        activeTintColor: Color.DARK_GREEN,
-        inactiveTintColor: 'grey',
+        activeTintColor: Color.PRIMARY,
+        inactiveTintColor: Color.INACTIVE,
         labelStyle: {
           fontFamily: 'ProductSansRegular',
           fontSize: 12,
