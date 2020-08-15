@@ -43,42 +43,42 @@ const initData = {
 };
 
 function Pool({route, navigation}) {
-  const agentId = route.params[0];
-  console.log(agentId);
-  const [shops, setShops] = useState(initData);
+  // const agentId = route.params[0];
+  // console.log(agentId);
+  // const [shops, setShops] = useState(initData);
 
-  useEffect(() => {
-    const fetchShops = async () => {
-      try {
-        const result = await api.get('/shops', {
-          params: {
-            pool: agentId,
-          },
-        });
-        setShops(result.data);
-        if (result.status != 'ok') {
-          throw new Error('error');
-        }
-      } catch (error) {
-        // console.log(error.response.status);
-        if (error.response.status) {
-          // setAShopNotFound(true);
-        }
-        Alert.alert(
-          'Terjadi kesalahan jaringan',
-          [
-            {
-              text: 'Gagal mendapatkan data toko',
-            },
-            {text: 'OK', onPress: () => console.log('OK Pressed')},
-          ],
-          {cancelable: false},
-        );
-      }
-    };
-    fetchShops();
-  }, []);
-  console.log(shops);
+  // useEffect(() => {
+  //   const fetchShops = async () => {
+  //     try {
+  //       const result = await api.get('/shops', {
+  //         params: {
+  //           pool: agentId,
+  //         },
+  //       });
+  //       setShops(result.data);
+  //       if (result.status != 'ok') {
+  //         throw new Error('error');
+  //       }
+  //     } catch (error) {
+  //       // console.log(error.response.status);
+  //       if (error.response.status) {
+  //         // setAShopNotFound(true);
+  //       }
+  //       Alert.alert(
+  //         'Terjadi kesalahan jaringan',
+  //         [
+  //           {
+  //             text: 'Gagal mendapatkan data toko',
+  //           },
+  //           {text: 'OK', onPress: () => console.log('OK Pressed')},
+  //         ],
+  //         {cancelable: false},
+  //       );
+  //     }
+  //   };
+  //   fetchShops();
+  // }, []);
+  // console.log(shops);
 
   return (
     <Container>
@@ -121,48 +121,49 @@ function Pool({route, navigation}) {
           <CardItem>
             <Body>
               <ScrollView horizontal={true}>
-                {shops.data.map((shop, index) => (
-                  <Grid>
-                    <TouchableOpacity onPress={() => {}}>
-                      <Col
+                {/* {shops.data.map((shop, index) => ( */}
+                <Grid>
+                  <TouchableOpacity onPress={() => {}}>
+                    <Col
+                      style={{
+                        marginHorizontal: 5,
+                      }}>
+                      <ImageBackground
+                        imageStyle={{borderRadius: 10}}
                         style={{
-                          marginHorizontal: 5,
-                        }}>
-                        <ImageBackground
-                          imageStyle={{borderRadius: 10}}
+                          flex: 1,
+                          borderRadius: 10,
+                          backgroundColor: '#00CE9F',
+                          height: 110,
+                          width: 140,
+                          resizeMode: 'cover',
+                        }}
+                        // source={{uri: Variables.SHOP_URL + shop.picture}}
+                      >
+                        <View
                           style={{
-                            flex: 1,
-                            borderRadius: 10,
-                            backgroundColor: '#00CE9F',
-                            height: 110,
                             width: 140,
-                            resizeMode: 'cover',
-                          }}
-                          source={{uri: Variables.SHOP_URL + shop.picture}}>
-                          <View
-                            style={{
-                              width: 140,
-                              borderRadius: 10,
-                              height: 110,
-                              position: 'absolute',
-                              backgroundColor: 'black',
-                              opacity: 0.5,
-                            }}></View>
-                          <Text
-                            style={{
-                              fontSize: 16,
-                              color: 'white',
-                              bottom: 0,
-                              padding: 10,
-                              position: 'absolute',
-                            }}>
-                            {shop.name}
-                          </Text>
-                        </ImageBackground>
-                      </Col>
-                    </TouchableOpacity>
-                  </Grid>
-                ))}
+                            borderRadius: 10,
+                            height: 110,
+                            position: 'absolute',
+                            backgroundColor: 'black',
+                            opacity: 0.5,
+                          }}></View>
+                        <Text
+                          style={{
+                            fontSize: 16,
+                            color: 'white',
+                            bottom: 0,
+                            padding: 10,
+                            position: 'absolute',
+                          }}>
+                          {shop.name}
+                        </Text>
+                      </ImageBackground>
+                    </Col>
+                  </TouchableOpacity>
+                </Grid>
+                {/* ))} */}
               </ScrollView>
 
               <Tabs

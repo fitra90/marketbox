@@ -8,6 +8,7 @@ module.exports = {
   BACKGROUND: '#F8F8F8',
   INACTIVE: '#BDB7C2',
   OUTLINE: '#C7CAD1',
+  LINER: '#E5E5E5',
 };
 
 // #E21E28 RED

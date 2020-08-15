@@ -31,30 +31,40 @@ import {
   TouchableOpacity,
   TouchableNativeFeedback,
 } from 'react-native-gesture-handler';
+import HorizontalLiner from '../components/HorizontalLiner';
 
 function Cart({navigation}) {
   return (
-    <Container>
+    <Container style={{backgroundColor: Color.BACKGROUND}}>
       <Header
         style={{backgroundColor: 'white'}}
+        transparent
         iosBarStyle="dark-content"
         androidStatusBarColor="#FFFFFF">
         <Body>
-          <Title style={{color: 'black', fontSize: 22, marginLeft: 10}}>
+          <Title
+            style={{
+              color: Color.TEXT_PRIMARY,
+              fontSize: 20,
+              marginLeft: 10,
+              fontFamily: 'ProductSansBold',
+            }}>
             Keranjang
           </Title>
         </Body>
         <Right style={{marginLeft: -20}}>
           <TouchableOpacity>
-            <Button transparent hasText>
-              <Icon name="chatbubbles" style={{color: 'black'}} />
-            </Button>
+            <Image
+              style={{width: 30, height: 30, marginRight: 3}}
+              source={require('../assets/icons/Chat.png')}
+            />
           </TouchableOpacity>
         </Right>
       </Header>
-      <Content>
+      <View></View>
+      <Content style={{marginTop: 10}}>
         <ScrollView>
-          <Card>
+          <Card transparent>
             <CardItem>
               <Left>
                 <Thumbnail
@@ -62,38 +72,56 @@ function Cart({navigation}) {
                   style={{width: 40, height: 40}}
                 />
                 <Body>
-                  <Text>Toko Alfamart</Text>
-                  <Text note style={{color: 'grey', fontStyle: 'italic'}}>
+                  <Text style={{fontFamily: 'ProductSansBold', fontSize: 16}}>
+                    Toko Alfamart
+                  </Text>
+                  <Text
+                    note
+                    style={{
+                      color: Color.TEXT_SECONDARY,
+                      fontFamily: 'ProductSansRegular',
+                      fontSize: 12,
+                    }}>
                     Pedagang Resmi
                   </Text>
                 </Body>
               </Left>
             </CardItem>
-            <CardItem style={{height: 130, marginBottom: 10}}>
+            <HorizontalLiner />
+            <CardItem style={{height: 130}}>
               <Left>
-                <CheckBox checked={true} color="green" />
+                <Image
+                  style={{width: 40, height: 40}}
+                  source={require('../assets/icons/checked.png')}
+                />
                 <Image
                   source={require('../assets/minyak.jpg')}
                   style={{
-                    height: 200,
-                    width: 120,
-                    marginLeft: 30,
+                    height: 180,
+                    width: 100,
+                    marginLeft: 10,
                     resizeMode: 'contain',
                   }}
                 />
               </Left>
               <Body style={{justifyContent: 'center'}}>
-                <Text style={{fontSize: 16, fontWeight: '500'}}>
+                <Text
+                  style={{
+                    fontFamily: 'ProductSansRegular',
+                    fontSize: 16,
+                    color: Color.TEXT_PRIMARY,
+                    fontWeight: '500',
+                  }}>
                   Minyak Goreng 2L
                 </Text>
                 <Text
                   style={{
                     fontSize: 16,
-                    fontWeight: 'bold',
-                    color: Color.DARK_BROWN,
+                    fontFamily: 'ProductSansRegular',
+                    color: Color.PRIMARY,
                     marginTop: 5,
                   }}>
-                  Rp. 24.000
+                  Rp. 23.500
                 </Text>
                 <View style={{flexDirection: 'row', marginTop: 15, width: 100}}>
                   <Button

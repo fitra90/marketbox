@@ -267,7 +267,10 @@ function HomeScreen({navigation}) {
             )}
 
             <Grid style={styles.gridStyle}>
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('Pool');
+                }}>
                 <Col style={{marginTop: 20}}>
                   <View style={{}}>
                     <Image
@@ -297,8 +300,8 @@ function HomeScreen({navigation}) {
                     <View
                       style={{
                         flexDirection: 'row',
-                        marginTop: 38,
-                        marginLeft: 5,
+                        marginTop: 40,
+                        marginLeft: 6,
                       }}>
                       <Image
                         style={{width: 20, height: 20, marginRight: 3}}
@@ -314,7 +317,7 @@ function HomeScreen({navigation}) {
                         1.2 Km
                       </Text>
                     </View>
-                    <View style={{paddingHorizontal: 10, marginTop: 6}}>
+                    <View style={{paddingHorizontal: 10, marginTop: 10}}>
                       <Text
                         style={{
                           fontFamily: 'ProductSansRegular',
@@ -325,61 +328,6 @@ function HomeScreen({navigation}) {
                       </Text>
                     </View>
                   </View>
-                </Col>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => {}}>
-                <Col style={{marginTop: 20}}>
-                  <ImageBackground
-                    imageStyle={{borderRadius: 10}}
-                    style={styles.cardBackground}
-                    source={require('../assets/tak-lekang.jpg')}>
-                    <View style={styles.cardOverlay}></View>
-                    <Text style={styles.cardTitle}>Pasar A</Text>
-                  </ImageBackground>
-                </Col>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => {}}>
-                <Col style={{marginTop: 20}}>
-                  <ImageBackground
-                    imageStyle={{borderRadius: 10}}
-                    style={styles.cardBackground}
-                    source={require('../assets/tak-lekang.jpg')}>
-                    <View style={styles.cardOverlay}></View>
-                    <Text style={styles.cardTitle}>Pasar A</Text>
-                  </ImageBackground>
-                </Col>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => {}}>
-                <Col style={{marginTop: 20}}>
-                  <ImageBackground
-                    imageStyle={{borderRadius: 10}}
-                    style={styles.cardBackground}
-                    source={require('../assets/tak-lekang.jpg')}>
-                    <View style={styles.cardOverlay}></View>
-                    <Text style={styles.cardTitle}>Pasar A</Text>
-                  </ImageBackground>
-                </Col>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => {}}>
-                <Col style={{marginTop: 20}}>
-                  <ImageBackground
-                    imageStyle={{borderRadius: 10}}
-                    style={styles.cardBackground}
-                    source={require('../assets/tak-lekang.jpg')}>
-                    <View style={styles.cardOverlay}></View>
-                    <Text style={styles.cardTitle}>Pasar A</Text>
-                  </ImageBackground>
-                </Col>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => {}}>
-                <Col style={{marginTop: 20}}>
-                  <ImageBackground
-                    imageStyle={{borderRadius: 10}}
-                    style={styles.cardBackground}
-                    source={require('../assets/tak-lekang.jpg')}>
-                    <View style={styles.cardOverlay}></View>
-                    <Text style={styles.cardTitle}>Pasar A</Text>
-                  </ImageBackground>
                 </Col>
               </TouchableOpacity>
             </Grid>
@@ -424,7 +372,7 @@ const styles = StyleSheet.create({
   },
   cardTitle: {
     fontSize: 18,
-    fontFamily: 'ProductSansBold',
+    fontFamily: 'ProductSansRegular',
     padding: 10,
     position: 'absolute',
   },
