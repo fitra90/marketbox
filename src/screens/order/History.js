@@ -6,8 +6,8 @@ import {
   Header,
   Right,
   Body,
-  Card,
-  CardItem,
+  List,
+  ListItem,
   CheckBox,
   Input,
   Content,
@@ -21,247 +21,128 @@ import {TouchableNativeFeedback} from 'react-native-gesture-handler';
 
 function History({navigation}) {
   return (
-    <Container>
+    <Container style={{backgroundColor: Color.BACKGROUND}}>
       <Header
         style={{backgroundColor: 'white'}}
+        transparent
         iosBarStyle="dark-content"
         androidStatusBarColor="#FFFFFF">
         <Body>
-          <Title style={{color: 'black', fontSize: 22, marginLeft: 10}}>
+          <Title
+            style={{
+              color: Color.TEXT_PRIMARY,
+              fontSize: 20,
+              marginLeft: 10,
+              fontFamily: 'ProductSansBold',
+            }}>
             Riwayat Belanja
           </Title>
         </Body>
         <Right>
           <TouchableNativeFeedback>
             <Button hasText transparent>
-              <Text style={{color: Color.RED}}>BERSIHKAN</Text>
+              <Text
+                style={{color: Color.RED, fontFamily: 'ProductSansRegular'}}>
+                BERSIHKAN
+              </Text>
             </Button>
           </TouchableNativeFeedback>
         </Right>
       </Header>
       <Content>
         <ScrollView>
-          <Card>
-            <CardItem>
-              <Left style={{flexDirection: 'column', alignItems: 'flex-start'}}>
-                <Text style={{marginBottom: 10}}>ID Transaksi: 1234567</Text>
-
-                <Body
-                  style={{
-                    flexDirection: 'row',
-                    alignSelf: 'flex-start',
-                    marginLeft: -5,
-                  }}>
-                  <Thumbnail
-                    source={require('../../assets/alfamart.jpeg')}
-                    style={{width: 40, height: 40, marginRight: 10}}
-                  />
-                  <View style={{flexDirection: 'column'}}>
-                    <Text>Toko Alfamart</Text>
-                    <Text note style={{color: 'grey', fontStyle: 'italic'}}>
-                      Pedagang Resmi
-                    </Text>
-                  </View>
-                </Body>
-              </Left>
-            </CardItem>
-            <CardItem style={{height: 130, marginBottom: 10}}>
+          <List>
+            <ListItem thumbnail>
               <Left>
-                <View>
-                  <Text>20 Juni 2020</Text>
+                <Thumbnail square source={require('../../assets/minyak.jpg')} />
+              </Left>
+              <Body>
+                <Text style={{fontFamily: 'ProductSansRegular', fontSize: 16}}>
+                  Minyak Goreng 1 L
+                </Text>
+                <View style={{flexDirection: 'row'}}>
                   <Text
+                    note
+                    numberOfLines={1}
                     style={{
-                      color: Color.DARK_GREEN,
-                      fontSize: 16,
-                      fontStyle: 'italic',
+                      fontFamily: 'ProductSansRegular',
+                      marginTop: 3,
+                      color: Color.PRIMARY,
                     }}>
                     SELESAI
                   </Text>
-                </View>
-                <View style={{alignItems: 'center'}}>
-                  <Image
-                    source={require('../../assets/minyak.jpg')}
+                  <Text> &nbsp; </Text>
+                  <Text
+                    note
+                    numberOfLines={1}
                     style={{
-                      height: 200,
-                      marginLeft: 10,
-                      width: 120,
-                      resizeMode: 'contain',
-                    }}
-                  />
-                </View>
-              </Left>
-
-              <Right style={{marginLeft: -20}}>
-                <Body style={{justifyContent: 'center'}}>
-                  <Text style={{fontSize: 16, fontWeight: '500'}}>
-                    Minyak Goreng 2 L
+                      fontFamily: 'ProductSansRegular',
+                      marginTop: 3,
+                      color: Color.INACTIVE,
+                    }}>
+                    20/08/2020
                   </Text>
+                </View>
+              </Body>
+              <Right>
+                <Button transparent>
                   <Text
                     style={{
+                      fontFamily: 'ProductSansRegular',
                       fontSize: 16,
-                      fontWeight: 'bold',
-                      color: Color.DARK_BROWN,
-                      marginTop: 5,
+                      color: Color.TEXT_PRIMARY,
                     }}>
                     Rp. 24.000
                   </Text>
-                  <View
-                    style={{flexDirection: 'row', marginTop: 15, width: 100}}>
-                    <Button
-                      large
-                      onPress={() => navigation.navigate('ProductDetail')}
-                      style={{
-                        padding: 10,
-                        marginLeft: 15,
-                        height: 25,
-                        backgroundColor: Color.DARK_GREEN,
-                      }}>
-                      <Text style={{color: 'white'}}>Beli Lagi</Text>
-                    </Button>
-                  </View>
-                </Body>
+                </Button>
               </Right>
-            </CardItem>
-            <CardItem style={{height: 130, marginBottom: 10}}>
+            </ListItem>
+            <ListItem thumbnail>
               <Left>
-                <View>
-                  <Text>20 Juni 2020</Text>
+                <Thumbnail square source={require('../../assets/minyak.jpg')} />
+              </Left>
+              <Body>
+                <Text style={{fontFamily: 'ProductSansRegular', fontSize: 16}}>
+                  Minyak Goreng 1 L
+                </Text>
+                <View style={{flexDirection: 'row'}}>
                   <Text
+                    note
+                    numberOfLines={1}
                     style={{
-                      color: Color.DARK_GREEN,
-                      fontSize: 16,
-                      fontStyle: 'italic',
+                      fontFamily: 'ProductSansRegular',
+                      marginTop: 3,
+                      color: Color.PRIMARY,
                     }}>
                     SELESAI
                   </Text>
-                </View>
-                <View style={{alignItems: 'center'}}>
-                  <Image
-                    source={require('../../assets/beras.png')}
+                  <Text> &nbsp; </Text>
+                  <Text
+                    note
+                    numberOfLines={1}
                     style={{
-                      height: 200,
-                      marginLeft: 10,
-                      width: 120,
-                      resizeMode: 'contain',
-                    }}
-                  />
-                </View>
-              </Left>
-
-              <Right style={{marginLeft: -20}}>
-                <Body style={{justifyContent: 'center'}}>
-                  <Text style={{fontSize: 16, fontWeight: '500'}}>
-                    Beras 5 Kg
+                      fontFamily: 'ProductSansRegular',
+                      marginTop: 3,
+                      color: Color.INACTIVE,
+                    }}>
+                    20/08/2020
                   </Text>
+                </View>
+              </Body>
+              <Right>
+                <Button transparent>
                   <Text
                     style={{
+                      fontFamily: 'ProductSansRegular',
                       fontSize: 16,
-                      fontWeight: 'bold',
-                      color: Color.DARK_BROWN,
-                      marginTop: 5,
+                      color: Color.TEXT_PRIMARY,
                     }}>
-                    Rp. 60.000
+                    Rp. 24.000
                   </Text>
-                  <View
-                    style={{flexDirection: 'row', marginTop: 15, width: 100}}>
-                    <Button
-                      large
-                      onPress={() => navigation.navigate('ProductDetail')}
-                      style={{
-                        padding: 10,
-                        marginLeft: 15,
-                        height: 25,
-                        backgroundColor: Color.DARK_GREEN,
-                      }}>
-                      <Text style={{color: 'white'}}>Beli Lagi</Text>
-                    </Button>
-                  </View>
-                </Body>
+                </Button>
               </Right>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem>
-              <Left style={{flexDirection: 'column', alignItems: 'flex-start'}}>
-                <Text style={{marginBottom: 10}}>ID Transaksi: 1234567</Text>
-
-                <Body
-                  style={{
-                    flexDirection: 'row',
-                    alignSelf: 'flex-start',
-                    marginLeft: -5,
-                  }}>
-                  <Thumbnail
-                    source={require('../../assets/okoc.jpg')}
-                    style={{width: 40, height: 40, marginRight: 10}}
-                  />
-                  <View style={{flexDirection: 'column'}}>
-                    <Text>Toko OKE OCE</Text>
-                    <Text note style={{color: 'grey', fontStyle: 'italic'}}>
-                      Pedagang Resmi
-                    </Text>
-                  </View>
-                </Body>
-              </Left>
-            </CardItem>
-            <CardItem style={{height: 130, marginBottom: 10}}>
-              <Left>
-                <View>
-                  <Text>20 Juni 2020</Text>
-                  <Text
-                    style={{
-                      color: Color.DARK_GREEN,
-                      fontSize: 16,
-                      fontStyle: 'italic',
-                    }}>
-                    SELESAI
-                  </Text>
-                </View>
-                <View style={{alignItems: 'center'}}>
-                  <Image
-                    source={require('../../assets/indomie.jpg')}
-                    style={{
-                      height: 200,
-                      marginLeft: 10,
-                      width: 120,
-                      resizeMode: 'contain',
-                    }}
-                  />
-                </View>
-              </Left>
-
-              <Right style={{marginLeft: -20}}>
-                <Body style={{justifyContent: 'center'}}>
-                  <Text style={{fontSize: 16, fontWeight: '500'}}>
-                    Indomie 1 Karton
-                  </Text>
-                  <Text
-                    style={{
-                      fontSize: 16,
-                      fontWeight: 'bold',
-                      color: Color.DARK_BROWN,
-                      marginTop: 5,
-                    }}>
-                    Rp. 124.000
-                  </Text>
-                  <View
-                    style={{flexDirection: 'row', marginTop: 15, width: 100}}>
-                    <Button
-                      large
-                      onPress={() => navigation.navigate('ProductDetail')}
-                      style={{
-                        padding: 10,
-                        marginLeft: 15,
-                        height: 25,
-                        backgroundColor: Color.DARK_GREEN,
-                      }}>
-                      <Text style={{color: 'white'}}>Beli Lagi</Text>
-                    </Button>
-                  </View>
-                </Body>
-              </Right>
-            </CardItem>
-          </Card>
+            </ListItem>
+          </List>
         </ScrollView>
       </Content>
     </Container>

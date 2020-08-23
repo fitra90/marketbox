@@ -62,14 +62,21 @@ const signIn = async () => {
 };
 function Profile({navigation}) {
   return (
-    <Container>
+    <Container style={{backgroundColor: Color.BACKGROUND}}>
       <Header
         style={{backgroundColor: 'white'}}
+        transparent
         iosBarStyle="dark-content"
         androidStatusBarColor="#FFFFFF">
         <Body>
-          <Title style={{color: 'black', fontSize: 22, marginLeft: 10}}>
-            Profil
+          <Title
+            style={{
+              color: Color.TEXT_PRIMARY,
+              fontSize: 20,
+              marginLeft: 10,
+              fontFamily: 'ProductSansBold',
+            }}>
+            Profile
           </Title>
         </Body>
       </Header>

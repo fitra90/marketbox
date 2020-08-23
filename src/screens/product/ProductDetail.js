@@ -45,7 +45,7 @@ function ProductData() {
               height: 250,
               alignSelf: 'center',
               width: 275,
-              marginBottom: 30,
+              marginBottom: 25,
               resizeMode: 'contain',
             }}
           />
@@ -61,39 +61,65 @@ function ProductData() {
           <View style={{}}>
             <Text
               style={{
-                fontSize: 18,
+                fontSize: 22,
+                fontFamily: 'ProductSansRegular',
+                color: Color.TEXT_PRIMARY,
               }}>
               Beras 5 Kg
             </Text>
             <Text
               style={{
-                fontSize: 26,
-                color: Color.DARK_GREEN,
+                fontSize: 18,
+                color: Color.PRIMARY,
+                fontFamily: 'ProductSansRegular',
+                marginTop: 10,
               }}>
               Rp. 60.000
             </Text>
           </View>
           <View style={{flex: 1}}>
             {/* <Text style={{alignSelf:'flex-end'}}>Promo</Text> */}
-            <Icon
+            <Image
+              source={require('../../assets/icons/share.png')}
               style={{
+                height: 25,
+                width: 25,
                 alignSelf: 'flex-end',
                 marginTop: 20,
                 marginRight: 10,
-                color: 'grey',
+                marginRight: 10,
+                resizeMode: 'contain',
               }}
-              name="share"
             />
           </View>
         </Body>
       </CardItem>
       <CardItem>
         <Body>
-          <Text style={{fontSize:16, fontWeight:'bold', marginBottom:5}}>Deskripsi Produk</Text>
-          <Text>1. Sekelas Raja Lele</Text>
-          <Text>2. Bebas pengawet dan pemutih sintetis</Text>
-          <Text>3. Pulen dan wangi</Text>
-          <Text>4. Bebas Kutu dan bau</Text>
+          <Text
+            style={{
+              fontSize: 16,
+              marginBottom: 5,
+              fontFamily: 'ProductSansBold',
+            }}>
+            Deskripsi Produk
+          </Text>
+          <Text style={{fontFamily: 'ProductSansRegular', fontSize: 14}}>
+            1. Sekelas Raja Lele {'\n'}
+            2. Bebas pengawet dan pemutih sintetis{'\n'}
+            3. Pulen dan wangi{'\n'}
+            4. Bebas Kutu dan bau {'\n'}
+          </Text>
+          <Text
+            style={{
+              fontFamily: 'ProductSansRegular',
+              fontSize: 16,
+              marginVertical: 10,
+              alignSelf: 'center',
+              color: Color.BLUE,
+            }}>
+            Selengkapknya
+          </Text>
         </Body>
       </CardItem>
     </Card>
@@ -102,42 +128,55 @@ function ProductData() {
 
 function ActionButton(props) {
   return (
-    <Footer>
+    <Footer style={{backgroundColor: 'white', height: 80}}>
       <View
         style={{
           flex: 1,
           flexDirection: 'row',
           alignContent: 'space-between',
+          marginTop: 17,
+          justifyContent: 'center',
         }}>
         <Button
-          onPress={() => {props.navigation.navigate('Cart')}}
+          onPress={() => {
+            props.navigation.navigate('Cart');
+          }}
           style={{
-            width: (widthWindow * 1) / 4,
-            backgroundColor: Color.PALE,
+            width: 50,
+            borderRadius: 5,
+            backgroundColor: Color.LINER,
+            marginRight: 10,
             justifyContent: 'center',
-            height: '100%',
           }}>
-          <Icon
-            type="MaterialIcons"
-            style={{color: 'black'}}
-            name="shopping-cart"
+          <Image
+            source={require('../../assets/icons/cartplus.png')}
+            style={{
+              height: 25,
+              width: 25,
+              alignSelf: 'center',
+            }}
           />
         </Button>
         <Button
-          onPress={() => {props.navigation.navigate('Delivery')}}
+          onPress={() => {
+            props.navigation.navigate('Delivery');
+          }}
           style={{
-            width: (widthWindow * 3) / 4,
-            backgroundColor: Color.RED,
+            width: 300,
+            backgroundColor: Color.PRIMARY,
             justifyContent: 'center',
-            height: '100%',
+            fontFamily: 'ProductSansRegular',
+            marginBottom: 10,
+            marginLeft: 10,
+            borderRadius: 5,
           }}>
           <Text
             style={{
               fontSize: 20,
-              fontWeight: 'bold',
+              fontFamily: 'ProductSansRegular',
               color: 'white',
             }}>
-            Beli
+            Beli Sekarang
           </Text>
         </Button>
       </View>
@@ -150,14 +189,18 @@ function RelatedProduct(props) {
     <Card>
       <CardItem>
         <Body>
-          <Text style={{fontSize: 16, fontWeight: 'bold'}}>Produk Lainnya</Text>
+          <Text
+            style={{
+              fontSize: 16,
+              fontFamily: 'ProductSansBold',
+            }}>
+            Produk Lainnya
+          </Text>
           <ScrollView horizontal={true} style={{marginTop: 10}}>
             <Grid>
               <Col>
                 <TouchableOpacity
-                  onPress={() =>
-                    props.navigation.navigate('ProductDetail')
-                  }>
+                  onPress={() => props.navigation.navigate('ProductDetail')}>
                   <Card>
                     <CardItem>
                       <Body>
@@ -183,85 +226,18 @@ function RelatedProduct(props) {
                         <View style={{}}>
                           <Text
                             style={{
-                              fontSize: 16,
+                              fontSize: 18,
+                              fontFamily: 'ProductSansRegular',
                             }}>
-                            Indomeie 1 Karton
+                            Indomie 1 Karton
                           </Text>
                           <Text
                             style={{
-                              fontSize: 18,
-                              color: Color.DARK_GREEN,
+                              fontSize: 16,
+                              color: Color.TEXT_PRIMARY,
+                              fontFamily: 'ProductSansBold',
                             }}>
                             Rp. 110.000
-                          </Text>
-                        </View>
-                        <View style={{flex: 1}}>
-                          {/* <Text style={{alignSelf:'flex-end'}}>Promo</Text> */}
-                          <Text
-                            style={{
-                              alignSelf: 'flex-end',
-                              marginTop: 20,
-                              color: 'grey',
-                            }}>
-                            LIHAT
-                          </Text>
-                        </View>
-                      </Body>
-                    </CardItem>
-                  </Card>
-                </TouchableOpacity>
-              </Col>
-              <Col>
-                <TouchableOpacity
-                  onPress={() =>
-                    props.navigation.navigate('ProductDetail')
-                  }>
-                  <Card>
-                    <CardItem>
-                      <Body>
-                        <Image
-                          source={require('../../assets/minyak.jpg')}
-                          style={{
-                            height: 130,
-                            alignSelf: 'center',
-                            width: 155,
-                            marginBottom: 10,
-                            resizeMode: 'contain',
-                          }}
-                        />
-                      </Body>
-                    </CardItem>
-                    <CardItem bordered style={{marginTop: -10}}>
-                      <Body
-                        style={{
-                          flex: 1,
-                          flexDirection: 'row',
-                          alignContent: 'space-between',
-                        }}>
-                        <View style={{}}>
-                          <Text
-                            style={{
-                              fontSize: 16,
-                            }}>
-                            Minyak Goreng 1 L
-                          </Text>
-                          <Text
-                            style={{
-                              fontSize: 18,
-                              color: Color.DARK_GREEN,
-                            }}>
-                            Rp. 24.000
-                          </Text>
-                        </View>
-                        <View style={{flex: 1}}>
-                          {/* <Text style={{alignSelf:'flex-end'}}>Promo</Text> */}
-                          <Text
-                            style={{
-                              alignSelf: 'flex-end',
-                              marginTop: 20,
-                              color: 'grey',
-                            }}>
-                            LIHAT
                           </Text>
                         </View>
                       </Body>
@@ -279,20 +255,20 @@ function RelatedProduct(props) {
 
 function ProductDetail({navigation}) {
   return (
-    <Container>
-      <StatusBar hidden={false} style={{backgroundColor: Color.LIGHT_GREEN}} />
-
+    <Container style={{backgroundColor: Color.BACKGROUND}}>
       <Header
         style={{backgroundColor: 'white'}}
-        androidStatusBarColor={Color.LIGHT_GREEN}>
+        transparent
+        iosBarStyle="dark-content"
+        androidStatusBarColor="#FFFFFF">
         <Left>
           <TouchableNativeFeedback onPress={() => navigation.goBack()}>
             <View style={{padding: 10}}>
               <Image
-                source={require('../../assets/back.png')}
+                source={require('../../assets/icons/Arrow.png')}
                 style={{
-                  height: 25,
-                  width: 25,
+                  height: 30,
+                  width: 30,
                   resizeMode: 'contain',
                 }}
               />
@@ -300,15 +276,25 @@ function ProductDetail({navigation}) {
           </TouchableNativeFeedback>
         </Left>
         <Body>
-          <Title style={{color: 'black', fontSize: 22}}>Detail Produk</Title>
+          <Title
+            style={{
+              color: 'black',
+              fontSize: 20,
+              fontFamily: 'ProductSansRegular',
+            }}>
+            Detail Produk
+          </Title>
         </Body>
         <Right>
-          <TouchableOpacity
-            onPress={() =>navigation.navigate('Cart')}>
-            <Icon
-              type="MaterialIcons"
-              name="shopping-cart"
-              style={{marginRight: 5}}
+          <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
+            <Image
+              source={require('../../assets/icons/nav/inactive/cart.png')}
+              style={{
+                height: 30,
+                width: 30,
+                marginRight: 10,
+                resizeMode: 'contain',
+              }}
             />
           </TouchableOpacity>
         </Right>
