@@ -88,21 +88,35 @@ function Cart({navigation}) {
               </Left>
             </CardItem>
             <HorizontalLiner />
-            <CardItem style={{height: 130}}>
+            <CardItem
+              style={{
+                height: 130,
+              }}>
               <Left>
                 <Image
-                  style={{width: 40, height: 40}}
+                  style={{width: 40, height: 40, alignSelf: 'flex-start'}}
                   source={require('../assets/icons/checked.png')}
                 />
-                <Image
-                  source={require('../assets/minyak.jpg')}
+                <View
                   style={{
-                    height: 180,
-                    width: 100,
-                    marginLeft: 10,
-                    resizeMode: 'contain',
-                  }}
-                />
+                    borderColor: Color.OUTLINE,
+                    borderRadius: 10,
+                    borderWidth: 1,
+                    width: 80,
+                    height: 80,
+                    justifyContent: 'center',
+                    marginLeft: 20,
+                  }}>
+                  <Image
+                    source={require('../assets/minyak.jpg')}
+                    style={{
+                      height: 70,
+                      width: 70,
+                      alignSelf: 'center',
+                      // resizeMode: 'contain',
+                    }}
+                  />
+                </View>
               </Left>
               <Body style={{justifyContent: 'center'}}>
                 <Text
@@ -110,6 +124,7 @@ function Cart({navigation}) {
                     fontFamily: 'ProductSansRegular',
                     fontSize: 16,
                     color: Color.TEXT_PRIMARY,
+                    marginTop: 30,
                     fontWeight: '500',
                   }}>
                   Minyak Goreng 2L
@@ -123,161 +138,28 @@ function Cart({navigation}) {
                   }}>
                   Rp. 23.500
                 </Text>
-                <View style={{flexDirection: 'row', marginTop: 15, width: 100}}>
-                  <Button
-                    style={{
-                      paddingHorizontal: 10,
-                      height: 25,
-                      backgroundColor: Color.PALE,
-                    }}>
-                    <Text style={{fontWeight: 'bold'}}>-</Text>
-                  </Button>
+                <View style={{flexDirection: 'row', marginTop: 15, width: 150}}>
+                  <Image
+                    style={{width: 28, height: 28}}
+                    source={require('../assets/icons/Trash.png')}
+                  />
+                  <Image
+                    style={{width: 28, height: 28, marginLeft: 20}}
+                    source={require('../assets/icons/minus/active.png')}
+                  />
                   <Input
                     placeholder="1"
                     style={{
                       margin: 3,
                       paddingBottom: 25,
                       paddingTop: -10,
-                      borderBottomColor: 'black',
                       textAlign: 'center',
                     }}
                   />
-                  <Button
-                    style={{
-                      paddingHorizontal: 10,
-                      height: 25,
-                      backgroundColor: Color.PALE,
-                    }}>
-                    <Text style={{fontWeight: 'bold', fontSize: 16}}>+</Text>
-                  </Button>
-                </View>
-              </Body>
-            </CardItem>
-            <CardItem style={{height: 130, marginBottom: 10}}>
-              <Left>
-                <CheckBox checked={true} color="green" />
-                <Image
-                  source={require('../assets/beras.png')}
-                  style={{
-                    height: 200,
-                    width: 120,
-                    marginLeft: 30,
-                    resizeMode: 'contain',
-                  }}
-                />
-              </Left>
-              <Body style={{justifyContent: 'center'}}>
-                <Text style={{fontSize: 16, fontWeight: '500'}}>
-                  Beras 5 Kg
-                </Text>
-                <Text
-                  style={{
-                    fontSize: 16,
-                    fontWeight: 'bold',
-                    color: Color.DARK_BROWN,
-                    marginTop: 5,
-                  }}>
-                  Rp. 60.000
-                </Text>
-                <View style={{flexDirection: 'row', marginTop: 15, width: 100}}>
-                  <Button
-                    style={{
-                      paddingHorizontal: 10,
-                      height: 25,
-                      backgroundColor: Color.PALE,
-                    }}>
-                    <Text style={{fontWeight: 'bold'}}>-</Text>
-                  </Button>
-                  <Input
-                    placeholder="1"
-                    style={{
-                      margin: 3,
-                      paddingBottom: 25,
-                      paddingTop: -10,
-                      borderBottomColor: 'black',
-                      textAlign: 'center',
-                    }}
+                  <Image
+                    style={{width: 28, height: 28, marginLeft: 3}}
+                    source={require('../assets/icons/plus.png')}
                   />
-                  <Button
-                    style={{
-                      paddingHorizontal: 10,
-                      height: 25,
-                      backgroundColor: Color.PALE,
-                    }}>
-                    <Text style={{fontWeight: 'bold', fontSize: 16}}>+</Text>
-                  </Button>
-                </View>
-              </Body>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem>
-              <Left>
-                <Thumbnail
-                  source={require('../assets/okoc.jpg')}
-                  style={{width: 40, height: 40}}
-                />
-                <Body>
-                  <Text>Toko OK OCE</Text>
-                  <Text note style={{color: 'grey', fontStyle: 'italic'}}>
-                    Pedagang Resmi
-                  </Text>
-                </Body>
-              </Left>
-            </CardItem>
-            <CardItem style={{height: 130, marginBottom: 10}}>
-              <Left>
-                <CheckBox checked={true} color="green" />
-                <Image
-                  source={require('../assets/indomie.jpg')}
-                  style={{
-                    height: 200,
-                    width: 120,
-                    marginLeft: 30,
-                    resizeMode: 'contain',
-                  }}
-                />
-              </Left>
-              <Body style={{justifyContent: 'center'}}>
-                <Text style={{fontSize: 16, fontWeight: '500'}}>
-                  Indomie 1 Karton
-                </Text>
-                <Text
-                  style={{
-                    fontSize: 16,
-                    fontWeight: 'bold',
-                    color: Color.DARK_BROWN,
-                    marginTop: 5,
-                  }}>
-                  Rp. 124.000
-                </Text>
-                <View style={{flexDirection: 'row', marginTop: 15, width: 100}}>
-                  <Button
-                    style={{
-                      paddingHorizontal: 10,
-                      height: 25,
-                      backgroundColor: Color.PALE,
-                    }}>
-                    <Text style={{fontWeight: 'bold'}}>-</Text>
-                  </Button>
-                  <Input
-                    placeholder="1"
-                    style={{
-                      margin: 3,
-                      paddingBottom: 25,
-                      paddingTop: -10,
-                      borderBottomColor: 'black',
-                      textAlign: 'center',
-                    }}
-                  />
-                  <Button
-                    style={{
-                      paddingHorizontal: 10,
-                      height: 25,
-                      backgroundColor: Color.PALE,
-                    }}>
-                    <Text style={{fontWeight: 'bold', fontSize: 16}}>+</Text>
-                  </Button>
                 </View>
               </Body>
             </CardItem>
@@ -286,7 +168,7 @@ function Cart({navigation}) {
       </Content>
       <Footer
         style={{
-          backgroundColor: Color.PALE,
+          backgroundColor: 'white',
           alignContent: 'center',
           paddingTop: 10,
           height: 70,
@@ -299,18 +181,38 @@ function Cart({navigation}) {
             justifyContent: 'space-between',
           }}>
           <View>
-            <Text>Total: </Text>
-            <Text style={{fontSize: 20, fontWeight: 'bold'}}>Rp. 208.000 </Text>
+            <Text style={{fontFamily: 'ProductSansRegular'}}>
+              Total Harga:{' '}
+            </Text>
+            <Text
+              style={{
+                fontSize: 20,
+                marginTop: 5,
+                fontFamily: 'ProductSansBold',
+                color: Color.PRIMARY,
+              }}>
+              Rp. 208.000{' '}
+            </Text>
           </View>
-          <View style={{}}>
-            <Button
-              success
-              style={{paddingHorizontal: 20}}
-              onPress={() => navigation.navigate('Delivery')}>
-              <Text style={{fontWeight: '200', color: 'white', fontSize: 16}}>
-                Bayar
+          <View
+            style={{
+              backgroundColor: Color.PRIMARY,
+              marginVertical: 10,
+              paddingHorizontal: 25,
+              justifyContent: 'center',
+              borderRadius: 5,
+            }}>
+            <TouchableOpacity onPress={() => navigation.navigate('Delivery')}>
+              <Text
+                style={{
+                  fontWeight: '200',
+                  color: 'white',
+                  fontSize: 16,
+                  fontFamily: 'ProductSansBold',
+                }}>
+                Bayar ( 2 )
               </Text>
-            </Button>
+            </TouchableOpacity>
           </View>
         </View>
       </Footer>
