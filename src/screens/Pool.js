@@ -128,13 +128,13 @@ function Pool({route, navigation}) {
                       style={{
                         marginHorizontal: 5,
                       }}>
-                      <ImageBackground
-                        imageStyle={{borderRadius: 10}}
+                      <View
                         style={{
                           flex: 1,
-                          borderRadius: 10,
-                          backgroundColor: '#00CE9F',
-                          height: 110,
+                          borderTopLeftRadius: 10,
+                          borderTopRightRadius: 10,
+                          backgroundColor: Color.PRIMARY,
+                          height: 150,
                           width: 140,
                           resizeMode: 'cover',
                         }}
@@ -146,20 +146,33 @@ function Pool({route, navigation}) {
                             borderRadius: 10,
                             height: 110,
                             position: 'absolute',
-                            backgroundColor: 'black',
-                            opacity: 0.5,
-                          }}></View>
+                          }}>
+                          <Image
+                            source={require('../assets/frozen.jpg')}
+                            style={{
+                              height: 120,
+                              alignSelf: 'center',
+                              width: 125,
+                              marginTop: -10,
+                              borderRadius: 10,
+                              resizeMode: 'contain',
+                            }}
+                          />
+                        </View>
                         <Text
                           style={{
                             fontSize: 16,
                             color: 'white',
                             bottom: 0,
-                            padding: 10,
+                            paddingBottom: 10,
+                            paddingHorizontal: 10,
+                            fontFamily: 'ProductSansRegular',
                             position: 'absolute',
                           }}>
                           {/* {shop.name} */}
+                          Warung Ta-Nia ssas
                         </Text>
-                      </ImageBackground>
+                      </View>
                     </Col>
                   </TouchableOpacity>
                 </Grid>
@@ -167,53 +180,46 @@ function Pool({route, navigation}) {
               </ScrollView>
               <Tabs
                 tabBarBackgroundColor="#fff"
-                style={{marginTop: 20}}
-                renderTabBar={() => <ScrollableTab />}>
+                style={{marginTop: 20, marginBottom: 10}}
+                renderTabBar={() => (
+                  <ScrollableTab
+                    style={{
+                      borderTopWidth: 0.5,
+                      borderBottomColor: 'transparent',
+                      marginTop: -20,
+                      borderTopColor: Color.OUTLINE,
+                      borderBottomWidth: 0,
+                    }}
+                  />
+                )}>
                 <Tab
                   heading="All"
                   tabStyle={{
-                    backgroundColor: Color.PALE,
-                    borderTopLeftRadius: 10,
+                    backgroundColor: Color.BACKGROUND,
+                    borderRadius: 30,
+                    borderColor: Color.OUTLINE,
+                    borderWidth: 1,
+                    marginTop: 10,
+                    marginRight: 10,
                   }}
-                  textStyle={{color: 'black'}}
+                  textStyle={{
+                    color: Color.INACTIVE,
+                    fontFamily: 'ProductSansReglar',
+                  }}
                   activeTabStyle={{
-                    backgroundColor: Color.RED,
-                    borderTopLeftRadius: 10,
+                    backgroundColor: Color.PRIMARYOPACITY,
+                    borderRadius: 30,
+                    borderColor: Color.PRIMARY,
+                    borderWidth: 1,
+                    marginTop: 10,
+                    marginBottom: 10,
+                    marginRight: 10,
                   }}
-                  activeTextStyle={{color: '#fff', fontWeight: 'bold'}}>
-                  <Tab1 navigation={navigation} />
-                </Tab>
-                <Tab
-                  heading="Sembako"
-                  tabStyle={{backgroundColor: Color.PALE}}
-                  textStyle={{color: 'black'}}
-                  activeTabStyle={{backgroundColor: Color.RED}}
-                  activeTextStyle={{color: '#fff', fontWeight: 'bold'}}>
-                  <Tab2 />
-                </Tab>
-                <Tab
-                  heading="Frozen Food"
-                  tabStyle={{backgroundColor: Color.PALE}}
-                  textStyle={{color: 'black'}}
-                  activeTabStyle={{backgroundColor: Color.RED}}
-                  activeTextStyle={{color: '#fff', fontWeight: 'bold'}}>
-                  <Tab3 />
-                </Tab>
-                <Tab
-                  heading="Buah"
-                  tabStyle={{backgroundColor: Color.PALE}}
-                  textStyle={{color: 'black'}}
-                  activeTabStyle={{backgroundColor: Color.RED}}
-                  activeTextStyle={{color: '#fff', fontWeight: 'bold'}}>
-                  <Tab4 />
-                </Tab>
-                <Tab
-                  heading="Minuman"
-                  tabStyle={{backgroundColor: Color.PALE}}
-                  textStyle={{color: 'black'}}
-                  activeTabStyle={{backgroundColor: Color.RED}}
-                  activeTextStyle={{color: '#fff', fontWeight: 'bold'}}>
-                  <Tab5 />
+                  activeTextStyle={{
+                    color: Color.TEXT_PRIMARY,
+                    fontFamily: 'ProductSansBold',
+                  }}>
+                  <Tab1 />
                 </Tab>
               </Tabs>
             </Body>
@@ -246,14 +252,17 @@ function Tab1(props) {
                 </Body>
               </CardItem>
               <CardItem>
-                <Text style={{fontSize: 16, alignSelf: 'center'}}>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    alignSelf: 'center',
+                    fontFamily: 'ProductSansRegular',
+                  }}>
                   Minyak Goreng Sania 1 Liter
                 </Text>
-                <Body></Body>
               </CardItem>
               <CardItem
                 footer
-                bordered
                 style={{
                   justifyContent: 'center',
                   flexDirection: 'row',
@@ -262,14 +271,12 @@ function Tab1(props) {
                 <Text
                   style={{
                     alignSelf: 'center',
-                    fontSize: 18,
-                    color: Color.DARK_GREEN,
+                    fontSize: 16,
+                    fontFamily: 'ProductSansRegular',
+                    color: Color.PRIMARY,
                   }}>
                   Rp. 26.000
                 </Text>
-                <Button transparent>
-                  <Text style={{color: Color.DARK_BROWN}}>Detail</Text>
-                </Button>
               </CardItem>
             </Card>
           </TouchableOpacity>
@@ -295,11 +302,9 @@ function Tab1(props) {
                 <Text style={{fontSize: 14, alignSelf: 'center'}}>
                   AQUA 600 ml
                 </Text>
-                <Body></Body>
               </CardItem>
               <CardItem
                 footer
-                bordered
                 style={{
                   justifyContent: 'center',
                   flexDirection: 'row',
@@ -309,7 +314,7 @@ function Tab1(props) {
                   style={{
                     alignSelf: 'center',
                     fontSize: 18,
-                    color: Color.DARK_GREEN,
+                    color: Color.PRIMARY,
                   }}>
                   Rp. 3.500
                 </Text>

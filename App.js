@@ -108,7 +108,8 @@ function HomeStack() {
   );
 }
 function App() {
-  console.disableYellowBox = true;
+  // console.disableYellowBox = true;
+  // LogBox.ignoreAllLogs(enable);
   return (
     <NavigationContainer>
       <Stack.Navigator>

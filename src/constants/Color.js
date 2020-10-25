@@ -1,6 +1,7 @@
 module.exports = {
   RED: '#F93963',
   PRIMARY: '#74CE76',
+  PRIMARYOPACITY: '#F0FAF1',
   SECONDARY: '#200E32',
   TEXT_SECONDARY: '#B9BDC5',
   BLUE: '#3981F9',
